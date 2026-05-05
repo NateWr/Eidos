@@ -9,6 +9,7 @@ use PKP\plugins\ThemePlugin;
 class EidosTheme extends ThemePlugin {
 
     public function init() {
+        $this->requiresVueRuntime();
         $this->addViteAssets(['src/main.js']);
         $this->addMenuArea(['primary', 'user', 'homepage', 'policy']);
     }

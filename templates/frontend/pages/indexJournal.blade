@@ -6,6 +6,22 @@
     <h1>
         Homepage
     </h1>
+
+    @php
+        $dropdown = [
+            'triggerLabel' => 'Test',
+            'items' => [
+                ['name' => 'a', 'label' => 'Lorem Ipsum'],
+                ['name' => 'b', 'label' => 'Dolor Sitamet'],
+                ['name' => 'c', 'label' => 'Hello There'],
+            ]
+        ];
+    @endphp
+
+    <div class="relative" data-vue-root>
+        <pkp-dropdown-menu v-bind='{{ json_encode($dropdown) }}' align="end">
+        </pkp-dropdown-menu>
+    </div>
     <p>1</p>
     <p>1</p>
     <p>1</p>
