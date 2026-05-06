@@ -1,80 +1,241 @@
-# Eidos Theme for OJS
+# Proposal for built-in Layout component
 
-An official theme from PKP that is highly configurable.
+We could use a core `Layout` component to register custom data, handle `<head>` elements, and add helper functions. In the long run, this could help isolate theme code from editorial backend code by extracting code out of `PKPTemplateManager`.
 
-## Usage
+The basic `layout.blade` component.
 
-> This assumes you know [how to build a custom OJS theme](https://docs.pkp.sfu.ca/pkp-theming-guide/en/).
+```html
+<!doctype html>
+<html lang="{{ str_replace('_', '-', $currentLocale) }}" xml:lang="{{ str_replace('_', '-', $currentLocale) }}">
 
-Install the dependencies.
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ $title }}</title>
+    @if ($description)
+        <meta name="description" content="{{ strip_tags($description) }}">
+    @endif
+    @loadHeader(['context' => 'frontend'])
+    @loadStylesheet(['context' => 'frontend'])
+    @if ($head && !$head->isEmpty())
+        {{ $head }}
+    @endif
+</head>
 
+<body>
+
+    {{ $slot }}
+
+    @loadScript(['context' => 'frontend'])
+
+    @if ($foot && !$foot->isEmpty())
+        {{ $foot }}
+    @endif
+</body>
+
+</html>
 ```
-npm install
-```
 
-Run vite in local development mode.
+A theme would extend this component with it's own layout template (notice the use of component namespacing):
 
-```
-npm run start
-```
+```html
+<!-- plugins/themes/eidos/templates/layouts/layout.blade -->
 
-Build vite assets before deploying your theme to production.
-
-```
-npm run build
-```
-
-## Temporary Docs
-
-### Layouts
-
-Uses the `Layout` component to pass page title, description, meta tags, etc to pages.
-
-```
-<!-- indexJournal.blade -->
-<x-eidostheme::layout
-    title="{{ $currentContext->getLocalizedName() }}"
-    description="{{ $currentContext->getLocalizedData('description') }}"
+<x-app::layout
+    title="{{ $title }}"
+    description="{{ $description }}"
 >
-    <h1>Page</h1>
-</x-eidostheme::layout>
+    <header>...</header>
+    <main>
+        {{ $slot }}
+    </main>
+    <footer>...</footer>
+</x-app::layout>
 ```
 
-[Attributes](https://laravel.com/docs/11.x/blade#component-attributes) passed to the layout will be assigned to the `<body>` tag. Some attributes are defined in `layout.blade`.
+A theme would then use the layout in its pages.
 
-```
-<!-- indexJournal.blade -->
-<x-eidostheme::layout
-    title="{{ $currentContext->getLocalizedName() }}"
-    description="{{ $currentContext->getLocalizedData('description') }}"
-    class="my-custom-page-class"
+```html
+<!-- plugins/themes/eidos/templates/frontend/indexJournal.blade -->
+
+<x-layout
+    title="Journal of Public Knowledge"
+    description="..."
 >
-    <h1>Page</h1>
-</x-eidostheme::layout>
+    ...page content..
+</x-layout>
 ```
 
-```
-<!-- Output -->
-<body dir="ltr" class="pkp-page-index pkp-page-op my-custom-page-class">
-```
 
-A `head` [slot](https://laravel.com/docs/11.x/blade#slots) exists to pass custom content for the `<head>`.
+## The `$head` and `$foot` slots.
 
-```
-<x-eidostheme::layout
-    title="{{ $currentContext->getLocalizedName() }}"
-    description="{{ $currentContext->getLocalizedData('description') }}"
+The built-in component has a slot in the `<head>` and another just before the `</body>`. Theme developers can use this to load scripts, styles and other assets as they are used to.
+
+```html
+<!-- plugins/themes/eidos/templates/layouts/layout.blade -->
+
+<x-app::layout
+    title="{{ $title }}"
+    description="{{ $description }}"
 >
     <x-slot:head>
-        <meta name="test" content="hello there.">
-        <script>console.log('hello')</script>
+        <link rel="stylesheet" src="{{ $pluginUrl }}/my-stylesheet.css">
+        <meta name="custom-meta" content="...">
     </x-slot:head>
 
-    <h1>Page</h1>
-</x-eidostheme::layout>
+    <header>...</header>
+    <main>
+        {{ $slot }}
+    </main>
+    <footer>...</footer>
+
+    <x-slot:foot>
+        <script type="module" src="..."></script>
+    </x-slot:foot>
+</x-app::layout>
 ```
 
+The `@loadHeader`, `@loadStylesheet` and `@loadScript` directives would still be used by plugins, but theme developers don't need to concern themselves with them.
 
-## Credit
+## Component class
 
-This library is distributed under GPL 3.0. The Vite integration is based on [php-vite](https://github.com/mindplay-dk/php-vite) by [@mindplay-dk](https://github.com/mindplay-dk).
+> I tried to set this up, but I couldn't figure out the right places to put the `Layout` classes in pkp-lib, ojs, etc, so that it all extended and referenced a hierarchy of templates. Probably Touhidur can figure this out...
+
+The built-in component has a base class that provides data and helper functions.
+
+```php
+<?php
+namespace PKP\view\components;
+
+use APP\core\Application;
+use Closure;
+use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\View as ViewFacade;
+
+class Layout extends Component
+{
+    public function __construct(
+        public string $title,
+        public string $description = '',
+    ) {
+        //
+    }
+
+    public function render(): View|Closure|string
+    {
+        return view(
+            ViewFacade::resolvePluginComponentViewPath(
+                $this,
+                'components.layout'
+            )
+        );
+    }
+
+    /**
+     * Get the <title> by combining the current page title
+     * with the context or site name.
+     */
+    public function pageTitle() : string
+    {
+        $page = Application::get()->getRequest()->getRequestedPage();
+        $context = Application::get()->getRequest()->getContext();
+
+        if ($page === 'index') {
+            return $this->title;
+        }
+
+        $name = $context
+            ? $context->getLocalizedName()
+            : Application::get()->getRequest()->getSite()->getLocalizedTitle();
+
+        return $this->title . __('common.titleSeparator') . $name;
+    }
+}
+```
+
+Eventually, much of the global template data for the frontend can be moved out of `PKPTemplateManager` and into this class.
+
+```php
+class Layout extends Component
+{
+    public function __construct(...) {
+        /**
+         * Global data needs to be added differently from component data
+         */
+        view()->share([
+            'currentContext' => Application::get()->getRequest()->getContext(),
+            'currentLocale' => Locale::getLocale(),
+            ...
+
+            // Helper functions can be made global this way too
+            'pageTitle' => [$this, 'pageTitle'],
+        ]);
+    }
+}
+```
+
+Extend the `pkp-lib` component to add app-specific data.
+
+```php
+namespace APP\view\components;
+
+class Layout extends PKP\view\components\Layout
+{
+    ...
+}
+```
+
+And finally, themes can extend this layout component themselves to add their own data or override built-in helper functions.
+
+```php
+namespace APP\plugins\themes\eidos\classes\components;
+
+use APP\view\components\Layout as OJSLayout;
+
+class Layout extends OJSLayout
+{
+    public function __construct(...)
+    {
+        view()->share('myCustomData', '...');
+    }
+
+    public function pageTitle(): string
+    {
+        $title = parent::pageTitle();
+
+        return $title . ' (My Institution)';
+    }
+}
+```
+
+## Body attributes
+
+Attributes passed to the component are assigned to to the `<body>` tag.
+
+
+```html
+<!-- plugins/themes/eidos/templates/layouts/layout.blade -->
+
+<x-app::layout
+    title="{{ $title }}"
+    description="{{ $description }}"
+    class="my-custom-class"
+    data-vue-root=""
+>
+    <header>...</header>
+    <main>
+        {{ $slot }}
+    </main>
+    <footer>...</footer>
+</x-app::layout>
+```
+
+The body class would merge the attributes:
+
+```html
+<body
+    class="pkp-page-index pkp-op-index my-custom-class"
+    data-vue-root
+>
+```
