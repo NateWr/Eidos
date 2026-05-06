@@ -1,10 +1,12 @@
 # Proposal for built-in Layout component
 
-We could use a core `Layout` component to register custom data, handle `<head>` elements, and add helper functions. In the long run, this could help isolate theme code from editorial backend code by extracting code out of `PKPTemplateManager`.
+We could use a core `Layout` component to register custom data, handle `<head>` elements, and add helper functions. In the long run, this could help isolate theme code from editorial backend code by extracting theme code out of `PKPTemplateManager`.
 
-The basic `layout.blade` component.
+The built-in layout component template.
 
 ```html
+<!-- lib/pkp/templates/layouts/layout.blade -->
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', $currentLocale) }}" xml:lang="{{ str_replace('_', '-', $currentLocale) }}">
 
@@ -17,9 +19,7 @@ The basic `layout.blade` component.
     @endif
     @loadHeader(['context' => 'frontend'])
     @loadStylesheet(['context' => 'frontend'])
-    @if ($head && !$head->isEmpty())
-        {{ $head }}
-    @endif
+    {{ $head }}
 </head>
 
 <body>
@@ -28,9 +28,7 @@ The basic `layout.blade` component.
 
     @loadScript(['context' => 'frontend'])
 
-    @if ($foot && !$foot->isEmpty())
-        {{ $foot }}
-    @endif
+    {{ $foot }}
 </body>
 
 </html>
@@ -53,7 +51,7 @@ A theme would extend this component with it's own layout template (notice the us
 </x-app::layout>
 ```
 
-A theme would then use the layout in its pages.
+A theme would then use its own layout component in its pages.
 
 ```html
 <!-- plugins/themes/eidos/templates/frontend/indexJournal.blade -->
@@ -66,10 +64,16 @@ A theme would then use the layout in its pages.
 </x-layout>
 ```
 
+For this to work, the template hierarchy would need to fall through, so that a call to `<x-layout>` look at:
+
+* `plugins/themes/<current-theme>/templates/layouts/layout.blade`
+* `templates/layouts/layout.blade`
+* `lib/pkp/templates/layouts/layout.blade`
+
 
 ## The `$head` and `$foot` slots.
 
-The built-in component has a slot in the `<head>` and another just before the `</body>`. Theme developers can use this to load scripts, styles and other assets as they are used to.
+The built-in component has a slot in the `<head>` and another just before the `</body>`. Theme developers can use this to load scripts, styles and other assets, using approaches common in modern frontend toolsets (Astro, React Helmet, Nuxt, etc).
 
 ```html
 <!-- plugins/themes/eidos/templates/layouts/layout.blade -->
@@ -95,7 +99,7 @@ The built-in component has a slot in the `<head>` and another just before the `<
 </x-app::layout>
 ```
 
-The `@loadHeader`, `@loadStylesheet` and `@loadScript` directives would still be used by plugins, but theme developers don't need to concern themselves with them.
+The `@loadHeader`, `@loadStylesheet` and `@loadScript` directives would still be used by plugins, but theme developers don't need to know about them.
 
 ## Component class
 
