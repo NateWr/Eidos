@@ -87,7 +87,7 @@ However, here we run into the challenge with the IIFE build format. The function
 
 ## 1. Allow themes to mount a Vue app on their own
 
-> I tried this approach, but ran into an error that I didn't understand.
+> I tried this approach, but ran into an error when the mounting happened that was deep in the call stack.
 
 Currently, if a theme loads the Vue runtime, OJS runs the following code to mount Vue apps.
 
@@ -193,6 +193,6 @@ document.addEventListener('DOMContentLoaded',function() {
 })
 ```
 
-I'm not sure what technical hurdles exist for this approach, but I like that it looks and works exactly like a normal ES6 module import structure. I could choose to use PKP's off-the-shelf components for peer review and commenting, but use my preferred library or framework for other components.
+I'm not sure what technical hurdles exist for this approach, but I like that it looks and works exactly like a normal ES6 module import structure. A theme developer could use PKP's off-the-shelf components for peer review and commenting, while also importing their own preferred library or framework for other components.
 
 The other upside is that PKP doesn't have to decide which Reka UI components to include or exclude from its pre-built package.
