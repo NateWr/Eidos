@@ -248,4 +248,4 @@ The body class would merge the attributes:
 
 Theme developers don't have to use the built-in layout. They can avoid all of it by just not calling `<x-layout>` in their templates.
 
-The only use case I can think of here is if I wanted to go total Vue frontend. In that case, it's probably more performant to avoid all of the setup that goes into rendering a template.
+The only use case I can think of here is if I wanted to go total Vue/React frontend. In that case, it's probably more performant to avoid all of the setup that goes into rendering a template.
