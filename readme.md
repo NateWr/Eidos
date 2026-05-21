@@ -143,7 +143,6 @@ class ExampleTheme extends ThemePlugin implements HasMetadataBlocks
             new MetadataBlock(
                 id: 'example',
                 title: 'Example Metadata',
-                description: 'This is an example metadata block for code documentation.',
                 /**
                  * This uses the component path syntax in Blade to
                  * specify the template to use for this metadata block.
@@ -172,7 +171,6 @@ class ExamplePlugin extends GenericPlugin implements HasMetadataBlocks
             new MetadataBlock(
                 id: 'example',
                 title: 'Example Metadata',
-                description: 'This is an example metadata block for code documentation.',
                 /**
                  * Notice the plugin namespace, exampleplugin::,
                  * which is needed to load the correct component
@@ -197,7 +195,6 @@ $blocks->register(
     new MetadataBlock(
         id: 'example',
         title: 'Example Metadata',
-        description: 'This is an example metadata block for code documentation.',
         component: 'exampleplugin::metadata.galley',
         /**
          * The callback function receives the current Publication and Submission

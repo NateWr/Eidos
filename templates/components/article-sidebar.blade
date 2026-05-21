@@ -42,6 +42,7 @@
     @foreach ($metadata() as $block)
         <x-dynamic-component
             :component="$block->component"
+            :id="$block->id"
             :title="$block->title"
             :description="$block->description"
             :$publication

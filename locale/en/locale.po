@@ -99,6 +99,3 @@ msgstr "Buttons, Menus and Forms Font"
 
 msgid "plugins.themes.eidos.option.actionsFont.description"
 msgstr "Select the font to use for interactive elements, such as buttons, navigation menus, and forms."
-
-msgid "plugins.themes.eidos.option.metadata.metrics.description"
-msgstr "Show the views and downloads of an article."

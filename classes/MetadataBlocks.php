@@ -33,10 +33,8 @@ class MetadataBlocks
 
         $blocks->register(
             new MetadataBlock(
-                id: 'metrics',
-                title: __('plugins.themes.eidos.metrics'),
-                description: __('plugins.themes.eidos.option.metadata.metrics.description'),
                 component: 'metadata.metrics',
+                title: __('plugins.themes.eidos.metrics'),
                 loader: function(Publication $publication, Submission $submission) use ($templateMgr) {
                     $metrics = $templateMgr->getTemplateVars('metricsByType');
                     if (!$metrics) {
