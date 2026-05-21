@@ -30,7 +30,7 @@
                         __(
                             'submission.outdatedVersion',
                             [
-                                'datePublished' => ViewHelper::dateFormatShort($publication->getData('datePublished')),
+                                'datePublished' => ViewHelper::dateFormat($publication->getData('datePublished'), $dateFormatLong),
                                 'urlRecentVersion' => ViewHelper::url([
                                     'page' => 'article',
                                     'op' => 'view',
