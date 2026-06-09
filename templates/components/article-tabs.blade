@@ -1,0 +1,36 @@
+@php
+    $tabs = [
+        ['id' => 'article', 'template' => 'components/article-tab-article', 'name' => __('article.article')],
+        ['id' => 'peer-review', 'template' => 'components/article-tab-peer-review', 'name' => __('submission.peerReview')],
+        ['id' => 'comments', 'template' => 'components/article-tab-comments', 'name' => __('manager.userComment.comments')],
+        ['id' => 'metrics', 'template' => 'components/article-tab-metrics', 'name' => __('plugins.themes.eidos.metrics')],
+        ['id' => 'metadata', 'template' => 'components/article-tab-metadata', 'name' => __('submission.informationCenter.metadata')],
+    ];
+@endphp
+
+<div class="article-tabs-wrapper" data-vue-root>
+    <tabs-root
+        class="article-tabs"
+        default-value="{{ $tabs[0]['id'] }}"
+    >
+        <tabs-list
+            class="article-tabs-list"
+            aria-label="{{ __('submission.publication' ) }}"
+        >
+            <tabs-indicator class="article-tabs-indicator"></tabs-indicator>
+            @foreach($tabs as $tab)
+                <tabs-trigger class="article-tabs-trigger" value="{{ $tab['id'] }}">
+                    {{ $tab['name'] }}
+                </tabs-trigger>
+            @endforeach
+        </tabs-list>
+        @foreach($tabs as $tab)
+            <tabs-content
+                class="article-tabs-content"
+                value="{{ $tab['id'] }}"
+            >
+                @includeIf($tab['template'])
+            </tabs-content>
+        @endforeach
+    </tabs-root>
+</div>

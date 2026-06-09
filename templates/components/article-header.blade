@@ -9,9 +9,6 @@
             {{ __('article.authors') }}
         </h2>
         <ul class="article-authors">
-            @php
-                $count = count($publication->getData('authors'));
-            @endphp
             @foreach ($publication->getData('authors') as $author)
                 <li class="article-author">
                     {{-- preserve this formatting so that there isn't an extra space before the comma --}}
@@ -29,7 +26,7 @@
                             </span>
                         </a>
                     @endif{{
-                    ""}}@if ($loop->iteration < $count){{
+                    ""}}@if ($loop->iteration < $publication->getData('authors')->count()){{
                         __('common.commaListSeparator')
                     }}@endif
                 </li>

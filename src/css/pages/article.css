@@ -1,0 +1,35 @@
+.page-article,
+.page-article-main-wrapper,
+.page-article-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+@media (min-width: 1200px) {
+
+  .page-article-main-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 6rem;
+  }
+
+  .page-article-main {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .page-article-sidebar {
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .page-article-main-wrapper {
+    grid-template-columns: 5fr 2fr;
+  }
+}

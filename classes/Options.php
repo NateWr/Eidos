@@ -5,7 +5,9 @@ namespace APP\plugins\themes\eidos\classes;
 use APP\core\Application;
 use APP\journal\Journal;
 use APP\plugins\themes\eidos\EidosTheme;
+use APP\template\TemplateManager;
 use Illuminate\Support\Collection;
+use PKP\view\MetadataBlock;
 
 /**
  * Helper class to add theme options
@@ -25,6 +27,17 @@ class Options
 
     public const SITE_WIDTH_FULL = 'full';
     public const SITE_WIDTH_FIXED = 'fixed';
+
+    public const ARTICLE_HIGHLIGHT_METADATA_DEFAULT = [
+        'metadata.doi',
+    ];
+
+    public const ARTICLE_SIDEBAR_METADATA_DEFAULT = [
+        'metadata.version',
+        'metadata.date-published',
+        'metadata.date-submitted',
+        'metadata.metrics',
+    ];
 
     /**
      * Primary locale of current context
@@ -68,6 +81,8 @@ class Options
         $this->addTaglineOption();
         $this->addSiteWidthOption();
         $this->addFontOptions();
+        $this->addArticleHighlightMetadataOption();
+        $this->addArticleSidebarMetadataOption();
     }
 
     /**
@@ -277,5 +292,53 @@ class Options
                 || $this->theme->getOption('titlesFont')
                 || $this->theme->getOption('actionsFont')
             );
+    }
+
+    /**
+     * Add option to highlight some metadata at the top
+     * of the article landing page
+     */
+    protected function addArticleHighlightMetadataOption(): void
+    {
+        $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
+        $blocks = $templateMgr->metadataBlocks->get();
+
+        $this->theme->addOption('highlightArticleMetadata', 'FieldOptions', [
+            'type' => 'checkbox',
+            'isOrderable' => true,
+            'label' => __('plugins.themes.eidos.option.highlightArticleMetadata.label'),
+            'description' => __('plugins.themes.eidos.option.highlightArticleMetadata.description'),
+            'options' => $blocks->map(
+                fn(MetadataBlock $block) => [
+                    'value' => $block->id,
+                    'label' => $block->title,
+                ])
+                ->values(),
+            'default' => self::ARTICLE_HIGHLIGHT_METADATA_DEFAULT,
+        ]);
+    }
+
+    /**
+     * Add option to show some metadata in the sidebar
+     * of the article landing page
+     */
+    protected function addArticleSidebarMetadataOption(): void
+    {
+        $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
+        $blocks = $templateMgr->metadataBlocks->get();
+
+        $this->theme->addOption('sidebarArticleMetadata', 'FieldOptions', [
+            'type' => 'checkbox',
+            'isOrderable' => true,
+            'label' => __('plugins.themes.eidos.option.sidebarArticleMetadata.label'),
+            'description' => __('plugins.themes.eidos.option.sidebarArticleMetadata.description'),
+            'options' => $blocks->map(
+                fn(MetadataBlock $block) => [
+                    'value' => $block->id,
+                    'label' => $block->title,
+                ])
+                ->values(),
+            'default' => self::ARTICLE_SIDEBAR_METADATA_DEFAULT,
+        ]);
     }
 }

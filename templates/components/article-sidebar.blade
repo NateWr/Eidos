@@ -39,12 +39,12 @@
             </ul>
         </x-dropdown>
     </div>
-    @foreach ($metadata() as $block)
+    @foreach ($metadata($activeTheme->getOption('sidebarArticleMetadata')) as $block)
         <x-dynamic-component
             :component="$block->component"
+            headingTag="h3"
             :id="$block->id"
             :title="$block->title"
-            :description="$block->description"
             :$publication
             :submission="$article"
         />

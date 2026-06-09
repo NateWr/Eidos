@@ -90,6 +90,7 @@ Every template that uses the default `Layout` component can load and display met
     @foreach ($metadata() as $block)
         <x-dynamic-component
             :component="$block->component"
+            headingTag="h3"
             :title="$block->title"
             :description="$block->description"
             :$publication
@@ -117,6 +118,21 @@ Each block has a template in the `components/metadata` directory. Themes can ove
 </div>
 ```
 
+Use the `$headingTag` variable to use the correct `<h*>` tag when displaying this block.
+
+```php
+{{-- templates/components/metadata/keywords.blade --}}
+
+<div>
+    <{{ $headingTag }}>My Keywords</{{ $headingTag }}>
+    <div>
+        @foreach ($publication->getLocalizedData('keywords') as $keyword)
+            {{ $keyword['name'] }}@if(!$loop->last){{ __('common.commaListSeparator') }}@endif
+        @endforeach
+    </div>
+</div>
+```
+
 Use the `<x-metadata.default>` component to show the title and content in a consistent format.
 
 ```php
@@ -125,6 +141,7 @@ Use the `<x-metadata.default>` component to show the title and content in a cons
 <x-metadata.default
     id="keywords"
     title="{{ __('article.subject') }}"
+    :$headingTag
 >
     @foreach ($publication->getLocalizedData('keywords') as $keyword)
         {{ $keyword['name'] }}@if(!$loop->last){{ __('common.commaListSeparator') }}@endif

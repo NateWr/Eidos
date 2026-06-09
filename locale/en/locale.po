@@ -25,6 +25,9 @@ msgstr "Hosted using <a href=\"{$urlOJS}\">Open Journal Systems</a> by <a href=\
 msgid "plugins.themes.eidos.viewAuthorDetails"
 msgstr "View author roles and details"
 
+msgid "plugins.themes.eidos.authorDetails"
+msgstr "Author Details"
+
 msgid "plugins.themes.eidos.metrics"
 msgstr "Metrics"
 
@@ -99,3 +102,15 @@ msgstr "Buttons, Menus and Forms Font"
 
 msgid "plugins.themes.eidos.option.actionsFont.description"
 msgstr "Select the font to use for interactive elements, such as buttons, navigation menus, and forms."
+
+msgid "plugins.themes.eidos.option.highlightArticleMetadata.label"
+msgstr "Article Highlight Metadata"
+
+msgid "plugins.themes.eidos.option.highlightArticleMetadata.description"
+msgstr "Select the article metadata that you want to show at the top of the article landing page."
+
+msgid "plugins.themes.eidos.option.sidebarArticleMetadata.label"
+msgstr "Article Sidebar Metadata"
+
+msgid "plugins.themes.eidos.option.sidebarArticleMetadata.description"
+msgstr "Select the article metadata that you want to show in the sidebar on the article landing page."

@@ -2,17 +2,20 @@
     title="{{ $currentContext->getLocalizedName() }}"
     description="{{ $currentContext->getLocalizedData('description') }}"
 >
-    <article class="page-container flex flex-col gap-16">
+    <article class="page-container page-article">
 
-        <x-article-notice-preview />
-        <x-article-notice-outdated />
-        <x-article-header />
+        @include('components/article-notice-preview')
+        @include('components/article-notice-outdated')
+        @include('components/article-header')
 
-        <div class="article-main">
-            <div class="article-top-metadata">
+        <div class="page-article-main-wrapper">
+            <div class="page-article-sidebar">
+                @include('components/article-sidebar')
             </div>
-            <x-article-sidebar />
-            <div>tabs</div>
+            <div class="page-article-main">
+                @include('components/article-highlighted-metadata')
+                @include('components/article-tabs')
+            </div>
         </div>
 
     </article>

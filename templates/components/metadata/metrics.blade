@@ -2,16 +2,19 @@
     <x-metadata.default
         slug="metrics"
         title="{{ __('plugins.themes.eidos.metrics') }}"
+        :$headingTag
     >
-        {!!
-            __(
-                'plugins.themes.eidos.metricsText',
-                [
-                    'views' => $metricsViews,
-                    'downloads' => $metricsDownloads,
-                    'date' => ViewHelper::dateFormat($firstPublication->getData('datePublished'), $dateFormatLong)
-                ]
-            )
-        !!}
+        <div class="html-text">
+            {!!
+                __(
+                    'plugins.themes.eidos.metricsText',
+                    [
+                        'views' => $metricsViews,
+                        'downloads' => $metricsDownloads,
+                        'date' => ViewHelper::dateFormat($firstPublication->getData('datePublished'), $dateFormatLong)
+                    ]
+                )
+            !!}
+        </div>
     </x-metadata.default>
 @endif

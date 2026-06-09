@@ -5,11 +5,11 @@
 @utility link {
   @apply tab-focus;
   font-weight: 600;
-  color: var(--color-page-links);
+  color: currentColor;
   text-decoration: underline;
   text-decoration-thickness: 0.1em;
 
   &:hover {
-    color: var(--color-page-text);
+    color: var(--color-page-links);
   }
 }
