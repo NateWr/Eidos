@@ -19,3 +19,33 @@
   flex-direction: column;
   gap: 2rem;
 }
+
+.article-section-references .article-section-content {
+  max-width: 60em;
+}
+
+@media (min-width: 1200px) {
+
+  .article-section-title {
+    font-size: 1.5rem;
+  }
+
+  .article-section-content {
+    font-size: 1.125rem;
+  }
+
+  .article-section-references .article-section-content {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1920px) {
+
+  .article-section-title {
+    font-size: 1.75rem;
+  }
+
+  .article-section-content {
+    font-size: 1.25rem;
+  }
+}

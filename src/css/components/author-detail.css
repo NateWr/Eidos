@@ -37,3 +37,16 @@
   @apply html-text;
   font-size: 0.875rem;
 }
+
+@media (min-width: 1200px) {
+
+  .author-detail-name {
+    font-size: 1.25rem;
+  }
+
+  .author-detail-credit,
+  .author-detail-affiliations,
+  .author-detail-biography {
+    font-size: 1rem;
+  }
+}

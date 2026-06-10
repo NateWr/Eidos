@@ -186,6 +186,10 @@
   .article-tabs-content {
     margin-top: 4rem;
   }
+
+  .article-tabs-title {
+    @apply sr-only;
+  }
 }
 
 @media (min-width: 1536px) {
