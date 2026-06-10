@@ -1,10 +1,35 @@
 @php
     $tabs = [
-        ['id' => 'article', 'template' => 'components/article-tab-article', 'name' => __('article.article')],
-        ['id' => 'peer-review', 'template' => 'components/article-tab-peer-review', 'name' => __('submission.peerReview')],
-        ['id' => 'comments', 'template' => 'components/article-tab-comments', 'name' => __('manager.userComment.comments')],
-        ['id' => 'metrics', 'template' => 'components/article-tab-metrics', 'name' => __('plugins.themes.eidos.metrics')],
-        ['id' => 'metadata', 'template' => 'components/article-tab-metadata', 'name' => __('submission.informationCenter.metadata')],
+        [
+            'id' => 'article',
+            'template' => 'components/article-tab-article',
+            'icon' => 'components/icons/menubar-article',
+            'name' => __('article.article'),
+        ],
+        [
+            'id' => 'peer-review',
+            'template' => 'components/article-tab-peer-review',
+            'icon' => 'components/icons/menubar-peer-review',
+            'name' => __('submission.peerReview'),
+        ],
+        [
+            'id' => 'comments',
+            'template' => 'components/article-tab-comments',
+            'icon' => 'components/icons/menubar-comments',
+            'name' => __('manager.userComment.comments'),
+        ],
+        [
+            'id' => 'metrics',
+            'template' => 'components/article-tab-metrics',
+            'icon' => 'components/icons/menubar-metrics',
+            'name' => __('plugins.themes.eidos.metrics'),
+        ],
+        [
+            'id' => 'metadata',
+            'template' => 'components/article-tab-metadata',
+            'icon' => 'components/icons/menubar-metadata',
+            'name' => __('submission.informationCenter.metadata'),
+        ],
     ];
 @endphp
 
@@ -14,15 +39,43 @@
         default-value="{{ $tabs[0]['id'] }}"
     >
         <tabs-list
-            class="article-tabs-list"
+            class="article-tabs-menubar"
             aria-label="{{ __('submission.publication' ) }}"
         >
-            <tabs-indicator class="article-tabs-indicator"></tabs-indicator>
-            @foreach($tabs as $tab)
-                <tabs-trigger class="article-tabs-trigger" value="{{ $tab['id'] }}">
-                    {{ $tab['name'] }}
-                </tabs-trigger>
-            @endforeach
+            <div class="article-tabs-menu">
+                @foreach($tabs as $tab)
+                    <tabs-trigger class="article-tabs-menu-trigger" value="{{ $tab['id'] }}">
+                        <span class="article-tabs-menu-trigger-icon">
+                            @includeIf($tab['icon'])
+                        </span>
+                        <span class="article-tabs-menu-trigger-name">
+                            {{ $tab['name'] }}
+                        </span>
+                    </tabs-trigger>
+                @endforeach
+                <div class="article-tabs-menu-divider" aria-hidden="true"></div>
+            </div>
+            <div class="article-tabs-list">
+                @foreach($tabs as $tab)
+                    <tabs-trigger class="article-tabs-trigger" value="{{ $tab['id'] }}">
+                        <span class="article-tabs-trigger-icon">
+                            @includeIf($tab['icon'])
+                        </span>
+                        <span class="article-tabs-trigger-name">
+                            {{ $tab['name'] }}
+                        </span>
+                    </tabs-trigger>
+                @endforeach
+                <div class="article-tabs-divider" aria-hidden="true"></div>
+                <button class="article-tabs-trigger article-tabs-expand">
+                    <span class="sr-only">
+                        {{ __('list.expand') }}
+                    </span>
+                    <span class="article-tabs-trigger-icon">
+                        @include('components/icons/menubar-expand')
+                    </span>
+                </button>
+            </div>
         </tabs-list>
         @foreach($tabs as $tab)
             <tabs-content
