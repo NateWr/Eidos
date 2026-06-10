@@ -4,9 +4,10 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   border-radius: var(--radius);
-  background: var(--color-page-background);
+  background: var(--color-overlay-background);
+  color: var(--color-overlay-text);
   box-shadow: var(--overlay-shadow);
   z-index: 9999;
 }
@@ -23,10 +24,19 @@
   align-items: center;
   padding: 0.125em;
   border-radius: var(--radius);
+  color: var(--color-overlay-text);
 
   &:focus-visible {
     outline: 0.125em solid;
+    outline-offset: -0.25em;
+    border-radius: calc(1.5 * var(--radius));
+    color: var(--color-overlay-text);
   }
+}
+
+.article-tabs-trigger[aria-selected="true"]:focus-visible {
+  outline-color: var(--color-overlay-background);
+  outline-offset: -0.375em;
 }
 
 .article-tabs-trigger {
@@ -47,17 +57,16 @@
   border-radius: var(--radius);
 }
 
-.article-tabs-trigger[aria-selected="true"] .article-tabs-trigger-icon,
-.article-tabs-expand:focus-visible .article-tabs-trigger-icon {
-  background: var(--color-page-text);
-  color: var(--color-page-background);
+.article-tabs-trigger[aria-selected="true"] .article-tabs-trigger-icon {
+  background: var(--color-overlay-text);
+  color: var(--color-overlay-background);
 }
 
 .article-tabs-divider {
   width: 1px;
   height: 1.5rem;
   flex-shrink: 0;
-  background: var(--color-page-text);
+  background: var(--color-overlay-text);
   opacity: 0.15;
 }
 
@@ -66,14 +75,17 @@
 }
 
 .article-tabs-menu {
-  /* display: flex; */
   display: none;
   flex-direction: column;
+
+  &[data-open="true"] {
+    display: flex;
+  }
 }
 
 .article-tabs-menu-divider {
   height: 1px;
-  background: var(--color-page-text);
+  background: var(--color-overlay-text);
   opacity: 0.15;
 }
 
@@ -81,11 +93,23 @@
   font-weight: 500;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 380px) {
 
   .article-tabs-menubar {
     bottom: 1.5rem;
   }
+
+  .article-tabs-trigger-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .article-tabs-menu {
+    padding: 0 0.25rem;
+  }
+}
+
+@media (min-width: 480px) {
 
   .article-tabs-trigger-icon {
     width: 4rem;

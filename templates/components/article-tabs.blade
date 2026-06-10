@@ -31,59 +31,66 @@
             'name' => __('submission.informationCenter.metadata'),
         ],
     ];
+
+    $config = [
+        'name' => 'section',
+        'defaultValue' => 'article',
+        'scrollTo' => true,
+        'activationMode' => 'manual',
+    ];
 @endphp
 
 <div class="article-tabs-wrapper" data-vue-root>
-    <tabs-root
+    <pkp-tab-root
         class="article-tabs"
-        default-value="{{ $tabs[0]['id'] }}"
+        v-bind='@json($config)'
     >
-        <tabs-list
+        <pkp-tab-list
             class="article-tabs-menubar"
             aria-label="{{ __('submission.publication' ) }}"
         >
-            <div class="article-tabs-menu">
-                @foreach($tabs as $tab)
-                    <tabs-trigger class="article-tabs-menu-trigger" value="{{ $tab['id'] }}">
-                        <span class="article-tabs-menu-trigger-icon">
-                            @includeIf($tab['icon'])
-                        </span>
-                        <span class="article-tabs-menu-trigger-name">
-                            {{ $tab['name'] }}
-                        </span>
-                    </tabs-trigger>
-                @endforeach
-                <div class="article-tabs-menu-divider" aria-hidden="true"></div>
-            </div>
             <div class="article-tabs-list">
                 @foreach($tabs as $tab)
-                    <tabs-trigger class="article-tabs-trigger" value="{{ $tab['id'] }}">
+                    <pkp-tab-trigger class="article-tabs-trigger" value="{{ $tab['id'] }}">
                         <span class="article-tabs-trigger-icon">
                             @includeIf($tab['icon'])
                         </span>
                         <span class="article-tabs-trigger-name">
                             {{ $tab['name'] }}
                         </span>
-                    </tabs-trigger>
+                    </pkp-tab-trigger>
                 @endforeach
                 <div class="article-tabs-divider" aria-hidden="true"></div>
-                <button class="article-tabs-trigger article-tabs-expand">
+                <pkp-tab-trigger class="article-tabs-trigger article-tabs-expand" value="__expand">
                     <span class="sr-only">
                         {{ __('list.expand') }}
                     </span>
                     <span class="article-tabs-trigger-icon">
                         @include('components/icons/menubar-expand')
                     </span>
-                </button>
+                </pkp-tab-trigger>
             </div>
-        </tabs-list>
+            <pkp-tab-menu class="article-tabs-menu">
+                @foreach($tabs as $tab)
+                    <pkp-tab-trigger class="article-tabs-menu-trigger" value="{{ $tab['id'] }}">
+                        <span class="article-tabs-menu-trigger-icon">
+                            @includeIf($tab['icon'])
+                        </span>
+                        <span class="article-tabs-menu-trigger-name">
+                            {{ $tab['name'] }}
+                        </span>
+                    </pkp-tab-trigger>
+                @endforeach
+                <div class="article-tabs-menu-divider" aria-hidden="true"></div>
+            </pkp-tab-menu>
+        </pkp-tab-list>
         @foreach($tabs as $tab)
-            <tabs-content
+            <pkp-tab-content
                 class="article-tabs-content"
                 value="{{ $tab['id'] }}"
             >
                 @includeIf($tab['template'])
-            </tabs-content>
+            </pkp-tab-content>
         @endforeach
-    </tabs-root>
+    </pkp-tab-root>
 </div>
