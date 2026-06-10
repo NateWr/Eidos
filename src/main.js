@@ -2,6 +2,7 @@
  * Custom JS for the theme
  */
 import mobileMenu from './js/mobile-menu'
+import reveal from './js/reveal'
 
 /**
  * Custom CSS for the theme
@@ -15,4 +16,5 @@ import './main.css'
  */
 document.addEventListener('DOMContentLoaded',function() {
   mobileMenu.init()
+  reveal.init()
 })

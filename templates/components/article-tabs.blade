@@ -6,30 +6,38 @@
             'icon' => 'components/icons/menubar-article',
             'name' => __('article.article'),
         ],
-        [
+    ];
+
+    if ($currentContext->getData('defaultReviewPublicVisibility')) {
+        $tabs[] = [
             'id' => 'peer-review',
             'template' => 'components/article-tab-peer-review',
             'icon' => 'components/icons/menubar-peer-review',
             'name' => __('submission.peerReview'),
-        ],
-        [
+        ];
+    }
+
+    if ($enablePublicComments) {
+        $tabs[] = [
             'id' => 'comments',
             'template' => 'components/article-tab-comments',
             'icon' => 'components/icons/menubar-comments',
             'name' => __('manager.userComment.comments'),
-        ],
-        [
-            'id' => 'metrics',
-            'template' => 'components/article-tab-metrics',
-            'icon' => 'components/icons/menubar-metrics',
-            'name' => __('plugins.themes.eidos.metrics'),
-        ],
-        [
-            'id' => 'metadata',
-            'template' => 'components/article-tab-metadata',
-            'icon' => 'components/icons/menubar-metadata',
-            'name' => __('submission.informationCenter.metadata'),
-        ],
+        ];
+    }
+
+    $tabs[] = [
+        'id' => 'metrics',
+        'template' => 'components/article-tab-metrics',
+        'icon' => 'components/icons/menubar-metrics',
+        'name' => __('plugins.themes.eidos.metrics'),
+    ];
+
+    $tabs[] = [
+        'id' => 'metadata',
+        'template' => 'components/article-tab-metadata',
+        'icon' => 'components/icons/menubar-metadata',
+        'name' => __('submission.informationCenter.metadata'),
     ];
 
     $config = [
@@ -89,6 +97,9 @@
                 class="article-tabs-content"
                 value="{{ $tab['id'] }}"
             >
+                <h2 class="article-tabs-title">
+                    {{ $tab['name'] }}
+                </h2>
                 @includeIf($tab['template'])
             </pkp-tab-content>
         @endforeach

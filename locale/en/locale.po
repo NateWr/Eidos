@@ -22,6 +22,9 @@ msgstr "Privacy Policy"
 msgid "plugins.themes.eidos.usesOjs"
 msgstr "Hosted using <a href=\"{$urlOJS}\">Open Journal Systems</a> by <a href=\"{$urlPKP}\">Public Knowledge Project</a>."
 
+msgid "plugins.themes.eidos.viewAllReferences"
+msgstr "View all references"
+
 msgid "plugins.themes.eidos.viewAuthorDetails"
 msgstr "View author roles and details"
 

@@ -93,6 +93,13 @@
   font-weight: 500;
 }
 
+.article-tabs-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: 1px solid;
+  margin-bottom: 4rem;
+}
+
 @media (min-width: 380px) {
 
   .article-tabs-menubar {
@@ -174,6 +181,10 @@
 
   .article-tabs-trigger-name {
     @apply not-sr-only;
+  }
+
+  .article-tabs-content {
+    margin-top: 4rem;
   }
 }
 

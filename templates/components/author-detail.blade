@@ -1,7 +1,30 @@
 <div class="author-detail">
-    <h3 class="author-detail-name">
-        {{ $author->getFullName() }}
-    </h3>
+    <div class="author-detail-top">
+        <h4 class="author-detail-name">
+            {{ $author->getFullName() }}
+        </h4>
+        @if(count($author->getAffiliations()))
+            <div class="author-detail-affiliations">
+                @foreach($author->getAffiliations() as $affiliation)
+                    <div class="author-detail-affiliation">
+                        @if($affiliation->getRor())
+                            <a
+                                class="author-detail-affiliation-link"
+                                href="{{ $affiliation->getRor() }}"
+                            >
+                                {{ $affiliation->getLocalizedName() }}
+                                {!! $rorIdIcon !!}
+                            </a>
+                        @else
+                            <span>
+                                {{ $affiliation->getLocalizedName() }}
+                            </span>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
 
     @if(count($author->getCreditRoles()))
         <div class="author-detail-credit">
@@ -22,28 +45,6 @@
                 @if ($loop->iteration < count($author->getCreditRoles()))
                     {{ __('common.commaListSeparator') }}
                 @endif
-            @endforeach
-        </div>
-    @endif
-
-    @if(count($author->getAffiliations()))
-        <div class="author-detail-affiliation">
-            @foreach($author->getAffiliations() as $affiliation)
-                <div class="author-detail-affiliation">
-                    @if($affiliation->getRor())
-                        <a
-                            class="author-detail-affiliation-link"
-                            href="{{ $affiliation->getRor() }}"
-                        >
-                            {{ $affiliation->getLocalizedName() }}
-                            {!! $rorIdIcon !!}
-                        </a>
-                    @else
-                        <span>
-                            {{ $affiliation->getLocalizedName() }}
-                        </span>
-                    @endif
-                </div>
             @endforeach
         </div>
     @endif

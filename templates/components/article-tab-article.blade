@@ -1,10 +1,10 @@
-<div class="article-tab-article">
+<div class="article-sections">
 
     @if($publication->getLocalizedData('abstract'))
         <section class="article-section article-section-abstract">
-            <h2 class="article-section-title">
+            <h3 class="article-section-title">
                 {{ __('article.abstract') }}
-            </h2>
+            </h3>
             <div class="article-section-content">
                 {!! ViewHelper::sanitizeHtml($publication->getLocalizedData('abstract')) !!}
             </div>
@@ -13,9 +13,9 @@
 
     @if($publication->getLocalizedData('plainLanguageSummary'))
         <section class="article-section article-section-plain-language-summary">
-            <h2 class="article-section-title">
+            <h3 class="article-section-title">
                 {{ __('submission.plainLanguageSummary') }}
-            </h2>
+            </h3>
             <div class="article-section-content">
                 {!! ViewHelper::sanitizeHtml($publication->getLocalizedData('plainLanguageSummary')) !!}
             </div>
@@ -24,10 +24,17 @@
 
     @if(count($parsedCitations) || (string) $publication->getData('citationsRaw'))
         <section class="article-section article-section-references">
-            <h2 class="article-section-title">
+            <h3 class="article-section-title">
                 {{ __('submission.citations') }}
-            </h2>
-            <div class="article-section-content">
+            </h3>
+            <x-reveal
+                id="article-references"
+                class="article-section-content"
+                height="30"
+            >
+                <x-slot:trigger>
+                    {{ __('plugins.themes.eidos.viewAllReferences') }}
+                </x-slot>
                 @if(count($parsedCitations))
                     @foreach($parsedCitations as $parsedCitation)
                         <p>
@@ -38,7 +45,7 @@
                 @else
                     {{ nl2br($publication->getData('citationsRaw')) }}
                 @endif
-            </div>
+            </x-reveal>
         </section>
     @endif
 
@@ -58,10 +65,10 @@
     @endphp
     @if($hasAuthorDetails)
         <section class="article-section article-section-author-details">
-            <h2 class="article-section-title">
+            <h3 class="article-section-title">
                 {{ __('plugins.themes.eidos.authorDetails') }}
-            </h2>
-            <ul class="article-section-content">
+            </h3>
+            <ul class="article-section-author-details-list">
                 @foreach ($publication->getData('authors') as $author)
                     <li>
                         @include('components/author-detail', ['author' => $author])
@@ -69,5 +76,5 @@
                 @endforeach
             </ul>
         </section>
-    @endif;
+    @endif
 </div>

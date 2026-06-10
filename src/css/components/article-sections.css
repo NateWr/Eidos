@@ -1,0 +1,21 @@
+.article-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.article-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.article-section-content {
+  @apply html-text;
+}
+
+.article-section-author-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

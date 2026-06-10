@@ -13,8 +13,10 @@
 @import './css/components/article-header.css';
 @import './css/components/article-metadata.css';
 @import './css/components/article-sidebar.css';
+@import './css/components/article-sections.css';
 @import './css/components/article-tabs.css';
 @import './css/components/arrow-link.css';
+@import './css/components/author-detail.css';
 @import './css/components/dropdown.css';
 @import './css/components/footer.css';
 @import './css/components/footer-sidebar.css';
@@ -29,5 +31,6 @@
 @import './css/components/menu.css';
 @import './css/components/menu-dropdowns.css';
 @import './css/components/notice.css';
+@import './css/components/reveal.css';
 @import './css/components/user-options.css';
 @import './css/pages/article.css';
