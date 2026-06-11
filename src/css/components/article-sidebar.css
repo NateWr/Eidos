@@ -47,7 +47,6 @@
 }
 
 .article-sidebar-cite {
-  position: relative;
 
   & .dropdown-content {
     width: var(--reka-popover-trigger-width);
