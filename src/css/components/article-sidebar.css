@@ -86,3 +86,13 @@
 .PkpCiteBody__actions .PkpButton {
   @apply button;
 }
+
+@media (min-width: 1200px) {
+
+  .article-sidebar-cite {
+
+    & .dropdown-content {
+      max-height: calc(var(--reka-popover-content-available-height) - 1rem);
+    }
+  }
+}
