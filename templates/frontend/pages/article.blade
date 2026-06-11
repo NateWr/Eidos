@@ -6,16 +6,12 @@
 
         @include('components/article-notice-preview')
         @include('components/article-notice-outdated')
-        @include('components/article-header')
 
-        <div class="page-article-main-wrapper">
-            <div class="page-article-sidebar">
-                @include('components/article-sidebar')
-            </div>
-            <div class="page-article-main">
-                @include('components/article-highlighted-metadata')
-                @include('components/article-tabs')
-            </div>
+        <div class="page-article-main">
+            @include('components/article-header')
+            @include('components/article-sidebar')
+            @include('components/article-highlighted-metadata')
+            @include('components/article-tabs')
         </div>
 
     </article>
