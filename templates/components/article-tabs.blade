@@ -97,7 +97,7 @@
                 class="article-tabs-content"
                 value="{{ $tab['id'] }}"
             >
-                <h2 class="article-tabs-title">
+                <h2 class="article-tabs-title" id="{{ $tab['id'] }}">
                     {{ $tab['name'] }}
                 </h2>
                 @includeIf($tab['template'])

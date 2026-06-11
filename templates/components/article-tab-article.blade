@@ -2,7 +2,7 @@
 
     @if($publication->getLocalizedData('abstract'))
         <section class="article-section article-section-abstract">
-            <h3 class="article-section-title">
+            <h3 class="article-section-title" id="abstract">
                 {{ __('article.abstract') }}
             </h3>
             <div class="article-section-content">
@@ -12,7 +12,7 @@
     @endif
 
     @if($publication->getLocalizedData('plainLanguageSummary'))
-        <section class="article-section article-section-plain-language-summary">
+        <section class="article-section article-section-plain-language-summary" id="summary">
             <h3 class="article-section-title">
                 {{ __('submission.plainLanguageSummary') }}
             </h3>
@@ -24,7 +24,7 @@
 
     @if(count($parsedCitations) || (string) $publication->getData('citationsRaw'))
         <section class="article-section article-section-references">
-            <h3 class="article-section-title">
+            <h3 class="article-section-title" id="references">
                 {{ __('submission.citations') }}
             </h3>
             <x-reveal
@@ -64,7 +64,7 @@
         }
     @endphp
     @if($hasAuthorDetails)
-        <section class="article-section article-section-author-details">
+        <section class="article-section article-section-author-details" id="authors">
             <h3 class="article-section-title">
                 {{ __('plugins.themes.eidos.authorDetails') }}
             </h3>
