@@ -4,7 +4,7 @@
  */
 @utility link {
   @apply tab-focus;
-  font-weight: 600;
+  font-weight: 500;
   color: currentColor;
   text-decoration: underline;
   text-decoration-thickness: 0.1em;
