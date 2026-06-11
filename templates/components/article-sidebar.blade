@@ -23,6 +23,7 @@
             triggerClass="article-sidebar-download-button"
         >
             <x-slot:trigger>
+                @include('components/icons/download')
                 {{ __('common.download') }}
             </x-slot:trigger>
             <ul class="article-sidebar-downloads">
@@ -63,6 +64,7 @@
                 triggerClass="article-sidebar-cite-button"
             >
                 <x-slot:trigger>
+                    @include('components/icons/cite')
                     {{ __('plugins.themes.eidos.cite') }}
                 </x-slot:trigger>
                 <pkp-cite-body v-bind='@json($citeConfig)'></pkp-cite-body>
