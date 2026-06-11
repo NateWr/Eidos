@@ -13,14 +13,11 @@
 .article-sidebar-download-button {
   @apply button;
   @apply button-highlight;
+  width: 100%;
   font-size: 1.125rem;
 }
 
 .article-sidebar-download {
-
-  & .dropdown-trigger {
-    width: 100%;
-  }
 
   & .dropdown-content {
     width: var(--reka-popover-trigger-width);
@@ -42,4 +39,50 @@
       outline: none;
     }
   }
+}
+
+.article-sidebar-cite-button {
+  @apply button;
+  width: 100%;
+}
+
+.article-sidebar-cite {
+  position: relative;
+
+  & .dropdown-content {
+    width: var(--reka-popover-trigger-width);
+    max-height: calc(var(--reka-popover-content-available-height) - 6rem);
+    overflow: auto;
+  }
+}
+
+.PkpCiteBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  /* Hide the bibliography number produced by some CSL styles */
+  & .csl-left-margin {
+    display: none;
+  }
+}
+
+.PkpCiteBody__output a {
+  @apply link
+}
+
+.PkpCiteBody__styleSelector {
+  @apply input-wrapper;
+}
+
+.PkpCiteBody__label {
+  @apply input-label;
+}
+
+.PkpCiteBody__select {
+  @apply input;
+}
+
+.PkpCiteBody__actions .PkpButton {
+  @apply button;
 }

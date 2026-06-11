@@ -37,6 +37,9 @@ msgstr "Metrics"
 msgid "plugins.themes.eidos.metricsText"
 msgstr "<strong>{$views}</strong> views and <strong>{$downloads}</strong> downloads since {$date}."
 
+msgid "plugins.themes.eidos.cite"
+msgstr "Cite"
+
 msgid "plugins.themes.eidos.option.header.label"
 msgstr "Header"
 

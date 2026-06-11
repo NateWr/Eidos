@@ -1,3 +1,21 @@
+@php
+    $citeConfig = null;
+    if ($citation) {
+        $citeConfig = [
+            'citation' => $citation,
+            'citationArgs' => $citationArgs,
+            'citationArgsJson' => $citationArgsJson,
+            'citationStyles' => $citationStyles,
+            'citationDownloads' => $citationDownloads,
+            'citationPrimaryStyle' => $citationPrimaryStyle,
+            'tSelectedFormat' => __('submission.howToCite.selectedFormat'),
+            'tCitationFormats' => __('submission.howToCite.citationFormats'),
+            'tCopyToClipboard' => __('submission.howToCite.copyToClipboard'),
+            'tCopied' => __('common.copied'),
+        ];
+    }
+@endphp
+
 <div class="article-sidebar">
     <div class="article-sidebar-top">
         <x-dropdown
@@ -38,6 +56,18 @@
                 @endforeach
             </ul>
         </x-dropdown>
+        @if($citeConfig)
+            <x-dropdown
+                class="article-sidebar-cite"
+                :showClose="true"
+                triggerClass="article-sidebar-cite-button"
+            >
+                <x-slot:trigger>
+                    {{ __('plugins.themes.eidos.cite') }}
+                </x-slot:trigger>
+                <pkp-cite-body v-bind='@json($citeConfig)'></pkp-cite-body>
+            </x-dropdown>
+        @endif
     </div>
     @foreach ($metadata($activeTheme->getOption('sidebarArticleMetadata')) as $block)
         <x-dynamic-component
