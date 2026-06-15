@@ -30,8 +30,16 @@
   font-size: 1.25rem;
 }
 
-.page-search-results-header {
-  margin-bottom: 2rem;
+.page-search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.page-search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .page-search-form-title {
@@ -100,7 +108,15 @@
 @media (min-width: 1536px) {
 
   .page-search-has-results {
-    grid-template-columns: minmax(32rem, 1fr) 4fr;
+    grid-template-columns: minmax(24rem, 1fr) 4fr;
     gap: 4rem;
+  }
+
+  .page-search-results {
+    gap: 3rem;
+  }
+
+  .page-search-results-header {
+    padding-bottom: 0.75rem;
   }
 }

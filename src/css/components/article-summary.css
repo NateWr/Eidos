@@ -1,0 +1,128 @@
+.article-summary {
+  position: relative;
+}
+
+.article-summary-cover {
+  display: none;
+}
+
+.article-summary-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.article-summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-self: flex-start;
+  width: 100%;
+}
+
+.article-summary-link:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.article-summary-title {
+  font-family: var(--font-titles);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.article-summary-authors {
+  margin-top: 0.25em;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.article-summary-abstract {
+  margin-inline-start: 0.75rem;
+}
+
+.article-summary-galleys {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  & .galley-link {
+    @apply button;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 640px) {
+
+  .article-summary-with-cover {
+    display: grid;
+    grid-template-columns: var(--cover-image-width) minmax(0, 1fr);
+    gap: 1.5rem;
+    gap: var(--gap);
+
+    & .article-summary-galley {
+      max-width: 100%;
+    }
+  }
+
+  .article-summary-cover {
+    display: block;
+  }
+
+  .article-summary-abstract {
+    margin-inline-start: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .article-summary-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .article-summary-content {
+    width: 100%;
+  }
+
+  .article-summary-galleys {
+    min-width: 8rem;
+    max-width: 12rem;
+    flex-direction: column;
+    flex-wrap: none;
+    align-items: stretch;
+  }
+
+  .article-summary-with-cover .article-summary-galley {
+    max-width: 16rem;
+  }
+
+  .article-summary-abstract {
+    margin-inline-start: 0;
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .article-summary-title {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .article-summary-authors {
+    font-size: 1.125rem;
+  }
+
+  .article-summary-galleys {
+    max-width: 20rem;
+  }
+}

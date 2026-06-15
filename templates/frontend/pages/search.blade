@@ -81,7 +81,11 @@
                 <ul class="page-search-results-list">
                     @foreach($results as $result)
                         <li>
-                            {{ $result['submission']->getCurrentPublication()->getLocalizedFullTitle(null, 'html') }}
+                            <x-eidostheme::article-summary
+                                heading="h3"
+                                :submission="$result['submission']"
+                                :showAbstract="false"
+                            />
                         </li>
                     @endforeach
                 </ul>

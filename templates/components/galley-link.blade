@@ -1,9 +1,9 @@
 <a
-    class="galley-link"
     href="{{ $url }}"
     @if ($labelledBy)
         aria-labelledBy="{{ $labelledBy }}"
     @endif
+    {{ $attributes->merge(['class' => 'galley-link']) }}
 >
     @include('components/icons/galley-' . $icon)
     <span class="galley-link-name">

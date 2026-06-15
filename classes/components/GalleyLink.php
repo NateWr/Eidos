@@ -9,6 +9,7 @@ use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\View as ViewFacade;
+use PKP\context\Context;
 use PKP\file\FileManager;
 use PKP\galley\Galley;
 use PKP\template\ViewHelper;
@@ -23,19 +24,13 @@ class GalleyLink extends Component
         public Galley $galley,
         public Publication $publication,
         public Submission $submission,
+        public ?Context $context,
         public ?string $labelledBy,
-        ?bool $hasAccess = true,
+        public ?bool $hasAccess = true,
     ) {
         $this->access = $this->getAccess($hasAccess);
         $this->icon = $this->getGalleyIcon($this->access);
-        $this->url = ViewHelper::url([
-            'page' => 'article',
-            'op' => 'view',
-            'path' => [
-                $publication->getData('urlPath') ?? $submission->getBestId(),
-                $galley->getBestGalleyId(),
-            ],
-        ]);
+        $this->url = $this->getUrl();
     }
 
     public function render(): View|Closure|string
@@ -46,6 +41,22 @@ class GalleyLink extends Component
                 'components.galley-link'
             )
         );
+    }
+
+    protected function getUrl(): string
+    {
+        $props = [
+            'page' => 'article',
+            'op' => 'view',
+            'path' => [
+                $this->publication->getData('urlPath') ?? $this->submission->getBestId(),
+                $this->galley->getBestGalleyId(),
+            ],
+        ];
+        if ($this->context) {
+            $props['context'] = $this->context->getPath();
+        }
+        return ViewHelper::url($props);
     }
 
     /**

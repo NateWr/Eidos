@@ -4,6 +4,9 @@
   align-items: center;
   gap: 1rem;
   width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid;
+  border-radius: var(--radius);
   color: var(--color-page-links);
   font-family: var(--font-actions);
   font-weight: 700;
@@ -46,8 +49,8 @@
 
   &[aria-current="true"] {
     border-radius: var(--radius);
-    background: var(--color-button-text);
-    color: var(--color-button-background);
+    background: var(--color-page-links);
+    color: var(--color-page-background);
   }
 }
 
