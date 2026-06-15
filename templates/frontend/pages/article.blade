@@ -1,6 +1,12 @@
+@php
+    $pageDescription = $publication->getLocalizedData('plainLanguageSummary')
+        ? $publication->getLocalizedData('plainLanguageSummary')
+        : $publication->getLocalizedData('abstract');
+@endphp
+
 <x-eidostheme::layout
-    title="{{ $currentContext->getLocalizedName() }}"
-    description="{{ $currentContext->getLocalizedData('description') }}"
+    title="{{ $publication->getLocalizedFullTitle() }}"
+    description="{{ ViewHelper::html2text($pageDescription) }}"
 >
     <article class="page-container page-article">
 

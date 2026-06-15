@@ -1,3 +1,8 @@
+@props([
+    'actions' => '',
+    'title' => '',
+])
+
 <div class="notice @if($actions) notice-with-actions @endif">
     <div class="notice-content">
         @if ($title)
