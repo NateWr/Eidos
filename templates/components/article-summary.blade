@@ -10,7 +10,7 @@
 <div
     {{
         $attributes->merge([
-            'class' => join(' ', ['article-summary', $coverImageUrl && 'article-summary-with-cover']),
+            'class' => join(' ', ['article-summary', $showCover && $coverImageUrl ? 'article-summary-with-cover' : '']),
         ])
     }}
 >

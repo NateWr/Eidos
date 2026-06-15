@@ -1,0 +1,18 @@
+@if(!$issue)
+    <x-eidostheme::layout-basic
+        title="{{  __('current.noCurrentIssue') }}"
+    >
+        <x-notice>
+            {{ __('current.noCurrentIssueDesc') }}
+        </x-notice>
+    </x-eidostheme::layout-basic>
+@else
+    <x-eidostheme::layout
+        title="{{ $issue->getIssueIdentification() }}"
+        description="{{ $issue->getLocalizedDescription() }}"
+    >
+        <main class="page-container page-container-md page-issue" id="skip-to-main">
+            @include('components/issue-toc', ['headingStart' => 1])
+        </main>
+    </x-eidostheme::layout>
+@endif

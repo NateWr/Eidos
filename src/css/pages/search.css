@@ -93,7 +93,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1200px) {
 
   .page-search-has-results {
     grid-template-columns: minmax(24rem, 1fr) 3fr;

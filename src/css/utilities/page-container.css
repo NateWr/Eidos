@@ -37,6 +37,10 @@
 }
 
 @utility page-container-md {
+  max-width: calc(1200px + var(--page-container-x-padding));
+}
+
+@utility page-container-lg {
   max-width: calc(1536px + var(--page-container-x-padding));
 }
 

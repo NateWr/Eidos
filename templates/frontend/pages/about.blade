@@ -2,5 +2,7 @@
     title="{{ __('about.aboutContext') }}"
     description="{!! $currentContext->getLocalizedData('description') !!}"
 >
-  {!! $currentContext->getLocalizedData('about') !!}
+  <div class="html-text">
+    {!! $currentContext->getLocalizedData('about') !!}
+  </div>
 </x-eidostheme::layout-basic>
