@@ -28,6 +28,10 @@ class Options
     public const SITE_WIDTH_FULL = 'full';
     public const SITE_WIDTH_FIXED = 'fixed';
 
+    public const ISSUE_ARCHIVE_DEFAULT = 'default';
+    public const ISSUE_ARCHIVE_COVERS = 'covers';
+    public const ISSUE_ARCHIVE_LIST = 'list';
+
     public const ARTICLE_HIGHLIGHT_METADATA_DEFAULT = [
         'metadata.doi',
     ];
@@ -81,6 +85,7 @@ class Options
         $this->addTaglineOption();
         $this->addSiteWidthOption();
         $this->addFontOptions();
+        $this->addIssueArchivesOption();
         $this->addArticleHighlightMetadataOption();
         $this->addArticleSidebarMetadataOption();
     }
@@ -292,6 +297,34 @@ class Options
                 || $this->theme->getOption('titlesFont')
                 || $this->theme->getOption('actionsFont')
             );
+    }
+
+    /**
+     * Add option to change how issues are displayed in
+     * the issue archive
+     */
+    protected function addIssueArchivesOption(): void
+    {
+        $this->theme->addOption('issueArchives', 'FieldOptions', [
+            'type' => 'radio',
+            'label' => __('plugins.themes.eidos.option.issueArchives.label'),
+            'description' => __('plugins.themes.eidos.option.issueArchives.description'),
+            'options' => [
+                [
+                    'value' => self::ISSUE_ARCHIVE_DEFAULT,
+                    'label' => __('plugins.themes.eidos.option.issueArchives.default'),
+                ],
+                [
+                    'value' => self::ISSUE_ARCHIVE_COVERS,
+                    'label' => __('plugins.themes.eidos.option.issueArchives.covers'),
+                ],
+                [
+                    'value' => self::ISSUE_ARCHIVE_LIST,
+                    'label' => __('plugins.themes.eidos.option.issueArchives.list'),
+                ],
+            ],
+            'default' => self::ISSUE_ARCHIVE_DEFAULT,
+        ]);
     }
 
     /**

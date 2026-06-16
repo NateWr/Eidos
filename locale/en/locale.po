@@ -82,6 +82,9 @@ msgstr "Showing {$start}-{$end} of {$total} articles in this category."
 msgid "plugins.themes.eidos.allIssues"
 msgstr "All Issues"
 
+msgid "plugins.themes.eidos.issues.showing"
+msgstr "Showing {$start}-{$end} of {$total} issues of <strong>{$context}</strong>."
+
 msgid "plugins.themes.eidos.option.header.label"
 msgstr "Header"
 
@@ -162,3 +165,18 @@ msgstr "Article Sidebar Metadata"
 
 msgid "plugins.themes.eidos.option.sidebarArticleMetadata.description"
 msgstr "Select the article metadata that you want to show in the sidebar on the article landing page."
+
+msgid "plugins.themes.eidos.option.issueArchives.label"
+msgstr "Issue Archives"
+
+msgid "plugins.themes.eidos.option.issueArchives.description"
+msgstr "Select how to display the list of published issues in the archive."
+
+msgid "plugins.themes.eidos.option.issueArchives.default"
+msgstr "Show detailed issue summaries with the cover image, volume, number, title, and description. (Default)"
+
+msgid "plugins.themes.eidos.option.issueArchives.covers"
+msgstr "Show a gallery of issue cover images."
+
+msgid "plugins.themes.eidos.option.issueArchives.list"
+msgstr "Show short issue summaries with the volume, number, and title. (Recommended for large back catalogs.)"

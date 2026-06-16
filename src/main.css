@@ -29,6 +29,7 @@
 @import './css/components/header-desktop-line.css';
 @import './css/components/header-desktop-pubids.css';
 @import './css/components/header-utility-menu.css';
+@import './css/components/issue-summary.css';
 @import './css/components/issue-toc.css';
 @import './css/components/menu.css';
 @import './css/components/menu-dropdowns.css';
@@ -39,4 +40,5 @@
 @import './css/components/user-options.css';
 @import './css/pages/article.css';
 @import './css/pages/category.css';
+@import './css/pages/issues.css';
 @import './css/pages/search.css';

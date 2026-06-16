@@ -1,5 +1,9 @@
 @props([
-    'href',
+    /**
+     * Leave empty to use a <div> instead of <a>
+     */
+    'href' => '',
+
     /**
      * Truncate text instead of wrapping
      * to multiple lines.
@@ -7,9 +11,16 @@
     'truncate' => false,
 ])
 
-<a class="arrow-link @if ($truncate) arrow-link-truncate @endif" href="{{ $href }}">
+@php $el = $href ? 'a' : 'div'; @endphp
+
+<{{ $el }}
+    class="arrow-link @if ($truncate) arrow-link-truncate @endif"
+    @if($href)
+        href="{{ $href }}"
+    @endif
+>
     <span class="arrow-link-text">
         {{ $slot }}
     </span>
     @include('components/icons/arrow-right')
-</a>
+</{{ $el }}>
