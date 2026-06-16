@@ -19,12 +19,7 @@
   }
 
   @media (min-width: 1200px) {
-    --page-container-x-padding: 2rem;
     --page-container-y-padding: 4rem;
-  }
-
-  @media (min-width: 1536px) {
-    --page-container-x-padding: 4rem;
   }
 }
 
@@ -42,6 +37,10 @@
 
 @utility page-container-lg {
   max-width: calc(1536px + var(--page-container-x-padding));
+
+  @media (min-width: 1536px) {
+    --page-container-x-padding: 4rem;
+  }
 }
 
 /**
