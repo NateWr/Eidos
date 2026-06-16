@@ -79,6 +79,9 @@ msgstr "Browse the full archive"
 msgid "plugins.themes.eidos.category.showing"
 msgstr "Showing {$start}-{$end} of {$total} articles in this category."
 
+msgid "plugins.themes.eidos.allIssues"
+msgstr "All Issues"
+
 msgid "plugins.themes.eidos.option.header.label"
 msgstr "Header"
 

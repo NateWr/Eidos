@@ -57,14 +57,6 @@
                     </div>
                 </x-notice>
             @endif
-            @if($query && $results->lastPage() > 1)
-                <x-pagination-custom
-                    perPage="{{ $results->perPage() }}"
-                    current="{{ $start }}"
-                    total="{{ $results->total() }}"
-                    urlPattern="{!! $urlPattern !!}"
-                ></x-pagination-custom>
-            @endif
         </section>
 
         @if ($query && $results->total())
@@ -74,6 +66,7 @@
                 </h2>
                 <div class="page-search-results-header">
                     <div class="page-search-showing">
+                        @include('components/icons/list')
                         {!! $showing !!}
                     </div>
                 </div>
@@ -89,18 +82,18 @@
                         </li>
                     @endforeach
                 </ul>
-            </section>
-        @endif
 
-        @if($query && $results->lastPage() > 1)
-            <div class="page-search-pagination-btm">
-                <x-pagination-custom
-                    perPage="{{ $results->perPage() }}"
-                    current="{{ $start }}"
-                    total="{{ $results->total() }}"
-                    urlPattern="{!! $urlPattern !!}"
-                ></x-pagination-custom>
-            </div>
+                @if($query && $results->lastPage() > 1)
+                    <div class="page-search-pagination-btm">
+                        <x-pagination-custom
+                            perPage="{{ $results->perPage() }}"
+                            current="{{ $start }}"
+                            total="{{ $results->total() }}"
+                            urlPattern="{!! $urlPattern !!}"
+                        />
+                    </div>
+                @endif
+            </section>
         @endif
 
         <div class="page-search-form">
