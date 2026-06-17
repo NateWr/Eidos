@@ -1,6 +1,6 @@
 <x-eidostheme::layout-basic
     title="{{ __('about.aboutContext') }}"
-    description="{!! $currentContext->getLocalizedData('description') !!}"
+    description="{{ ViewHelper::html2text($currentContext->getLocalizedData('description')) }}"
     pageId="about"
 >
     <div class="html-text">
