@@ -34,3 +34,22 @@
   border-bottom: 1px solid var(--color-header-text);
   margin-bottom: 1rem;
 }
+
+@media (min-width: 1920px) {
+
+  .header-desktop-boxed {
+
+    /**
+     * Align text baseline of text journal title
+     * with the navigation menu.
+     *
+     * This may need adjustment for each font, because
+     * not all fonts have the same baseline. The settings
+     * here are adapted for Noto Sans, the default font.
+     */
+    & .header-desktop-name-xs { padding-bottom: 0.35rem; }
+    & .header-desktop-name-sm { padding-bottom: 0.45rem; }
+    & .header-desktop-name-md { padding-bottom: 0.5rem; }
+    & .header-desktop-name-lg { padding-bottom: 0.5rem; }
+  }
+}
