@@ -126,6 +126,13 @@
     font-weight: 400;
   }
 
+  /**
+   * @see utilities/plain-list
+   */
+  & .plain-list {
+    margin: 0;
+  }
+
   @media (min-width: 1200px) {
 
     h1 {

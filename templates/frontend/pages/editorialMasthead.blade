@@ -9,9 +9,9 @@
                     <h2>
                         {{ $mastheadRole->getLocalizedData('name') }}
                     </h2>
-                    <ul class="page-masthead-users">
+                    <ul class="plain-list">
                         @foreach($mastheadUsers[$mastheadRole->id] as $mastheadUser)
-                            <li class="page-masthead-user">
+                            <li>
                                 <x-masthead-user
                                     name="{{ $mastheadUser['user']->getFullName() }}"
                                     orcid="{{
@@ -45,9 +45,9 @@
                 <p>
                     {{ __('common.editorialMasthead.peerReviewers.description', ['year' => $previousYear]) }}
                 </p>
-                <ul class="page-masthead-users">
+                <ul class="plain-list">
                     @foreach($reviewers as $reviewer)
-                        <li class="page-masthead-user">
+                        <li>
                             <x-masthead-user
                                 name="{{ $reviewer->getFullName() }}"
                                 orcid="{{
