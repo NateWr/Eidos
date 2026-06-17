@@ -85,6 +85,9 @@ msgstr "All Issues"
 msgid "plugins.themes.eidos.issues.showing"
 msgstr "Showing {$start}-{$end} of {$total} issues of <strong>{$context}</strong>."
 
+msgid "plugins.themes.eidos.fromUntilCurrent"
+msgstr "{$from} &ndash; current"
+
 msgid "plugins.themes.eidos.option.header.label"
 msgstr "Header"
 

@@ -31,6 +31,7 @@
 @import './css/components/header-utility-menu.css';
 @import './css/components/issue-summary.css';
 @import './css/components/issue-toc.css';
+@import './css/components/masthead-user.css';
 @import './css/components/menu.css';
 @import './css/components/menu-dropdowns.css';
 @import './css/components/notice.css';
@@ -42,4 +43,5 @@
 @import './css/pages/basic.css';
 @import './css/pages/category.css';
 @import './css/pages/issues.css';
+@import './css/pages/masthead.css';
 @import './css/pages/search.css';

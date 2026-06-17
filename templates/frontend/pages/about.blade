@@ -4,6 +4,6 @@
     pageId="about"
 >
   <div class="html-text">
-    {!! $currentContext->getLocalizedData('about') !!}
+    {!! ViewHelper::sanitizeHtml($currentContext->getLocalizedData('about')) !!}
   </div>
 </x-eidostheme::layout-basic>

@@ -1,0 +1,13 @@
+.masthead-user {
+  display: flex;
+  flex-direction: column;
+}
+
+.masthead-user-name {
+  font-weight: 500;
+}
+
+.masthead-user-date-start {
+  font-weight: 400;
+  font-size: 0.875em;
+}
