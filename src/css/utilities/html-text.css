@@ -49,13 +49,24 @@
     }
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+  }
+
   ul,
   ol {
     margin-left: 2em;
   }
 
   li {
-    list-style: inherit;
+    list-style: initial;
     line-height: 1.5;
 
     + li {
@@ -86,32 +97,60 @@
   }
 
   h1 {
-    font-size: 2em;
-    font-weight: 900;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
 
   h2 {
-    font-size: 1.5em;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 600;
   }
 
   h3 {
-    font-size: 1.25em;
-    font-weight: 700;
+    font-size: 1.125rem;
+    font-weight: 500;
   }
 
   h4 {
-    font-size: 1.125em;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 500;
   }
 
   h5 {
-    font-size: 1.125em;
+    font-size: 1rem;
     font-style: italic;
+    font-weight: 400;
   }
 
   h6 {
-    font-size: 1em;
-    font-style: italic;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  @media (min-width: 1200px) {
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    h4 {
+      font-size: 1.125rem;
+    }
+
+    h5 {
+      font-size: 1.125rem;
+    }
+
+    h6 {
+      font-size: 1.125rem;
+    }
   }
 }
