@@ -183,3 +183,36 @@ msgstr "Show a gallery of issue cover images."
 
 msgid "plugins.themes.eidos.option.issueArchives.list"
 msgstr "Show short issue summaries with the volume, number, and title. (Recommended for large back catalogs.)"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.label"
+msgstr "Homepage Blocks"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.description"
+msgstr "Select which blocks to show on your homepage."
+
+msgid "plugins.themes.eidos.option.homepageBlocks.how-to-submit"
+msgstr "How to Submit"
+
+msgid "plugins.themes.eidos.option.howToSubmitTitle.label"
+msgstr "How to Submit - Title"
+
+msgid "plugins.themes.eidos.option.howToSubmitTitle.description"
+msgstr "Change the title for the How to Submit block on the homepage."
+
+msgid "plugins.themes.eidos.option.howToSubmitText.label"
+msgstr "How to Submit - Text"
+
+msgid "plugins.themes.eidos.option.howToSubmitText.description"
+msgstr "Change the short prompt about making a submission to this journal."
+
+msgid "plugins.themes.eidos.option.howToSubmitText.default"
+msgstr "Read our author guidelines and learn how to submit to {$journalName}."
+
+msgid "plugins.themes.eidos.option.howToSubmitAction.label"
+msgstr "How to Submit - Button"
+
+msgid "plugins.themes.eidos.option.howToSubmitAction.description"
+msgstr "Change the text on the button to view the submissions page."
+
+msgid "plugins.themes.eidos.option.howToSubmitAction.default"
+msgstr "How to Submit"

@@ -9,7 +9,7 @@
             {{ __('plugins.themes.individualizeTheme.announcements.none') }}
         </x-notice>
     @else
-        <ol class="plain-list" start="1">
+        <ol class="page-announcements-list" start="1">
             @foreach ($announcements as $announcement)
                 <li>
                     <x-announcement-summary :announcement="$announcement" />

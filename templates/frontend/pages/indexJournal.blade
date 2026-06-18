@@ -2,33 +2,11 @@
     title="{{ $currentContext->getLocalizedName() }}"
     description="{{ $currentContext->getLocalizedData('description') }}"
 >
-    <div class="page-container">
-
-        <h1>
-            Homepage
+    <div class="page-container page-homepage">
+        <h1 class="sr-only">
+            {{ $currentContext->getLocalizedName() }}
         </h1>
 
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-
+        <x-homepage-blocks />
     </div>
 </x-eidostheme::layout>

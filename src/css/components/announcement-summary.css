@@ -1,6 +1,5 @@
 .announcement-summary-link {
   @apply tab-focus;
-  margin-top: 2rem;
   display: block;
 }
 

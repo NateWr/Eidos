@@ -2,19 +2,23 @@
 namespace APP\plugins\themes\eidos;
 
 use APP\core\Application;
+use APP\plugins\themes\eidos\classes\HomepageBlocks;
 use APP\plugins\themes\eidos\classes\MetadataBlocks;
 use APP\plugins\themes\eidos\classes\Options;
 use APP\plugins\themes\eidos\classes\ViteLoader;
 use APP\template\TemplateManager;
 use PKP\db\DAORegistry;
+use PKP\plugins\interfaces\HasHomepageBlocks;
 use PKP\plugins\interfaces\HasMetadataBlocks;
 use PKP\plugins\PluginSettingsDAO;
 use PKP\plugins\ThemePlugin;
+use PKP\view\HomepageBlocksRegistry;
 use PKP\view\MetadataBlocksRegistry;
 
-class EidosTheme extends ThemePlugin implements HasMetadataBlocks
+class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBlocks
 {
 
+    public HomepageBlocks $homepageBlocks;
     public MetadataBlocks $metadataBlocks;
     public Options $optionsHelper;
 
@@ -25,6 +29,7 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks
     }
 
     public function init() {
+        $this->homepageBlocks = new HomepageBlocks($this);
         $this->metadataBlocks = new MetadataBlocks($this);
         $enabledFonts = $this->getEnabledFonts();
         $this->optionsHelper = new Options($this, $enabledFonts);
@@ -102,5 +107,10 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks
     public function registerMetadataBlocks(MetadataBlocksRegistry $blocks): void
     {
         $this->metadataBlocks->register($blocks);
+    }
+
+    public function registerHomepageBlocks(HomepageBlocksRegistry $blocks): void
+    {
+        $this->homepageBlocks->register($blocks);
     }
 }

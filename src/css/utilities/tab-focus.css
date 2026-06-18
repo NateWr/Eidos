@@ -10,8 +10,8 @@
 @utility tab-focus {
 
   &:focus-visible {
-    outline: 2px solid;
-    outline-offset: 2px;
+    outline: var(--outline-width) solid;
+    outline-offset: var(--outline-width);
     text-decoration: none;
   }
 }

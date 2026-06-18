@@ -12,12 +12,14 @@
             @include('components/icons/circle-languages')
             <div class="user-options-languages-list">
                 @foreach ($locales as $localeKey => $localeName)
-                    <a @class([
-                        'user-options-language',
-                        'user-options-language-selected' => $localeKey === $currentLocale,
-                        'tab-focus',
-                    ])
-                        href="{{ ViewHelper::url(['page' => 'user', 'op' => 'setLocale', 'path' => $localeKey]) }}">
+                    <a
+                        @class([
+                            'user-options-language',
+                            'user-options-language-selected' => $localeKey === $currentLocale,
+                            'tab-focus',
+                        ])
+                        href="{{ ViewHelper::url(['page' => 'user', 'op' => 'setLocale', 'path' => $localeKey]) }}"
+                    >
                         {{ $localeName }}
                     </a>
                 @endforeach

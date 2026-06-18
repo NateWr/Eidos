@@ -1,0 +1,10 @@
+<div class="homepage-blocks">
+    @foreach ($homepageBlocks($activeTheme->getOption('homepageBlocks')) as $block)
+        <x-dynamic-component
+            :component="$block->component"
+            headingTag="h3"
+            :id="$block->id"
+            :title="$block->title"
+        />
+    @endforeach
+</div>

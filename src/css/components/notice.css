@@ -53,5 +53,6 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) 16rem;
     align-items: center;
+    gap: 3rem;
   }
 }

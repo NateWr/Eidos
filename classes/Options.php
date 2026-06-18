@@ -7,6 +7,7 @@ use APP\journal\Journal;
 use APP\plugins\themes\eidos\EidosTheme;
 use APP\template\TemplateManager;
 use Illuminate\Support\Collection;
+use PKP\view\HomepageBlock;
 use PKP\view\MetadataBlock;
 
 /**
@@ -31,6 +32,10 @@ class Options
     public const ISSUE_ARCHIVE_DEFAULT = 'default';
     public const ISSUE_ARCHIVE_COVERS = 'covers';
     public const ISSUE_ARCHIVE_LIST = 'list';
+
+    public const HOMEPAGE_BLOCKS_DEFAULT = [
+        'homepage.announcement',
+    ];
 
     public const ARTICLE_HIGHLIGHT_METADATA_DEFAULT = [
         'metadata.doi',
@@ -86,6 +91,8 @@ class Options
         $this->addSiteWidthOption();
         $this->addFontOptions();
         $this->addIssueArchivesOption();
+        $this->addHomepageBlockOption();
+        $this->addHowToSubmitBlock();
         $this->addArticleHighlightMetadataOption();
         $this->addArticleSidebarMetadataOption();
     }
@@ -324,6 +331,62 @@ class Options
                 ],
             ],
             'default' => self::ISSUE_ARCHIVE_DEFAULT,
+        ]);
+    }
+
+    /**
+     * Add option to show blocks on the homepage
+     */
+    protected function addHomepageBlockOption(): void
+    {
+        $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
+        $blocks = $templateMgr->homepageBlocks->get();
+
+        $this->theme->addOption('homepageBlocks', 'FieldOptions', [
+            'type' => 'checkbox',
+            'isOrderable' => true,
+            'label' => __('plugins.themes.eidos.option.homepageBlocks.label'),
+            'description' => __('plugins.themes.eidos.option.homepageBlocks.description'),
+            'options' => $blocks->map(
+                fn(HomepageBlock $block) => [
+                    'value' => $block->id,
+                    'label' => $block->title,
+                ])
+                ->values(),
+            'default' => self::HOMEPAGE_BLOCKS_DEFAULT,
+        ]);
+    }
+
+    /**
+     * Add text fields for the how to submit homepage block
+     */
+    protected function addHowToSubmitBlock(): void
+    {
+        $this->theme->addOption('howToSubmitTitle', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.howToSubmitTitle.label'),
+            'description' => __('plugins.themes.eidos.option.howToSubmitTitle.description'),
+            'isMultilingual' => true,
+            'default' => [
+                $this->primaryLocale => __('navigation.submissions'),
+            ],
+        ]);
+        $this->theme->addOption('howToSubmitText', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.howToSubmitText.label'),
+            'description' => __('plugins.themes.eidos.option.howToSubmitText.description'),
+            'isMultilingual' => true,
+            'size' => 'large',
+            'default' => [
+                $this->primaryLocale => __('plugins.themes.eidos.option.howToSubmitText.default'),
+            ],
+        ]);
+        $this->theme->addOption('howToSubmitAction', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.howToSubmitAction.label'),
+            'description' => __('plugins.themes.eidos.option.howToSubmitAction.description'),
+            'isMultilingual' => true,
+            'size' => 'small',
+            'default' => [
+                $this->primaryLocale => __('plugins.themes.eidos.option.howToSubmitAction.default'),
+            ],
         ]);
     }
 

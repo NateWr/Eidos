@@ -41,7 +41,6 @@
   line-height: 1.25;
 }
 
-
 .issue-summary-description {
   position: relative;
   max-height: 16rem;
@@ -58,6 +57,12 @@
     background: var(--color-page-background);
     box-shadow: 0 -2rem 2rem var(--color-page-background);
   }
+}
+
+.issue-summary-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 @media (min-width: 640px) {
@@ -80,5 +85,9 @@
 
   .issue-summary-description {
     max-height: 9.5rem;
+  }
+
+  .issue-summary-actions {
+    flex-direction: row;
   }
 }

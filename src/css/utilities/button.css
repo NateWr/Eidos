@@ -44,6 +44,11 @@
   background: var(--color-button-text);
   color: var(--color-button-background);
 
+  &:hover {
+    outline-width: var(--outline-width);
+    outline-offset: var(--outline-width);
+  }
+
   &:focus-visible {
     outline-color: var(--color-button-text);
   }
@@ -53,4 +58,19 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+/**
+ * Ensure utilities are used
+ *
+ * Tailwind will only import the utility classes that
+ * are used in a theme template. If the template is
+ * used at the app/pkp level, it will not be included
+ * in the final bundle.
+ */
+.button-highlight {
+  @apply button;
+  @apply button-text;
+  @apply button-highlight;
+  @apply button-truncate-text;
 }
