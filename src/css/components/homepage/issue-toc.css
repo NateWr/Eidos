@@ -1,0 +1,22 @@
+.homepage-block-issue-toc {
+  width: 100%;
+  max-width: 1536px;
+
+  @media (min-width: 1280px) {
+
+    & .issue-toc {
+      --gap: 3rem;
+    }
+
+    .issue-toc-with-cover {
+      --cover-image-width: 24rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+
+    .issue-toc-with-cover {
+      --cover-image-width: 32rem;
+    }
+  }
+}
