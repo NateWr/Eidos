@@ -193,6 +193,9 @@ msgstr "Select which blocks to show on your homepage."
 msgid "plugins.themes.eidos.option.homepageBlocks.how-to-submit"
 msgstr "How to Submit"
 
+msgid "plugins.themes.eidos.option.homepageBlocks.about"
+msgstr "About the Journal with Homepage Menu"
+
 msgid "plugins.themes.eidos.option.howToSubmitTitle.label"
 msgstr "How to Submit - Title"
 

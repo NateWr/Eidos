@@ -2,11 +2,7 @@
 
 namespace APP\plugins\themes\eidos\classes;
 
-use APP\core\Application;
 use APP\plugins\themes\eidos\EidosTheme;
-use APP\publication\Publication;
-use APP\submission\Submission;
-use APP\template\TemplateManager;
 use APP\view\HomepageBlocksRegistry;
 use PKP\view\HomepageBlock;
 
@@ -33,6 +29,12 @@ class HomepageBlocks
             new HomepageBlock(
                 component: 'homepage.how-to-submit',
                 title: __('plugins.themes.eidos.option.homepageBlocks.how-to-submit'),
+            )
+        );
+        $blocks->register(
+            new HomepageBlock(
+                component: 'homepage.about',
+                title: __('plugins.themes.eidos.option.homepageBlocks.about'),
             )
         );
     }
