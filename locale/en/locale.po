@@ -1,5 +1,5 @@
 msgid "plugins.themes.eidos.name"
-msgstr "Edios"
+msgstr "Eidos"
 
 msgid "plugins.themes.eidos.description"
 msgstr "An official theme from PKP that is highly configurable."
