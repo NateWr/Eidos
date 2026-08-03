@@ -97,6 +97,10 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
         }
         /** @var PluginSettingsDAO $pluginSettingsDao */
         $pluginSettingsDao = DAORegistry::getDAO('PluginSettingsDAO');
+        $isEnabled = $pluginSettingsDao->getSetting($contextId, 'googlefontsplugin', 'enabled');
+        if (!$isEnabled) {
+            return [];
+        }
         $enabledFonts = $pluginSettingsDao->getSetting($contextId, 'googlefontsplugin', 'fonts');
         if (is_array($enabledFonts)) {
             return $enabledFonts;
