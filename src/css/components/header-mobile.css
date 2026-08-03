@@ -121,6 +121,19 @@
   transform-origin: top left;
 }
 
+.header-mobile-dropdown-close-by-keyboard {
+  @apply sr-only;
+
+  &:focus-visible {
+    @apply not-sr-only;
+    padding: 0.5rem;
+    border: var(--border-width) solid;
+    border-radius: var(--button-radius);
+    outline: 2px solid;
+    outline-offset: 2px;
+  }
+}
+
 .header-mobile-dropdown-inner {
   display: flex;
   flex-direction: column;

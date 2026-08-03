@@ -25,15 +25,19 @@ import debounce from "debounce"
 
 const overflowHiddenClass = 'overflow-hidden'
 
-const set = ($button, $target, state) => {
+const set = ($button, $target, $focusable, state) => {
   $button.setAttribute('aria-expanded', state)
   $target.dataset.open = state
+  $target.inert = !state
   if (state) {
     document.body.className = ` ${overflowHiddenClass}`
+    $focusable[0].focus()
   } else {
     document.body.className = document.body.className.replace(` ${overflowHiddenClass}`, '')
+    $button.focus()
   }
 }
+
 const init = () => {
   const $button = document.querySelector('[data-mobile-menu]')
   if (!$button) {
@@ -44,37 +48,45 @@ const init = () => {
     return
   }
   const $target = document.querySelector(target)
+  $target.tabIndex = -1
+
+  const $focusable = $target.querySelectorAll(
+    `a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), details, [tabindex]:not([tabindex="-1"])`
+  );
+
+  const $close = $target.querySelector('[data-mobile-menu-close]')
+  $close.addEventListener('click', () => {
+    set($button, $target, $focusable, false)
+  })
 
   $button.id = `${target.replace('#', '')}-button`
   $button.setAttribute('aria-controls', target)
   $button.setAttribute('aria-expanded', false)
-  set($button, $target, $button.getAttribute('aria-expanded') === 'true')
+  set($button, $target, $focusable, $button.getAttribute('aria-expanded') === 'true')
 
   $button.addEventListener('click', function() {
-    set($button, $target, $button.getAttribute('aria-expanded') !== 'true')
+    set($button, $target, $focusable, $button.getAttribute('aria-expanded') !== 'true')
   })
 
-  $target.addEventListener('focusin', function() {
-    set($button, $target, true)
-  })
-
-  $target.addEventListener('focusout', function() {
-    setTimeout(() => {
-      if (!$target.contains(document.activeElement)) {
-        set($button, $target, false)
+  $target.addEventListener('focusout', function(e) {
+    if (!e?.relatedTarget || !$target.contains(e?.relatedTarget)) {
+      if (e.target === $close) {
+        $focusable[0]?.focus()
+      } else {
+        $close.focus()
       }
-    }, 500)
+    }
   })
 
   document.addEventListener('click', function(e) {
     if (!$button.contains(e.target) && !$target.contains(e.target)) {
-      set($button, $target, false)
+      set($button, $target, $focusable, false)
     }
   })
 
   addEventListener('resize', debounce(() => {
     if (document.body.clientWidth >= 1200) {
-      set($button, $target, false)
+      set($button, $target, $focusable, false)
     }
   }, 300))
 }
