@@ -287,6 +287,25 @@ Classes are assigned to the `<body>` element which can be used to adapt styles b
 - `site-width-full | site-width-fixed` to adapt the header based on the Site Width option.
 - `font-<name>`, `font-titles-<name>`, and `font-actions-<name>` to apply custom styles for fonts. When no custom font options are enabled, the `<name>` will be `default`. Use this to style the default [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) font, which supports variable weights and widths.
 
+## System Pages
+
+Several page templates have been moved to a special "system" layout that is not themed to match the rest of the theme. These pages include:
+
+- Login, registration, etc
+- message.tpl and error.tpl
+- Payment, subscription, etc
+
+The goal is to move these eventually to `pkp-lib` / `ojs`, so that custom themes don't have to style them (they can if they want).
+
+All files for these pages are in separate subdirectories so that they can be easily relocated to core:
+
+- `templates/components/system`
+- `src/system.js`
+- `src/css/system`
+- `src/js/system`
+
+These assets have a separate build output in `vite.config.js` and are loaded with the `['contexts' => ['system']]` argument (eg - `$theme->addStyle(..., ['contexts' => ...])`).
+
 ## Credit
 
 This library is distributed under GPL 3.0. The Vite integration is based on [php-vite](https://github.com/mindplay-dk/php-vite) by [@mindplay-dk](https://github.com/mindplay-dk).

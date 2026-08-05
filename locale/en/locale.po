@@ -88,6 +88,15 @@ msgstr "Showing {$start}-{$end} of {$total} issues of <strong>{$context}</strong
 msgid "plugins.themes.eidos.fromUntilCurrent"
 msgstr "{$from} &ndash; current"
 
+msgid "plugins.themes.eidos.loginTo"
+msgstr "Sign in to your account at {$to}."
+
+msgid "plugins.themes.eidos.registerAt"
+msgstr "Sign up for a new account at {$at}."
+
+msgid "plugins.themes.eidos.createAccount"
+msgstr "Create Account"
+
 msgid "plugins.themes.eidos.option.header.label"
 msgstr "Header"
 

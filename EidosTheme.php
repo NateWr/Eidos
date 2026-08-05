@@ -8,6 +8,7 @@ use APP\plugins\themes\eidos\classes\Options;
 use APP\plugins\themes\eidos\classes\ViteLoader;
 use APP\template\TemplateManager;
 use PKP\db\DAORegistry;
+use PKP\plugins\Hook;
 use PKP\plugins\interfaces\HasHomepageBlocks;
 use PKP\plugins\interfaces\HasMetadataBlocks;
 use PKP\plugins\PluginSettingsDAO;
@@ -37,7 +38,9 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
         $this->addStyle('variables', $this->optionsHelper->getCssVariablesString(), ['inline' => true, 'contexts' => ['frontend', 'htmlGalley']]);
         $this->requiresVueRuntime();
         $this->addViteAssets(['src/main.js']);
+        $this->addViteAssets(['src/system.js'], ['contexts' => ['system']]);
         $this->addMenuArea(['primary', 'user', 'homepage', 'policy']);
+        Hook::add('TemplateManager::display', [$this, 'addTemplateData']);
     }
 
     public function getDisplayName() {
@@ -61,6 +64,7 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
 
         $viteLoader = new ViteLoader(
             templateManager: $templateMgr,
+            theme: $this,
             manifestPath: dirname(__FILE__) . '/dist/.vite/manifest.json',
             serverPath: join('/', [dirname(__FILE__), '.vite.server.json']),
             buildUrl: join('/', [$this->getPluginUrl(), 'dist/']),
@@ -116,5 +120,28 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
     public function registerHomepageBlocks(HomepageBlocksRegistry $blocks): void
     {
         $this->homepageBlocks->register($blocks);
+    }
+
+    /**
+     * Pass data to the templates
+     *
+     * This should be called before rendering has begun.
+     */
+    public function addTemplateData(): void
+    {
+        view()->share('getStringSize', [$this, 'getStringSize']);
+        view()->share('eidosUrl', $this->getPluginUrl());
+        view()->share('usesCustomFonts', $this->optionsHelper->usesCustomFonts());
+    }
+
+    /**
+     * Get a short `size` string indicating the length of a string
+     *
+     * @return string 'xs' | 'sm' | 'md' | 'lg'
+     */
+    public function getStringSize(string $str): string
+    {
+        $length = strlen($str);
+        return $length <= 40 ? 'xs' : ($length <= 80 ? 'sm' : ($length <= 100 ? 'md' : 'lg'));
     }
 }

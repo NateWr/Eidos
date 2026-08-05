@@ -56,7 +56,7 @@ class Options
     /**
      * Current context
      */
-    protected Journal $context;
+    protected ?Journal $context;
 
     public function __construct(
         /**
