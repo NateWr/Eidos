@@ -54,7 +54,13 @@
                 name="password"
                 type="password"
                 required={{ true }}
-            />
+            >
+                <div>
+                    <a class="system-link" href="{{ ViewHelper::url(['page' => 'login', 'op' => 'lostPassword']) }}">
+                        {{ __('user.login.forgotPassword') }}
+                    </a>
+                </div>
+            </x-system.form-input>
             <x-system.form-checkbox
                 checked="{{ $remember ?? false}}"
                 id="remember"

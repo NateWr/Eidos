@@ -1,0 +1,32 @@
+@php
+    $pageTitle = $pageTitle
+        ? __($pageTitle)
+        : __('common.message');
+    $message = $messageTranslated
+        ? $messageTranslated
+        : __($message);
+@endphp
+
+<x-eidostheme::system.layout
+    pageTitle="{{ $pageTitle }}"
+>
+    <div class="system-main">
+        <div class="system-header">
+            <h1 class="system-title">
+                {{ $pageTitle }}
+            </h1>
+        </div>
+        <div class="system-section">
+            <p class="system-desc">
+                {{ $message }}
+            </p>
+            @if ($backLink)
+                <div class="system-form-buttons">
+                    <a class="system-button" href="{{ $backLink }}">
+                        {{ __($backLinkLabel) }}
+                    </a>
+                </div>
+            @endif
+        </div>
+    </div>
+</x-eidostheme::system.layout>
