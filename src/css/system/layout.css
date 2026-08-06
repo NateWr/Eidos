@@ -47,9 +47,26 @@
   line-height: 1.25;
 }
 
+.system-html-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem var(--padding-x);
+
+  & ul {
+    list-style: disc;
+    padding-inline-start: 1rem;
+  }
+
+  & li + li {
+    margin-top: 0.25em;
+  }
+
+}
 
 .system-link,
-.system-desc a {
+.system-desc a,
+.system-html-content a {
   font-weight: 500;
   text-decoration: underline;
   text-decoration-thickness: 0.15em;
@@ -60,13 +77,6 @@
     outline: 0.15em solid;
     outline-offset: 0.15em;
   }
-}
-
-.system-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 2rem var(--padding-x);
 }
 
 .system-desc {
