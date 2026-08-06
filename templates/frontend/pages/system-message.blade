@@ -1,19 +1,10 @@
-@php
-    $pageTitle = $pageTitle
-        ? __($pageTitle)
-        : __('common.message');
-    $message = $messageTranslated
-        ? $messageTranslated
-        : __($message);
-@endphp
-
 <x-eidostheme::system.layout
-    pageTitle="{{ $pageTitle }}"
+    pageTitle="{{ $title }}"
 >
     <div class="system-main">
         <div class="system-header">
             <h1 class="system-title">
-                {{ $pageTitle }}
+                {{ $title }}
             </h1>
         </div>
         <div class="system-html-content">
@@ -23,7 +14,7 @@
             @if ($backLink)
                 <div>
                     <a class="system-button" href="{{ $backLink }}">
-                        {{ __($backLinkLabel) }}
+                        {{ $backLinkLabel }}
                     </a>
                 </div>
             @endif

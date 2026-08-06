@@ -66,7 +66,7 @@
 
 .system-link,
 .system-desc a,
-.system-html-content a {
+.system-html-content a:not(.system-button):not(.system-button-secondary):not(.system-button-link) {
   font-weight: 500;
   text-decoration: underline;
   text-decoration-thickness: 0.15em;
