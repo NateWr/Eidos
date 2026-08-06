@@ -24,7 +24,7 @@
             method="post"
             action="{{ ViewHelper::url(['op' => 'register']) }}"
         >
-            {!! ViewHelper::csrf() !!}
+            {!! ViewHelper::csrfFormField() !!}
             @if ($source)
                 <input type="hidden" name="source" value="{{ $source }}" />
             @endif
