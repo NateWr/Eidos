@@ -6,15 +6,18 @@
             <h1 class="system-title">
                 {{ __('user.login') }}
             </h1>
-            @if ($currentContext)
-                <p class="system-desc">
-                    {!!
-                        __('plugins.themes.eidos.loginTo', [
-                            'to' => '<a href="' . ViewHelper::url(['page' => 'index']) . '">' . $currentContext->getLocalizedName() . '</a>'
-                        ])
-                    !!}
-                </p>
-            @endif
+            <p class="system-desc">
+                @php
+                    $siteName = $currentContext
+                        ? $currentContext->getLocalizedName()
+                        : $site->getLocalizedTitle();
+                @endphp
+                {!!
+                    __('plugins.themes.eidos.loginTo', [
+                        'to' => '<a href="' . ViewHelper::url(['page' => 'index']) . '">' . $siteName . '</a>'
+                    ])
+                !!}
+            </p>
         </div>
         <form
             class="system-form"
