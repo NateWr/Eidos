@@ -306,6 +306,12 @@ All files for these pages are in separate subdirectories so that they can be eas
 
 These assets have a separate build output in `vite.config.js` and are loaded with the `['contexts' => ['system']]` argument (eg - `$theme->addStyle(..., ['contexts' => ...])`).
 
+### system-message.tpl
+
+The `error.tpl` and `message.tpl` templates have been combined into a common `system-message.tpl`, and these changes have been applied to OJS and pkp-lib.
+
+For now, the `system-message.tpl` file in pkp-lib still uses the frontend layout. But once the system layout is moved into core this template can be replaced by the one in the Eidos theme.
+
 ## Credit
 
 This library is distributed under GPL 3.0. The Vite integration is based on [php-vite](https://github.com/mindplay-dk/php-vite) by [@mindplay-dk](https://github.com/mindplay-dk).
