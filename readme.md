@@ -308,7 +308,7 @@ These assets have a separate build output in `vite.config.js` and are loaded wit
 
 ### system-message.tpl
 
-The `error.tpl` and `message.tpl` templates have been combined into a common `system-message.tpl`, and these changes have been applied to OJS and pkp-lib.
+The `error.tpl` and `message.tpl` templates have been combined into a common `system-message.tpl`, and these changes have been applied to OJS and pkp-lib. A new `$templateMgr->displaySystemMessage()` function provides a typed helper function to prevent the template parameters from drifting over time, as happened with `error.tpl` and `message.tpl`.
 
 For now, the `system-message.tpl` file in pkp-lib still uses the frontend layout. But once the system layout is moved into core this template can be replaced by the one in the Eidos theme.
 
