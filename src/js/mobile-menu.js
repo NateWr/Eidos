@@ -26,6 +26,9 @@ import debounce from "debounce"
 const overflowHiddenClass = 'overflow-hidden'
 
 const set = ($button, $target, $focusable, state) => {
+  if (state == $target.dataset.open) {
+    return
+  }
   $button.setAttribute('aria-expanded', state)
   $target.dataset.open = state
   $target.inert = !state
@@ -79,7 +82,7 @@ const init = () => {
   })
 
   document.addEventListener('click', function(e) {
-    if (!$button.contains(e.target) && !$target.contains(e.target)) {
+    if ($target.dataset.open === 'true' && !$button.contains(e.target) && !$target.contains(e.target)) {
       set($button, $target, $focusable, false)
     }
   })
