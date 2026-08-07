@@ -1,6 +1,8 @@
 <div class="article-tab-comments">
-    <h2 class="article-tab-title">
-        {{ __('userComment.comments') }}
-    </h2>
-    {{-- <pkp-comments v-bind='@json($userCommentsInitConfig)'></pkp-comments> --}}
+    @php
+        $json = json_encode($userCommentsInitConfig);
+        $json = str_replace('{{', '{ {', $json);
+        $json = str_replace('}}', '} }', $json);
+    @endphp
+    <pkp-comments v-bind='{!! $json !!}'></pkp-comments>
 </div>

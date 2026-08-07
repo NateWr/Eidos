@@ -5,6 +5,7 @@
             'template' => 'components/article-tab-article',
             'icon' => 'components/icons/menubar-article',
             'name' => __('article.article'),
+            'count' => null,
         ],
     ];
 
@@ -14,6 +15,7 @@
             'template' => 'components/article-tab-peer-review',
             'icon' => 'components/icons/menubar-peer-review',
             'name' => __('submission.peerReview'),
+            'count' => null,
         ];
     }
 
@@ -23,6 +25,7 @@
             'template' => 'components/article-tab-comments',
             'icon' => 'components/icons/menubar-comments',
             'name' => __('manager.userComment.comments'),
+            'count' => isset($userCommentsInitConfig) ? $userCommentsInitConfig['allCommentsCount'] : null,
         ];
     }
 
@@ -31,6 +34,7 @@
         'template' => 'components/article-tab-metrics',
         'icon' => 'components/icons/menubar-metrics',
         'name' => __('plugins.themes.eidos.metrics'),
+        'count' => null,
     ];
 
     $tabs[] = [
@@ -38,6 +42,7 @@
         'template' => 'components/article-tab-metadata',
         'icon' => 'components/icons/menubar-metadata',
         'name' => __('submission.informationCenter.metadata'),
+        'count' => null,
     ];
 
     $config = [
@@ -65,6 +70,11 @@
                         </span>
                         <span class="article-tabs-trigger-name">
                             {{ $tab['name'] }}
+                            @if ($tab['count'])
+                                <span class="article-tabs-trigger-count">
+                                    {{ $tab['count'] }}
+                                </span>
+                            @endif
                         </span>
                     </pkp-tab-trigger>
                 @endforeach
@@ -86,6 +96,11 @@
                         </span>
                         <span class="article-tabs-menu-trigger-name">
                             {{ $tab['name'] }}
+                            @if ($tab['count'])
+                                <span class="article-tabs-menu-trigger-count">
+                                    {{ $tab['count'] }}
+                                </span>
+                            @endif
                         </span>
                     </pkp-tab-trigger>
                 @endforeach
@@ -99,6 +114,11 @@
             >
                 <h2 class="article-tabs-title" id="{{ $tab['id'] }}">
                     {{ $tab['name'] }}
+                    @if ($tab['count'])
+                        <span class="article-tabs-title-count">
+                            {{ $tab['count'] }}
+                        </span>
+                    @endif
                 </h2>
                 @includeIf($tab['template'])
             </pkp-tab-content>

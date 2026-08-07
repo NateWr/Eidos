@@ -20,6 +20,12 @@
   }
 }
 
+@utility input-textarea {
+  max-width: none;
+  padding: 0.5em;
+  min-height: 15em;
+}
+
 @utility input-wrapper {
   display: flex;
   flex-direction: column;

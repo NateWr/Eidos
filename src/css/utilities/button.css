@@ -23,6 +23,14 @@
     outline: var(--border-width) solid var(--color-button-text);
   }
 
+  &[disabled] {
+    opacity: 0.5;
+
+    &:hover {
+      outline: none;
+    }
+  }
+
   & svg {
     flex: 0 0 1.5em;
     width: 1.5em;
@@ -60,6 +68,25 @@
   overflow: hidden;
 }
 
+@utility button-in-block {
+  background: var(--color-block-background);
+  color: var(--color-block-text);
+  border-color: var(--color-block-text);
+
+  &:hover {
+    outline-color: var(--color-block-text);
+  }
+}
+
+@utility button-highlight-in-block {
+  background: var(--color-block-text);
+  color: var(--color-block-background);
+
+  &:focus-visible {
+    outline-color: var(--color-block-text);
+  }
+}
+
 /**
  * Ensure utilities are used
  *
@@ -73,4 +100,6 @@
   @apply button-text;
   @apply button-highlight;
   @apply button-truncate-text;
+  @apply button-in-block;
+  @apply button-highlight-in-block;
 }
