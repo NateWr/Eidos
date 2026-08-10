@@ -85,6 +85,7 @@
 .PkpOpenReviewAuthorResponse {
   background: var(--color-page-text);
   color: var(--color-page-background);
+  border-radius: var(--radius);
 }
 
 .PkpOpenReviewAuthorResponse .PkpAccordionHeader__trigger {
