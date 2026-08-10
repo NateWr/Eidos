@@ -1,0 +1,281 @@
+.PkpOpenReviews__notAvailable {
+  margin-inline: 1.5rem;
+  max-width: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.PkpOpenReviews__tabs-header,
+.PkpOpenReviews__tabs-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.PkpOpenReviews__tabs-label {
+  font-weight: 500;
+}
+
+.PkpOpenReviews__tabs-button {
+  @apply button;
+
+  &[data-active] {
+    @apply button-highlight;
+  }
+}
+
+.PkpOpenReviewsList {
+  margin-top: 4rem;
+}
+
+.PkpOpenReviewsList__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.PkpOpenReviewsList__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.PkpOpenReviews__items {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.PkpOpenReview__wrapper {
+  border: 1px solid var(--color-page-text);
+  border-radius: var(--radius);
+}
+
+.PkpOpenReviewAccordianHeader .PkpAccordionHeader__trigger {
+  @apply tab-focus;
+  width: 100%;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+
+  &[aria-expanded="false"]:hover {
+    outline: 2px solid var(--color-page-text);
+  }
+}
+
+.PkpOpenReview__wrapper .PkpOpenReviewAccordianHeader .PkpAccordionHeader__trigger {
+
+  &:focus-visible {
+    outline-offset: 0;
+  }
+}
+
+.PkpOpenReviewAuthorResponse {
+  background: var(--color-page-text);
+  color: var(--color-page-background);
+}
+
+.PkpOpenReviewAuthorResponse .PkpAccordionHeader__trigger {
+
+  &[aria-expanded="false"]:hover {
+    outline-color: var(--color-page-background);
+    outline-offset: -4px;
+  }
+
+  &:focus-visible {
+    outline-color: var(--color-page-text);
+  }
+}
+
+.PkpOpenReviewAccordianHeader__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.PkpOpenReviewAccordianHeader__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.PkpOpenReviewAccordianHeader__subtitle {
+  padding-inline-start: 2rem;
+}
+
+.PkpOpenReviewAccordianHeader__right,
+.PkpOpenReviewAccordianHeader__toggle {
+  display: flex;
+  align-items: center;
+}
+
+.PkpOpenReviewAccordianHeader__toggle-text {
+  @apply sr-only;
+}
+
+.PkpOpenReviewAccordianHeader__toggle-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.PkpOpenReviewAccordianHeader .PkpAccordionHeader__trigger[aria-expanded="true"] .PkpOpenReviewAccordianHeader__toggle-icon {
+  transform: scaleY(-1);
+}
+
+.PkpOpenReview__content,
+.PkpOpenReviewAuthorResponse__content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.PkpOpenReview__metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.PkpOpenReview__metadata-separator {
+  display: none;
+}
+
+.PkpOpenReview__date,
+.PkpOpenReviewAuthorResponse__date {
+  font-weight: 500;
+}
+
+.PkpOpenReview__doi {
+  font-size: 0.875rem;
+  text-decoration: underline;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.PkpOpenReview__reviewer-name,
+.PkpOpenReviewAuthorResponse__author-name {
+  position: relative;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.PkpOpenReview__reviewer-orcid,
+.PkpOpenReviewAuthorResponse__author-orcid {
+  display: inline-block;
+  position: relative;
+  top: 0.25em;
+
+  & .PkpOrcidDisplay__icon {
+    width: 1.5rem;
+  }
+}
+
+.PkpOpenReview__competing-interests {
+  padding: 0.75rem;
+  background: var(--color-block-background);
+  color: var(--color-block-text);
+  border-radius: var(--radius);
+}
+
+.PkpOpenReview__competing-interests-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+.PkpOpenReview__competing-interests-statement {
+  @apply html-text;
+  margin-top: 0.5rem;
+}
+
+.PkpOpenReview__comment,
+.PkpOpenReviewAuthorResponse__response {
+  @apply html-text;
+}
+
+.PkpOpenReview__question-text {
+  margin-top: 3rem;
+  font-weight: 700;
+}
+
+.PkpOpenReview__question:first-child .PkpOpenReview__question-text {
+  margin-top: 0;
+}
+
+.PkpOpenReview__response {
+  margin-top: 1.5rem;
+}
+
+.PkpOpenReview__question-text + .PkpOpenReview__response {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+
+  .PkpOpenReview__content,
+  .PkpOpenReviewAuthorResponse__content {
+    padding-top: 1.5rem;
+    padding-inline-end: 1rem;
+    padding-inline-start: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .PkpOpenReview__competing-interests {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .PkpOpenReviewAccordianHeader__toggle-text {
+    @apply not-sr-only;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .PkpOpenReview__metadata {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .PkpOpenReview__metadata-separator {
+    display: block;
+    width: 0.25rem;
+    height: 0.25rem;
+    background: var(--color-page-text);
+    border-radius: var(--radius);
+  }
+}
+
+@media (min-width: 1536px) {
+
+
+  .PkpOpenReviewAccordianHeader .PkpAccordionHeader__trigger {
+    padding: 1rem;
+  }
+
+  .PkpOpenReviewAccordianHeader__toggle-text {
+    font-size: 1rem;
+  }
+
+  .PkpOpenReview__content,
+  .PkpOpenReviewAuthorResponse__content {
+    padding-inline-start: 3rem;
+    padding-bottom: 3rem;
+  }
+}

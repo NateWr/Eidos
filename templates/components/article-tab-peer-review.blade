@@ -1,5 +1,10 @@
 <div class="article-tab-peer-review">
-    <div>
-        {{ __('openReview.title') }}
-    </div>
+    @php
+        $json = json_encode($openReviewConfig);
+        $json = str_replace('{{', '{ {', $json);
+        $json = str_replace('}}', '} }', $json);
+        $json = str_replace('{{', '{ {', $json);
+        $json = str_replace('}}', '} }', $json);
+    @endphp
+    <pkp-open-reviews v-bind='{!! $json !!}'></pkp-open-reviews>
 </div>
