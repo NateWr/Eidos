@@ -9,7 +9,7 @@
 
   .page-article-main {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     gap: 4rem 6rem;
 
     & .article-header {
@@ -36,7 +36,7 @@
 @media (min-width: 1536px) {
 
   .page-article-main {
-    grid-template-columns: 5fr 2fr;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 2fr);
 
     & .article-header {
       grid-column-end: 2;
