@@ -15,3 +15,12 @@
     text-decoration: none;
   }
 }
+
+@utility tab-focus-inside {
+
+  &:focus-visible {
+    outline: var(--outline-width) solid;
+    outline-offset: calc(-2 * var(--outline-width));
+    text-decoration: none;
+  }
+}

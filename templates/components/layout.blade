@@ -12,7 +12,7 @@ This is the layout used for most pages on the site.
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $pageTitle }}</title>
+    <title>{{ $title }}</title>
     @if ($description)
         <meta name="description" content="{{ ViewHelper::html2text($description) }}">
     @endif

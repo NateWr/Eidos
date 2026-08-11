@@ -68,6 +68,25 @@
   overflow: hidden;
 }
 
+@utility button-in-header {
+  background: var(--color-header-background);
+  color: var(--color-header-text);
+  border-color: var(--color-header-text);
+
+  &:hover {
+    outline-color: var(--color-header-text);
+  }
+}
+
+@utility button-highlight-in-header {
+  background: var(--color-header-text);
+  color: var(--color-header-background);
+
+  &:focus-visible {
+    outline-color: var(--color-header-text);
+  }
+}
+
 @utility button-in-block {
   background: var(--color-block-background);
   color: var(--color-block-text);

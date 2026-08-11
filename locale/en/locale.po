@@ -100,6 +100,9 @@ msgstr "Create Account"
 msgid "plugins.themes.eidos.manageNotifications"
 msgstr "Manage Notifications"
 
+msgid "plugins.themes.eidos.backToTitle"
+msgstr "Back to {$title}"
+
 msgid "plugins.themes.eidos.option.header.label"
 msgstr "Header"
 
