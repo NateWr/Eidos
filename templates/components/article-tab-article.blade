@@ -1,5 +1,16 @@
 <div class="article-sections">
 
+    @if($publication->getLocalizedData('summaryOfChanges'))
+        <section class="article-section article-section-summary-of-changes">
+            <h3 class="article-section-title" id="summary-of-changes">
+                {{ __('submission.files.amendmentNotice') }}
+            </h3>
+            <div class="article-section-content">
+                {!! ViewHelper::sanitizeHtml($publication->getLocalizedData('summaryOfChanges')) !!}
+            </div>
+        </section>
+    @endif
+
     @if($publication->getLocalizedData('abstract'))
         <section class="article-section article-section-abstract">
             <h3 class="article-section-title" id="abstract">
