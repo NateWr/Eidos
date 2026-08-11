@@ -1,5 +1,8 @@
 <div class="article-tab-metrics">
-    <div>
-        Metrics
-    </div>
+    @php
+        $json = json_encode($metricsChartConfig);
+        $json = str_replace('{{', '{ {', $json);
+        $json = str_replace('}}', '} }', $json);
+    @endphp
+    <pkp-usage-chart v-bind='{!! $json !!}' />
 </div>

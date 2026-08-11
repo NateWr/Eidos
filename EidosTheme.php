@@ -127,11 +127,20 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
      *
      * This should be called before rendering has begun.
      */
-    public function addTemplateData(): void
+    public function addTemplateData(string $hookName, array $args): void
     {
         view()->share('getStringSize', [$this, 'getStringSize']);
         view()->share('eidosUrl', $this->getPluginUrl());
         view()->share('usesCustomFonts', $this->optionsHelper->usesCustomFonts());
+
+        $templateMgr = $args[0];
+        $template = $args[1];
+        if ($template === 'frontend/pages/article.tpl') {
+            $article = $templateMgr->getTemplateVars('article');
+            if ($article) {
+                view()->share('metricsChartConfig', $this->getUsageStatsChartData($article->getId()));
+            }
+        }
     }
 
     /**
