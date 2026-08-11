@@ -71,7 +71,11 @@
             </x-dropdown>
         @endif
     </div>
-    @foreach ($metadata($activeTheme->getOption('sidebarArticleMetadata')) as $block)
+    @php $sidebarBlockIds = $activeTheme->getOption('sidebarArticleMetadata') @endphp
+    @foreach ($metadataBlocks as $block)
+        @if (!in_array($block->id, $sidebarBlockIds))
+            @continue
+        @endif
         <x-dynamic-component
             :component="$block->component"
             headingTag="h3"

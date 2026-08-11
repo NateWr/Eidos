@@ -1,6 +1,10 @@
 <div class="article-highlighted-metadata">
     <div class="metadata-blocks-table">
-        @foreach ($metadata($activeTheme->getOption('highlightArticleMetadata')) as $block)
+        @php $highlightedBlockIds = $activeTheme->getOption('highlightArticleMetadata') @endphp
+        @foreach ($metadataBlocks as $block)
+            @if (!in_array($block->id, $highlightedBlockIds))
+                @continue
+            @endif
             <x-dynamic-component
                 :component="$block->component"
                 headingTag="h2"

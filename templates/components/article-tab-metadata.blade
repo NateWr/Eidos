@@ -1,6 +1,6 @@
 <div class="article-tab-metadata">
     <div class="metadata-blocks-table">
-        @foreach ($metadata() as $block)
+        @foreach ($metadataBlocks as $block)
             <x-dynamic-component
                 :component="$block->component"
                 headingTag="h3"
