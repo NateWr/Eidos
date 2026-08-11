@@ -1,5 +1,6 @@
-.PkpOpenReviews__notAvailable {
-  margin-inline: 1.5rem;
+.PkpOpenReviews__not-available {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
   max-width: 30em;
   display: flex;
   flex-direction: column;
