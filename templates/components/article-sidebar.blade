@@ -18,45 +18,7 @@
 
 <div class="article-sidebar">
     <div class="article-sidebar-top">
-        <x-dropdown
-            class="article-sidebar-download"
-            triggerClass="article-sidebar-download-button"
-        >
-            <x-slot:trigger>
-                @include('components/icons/download')
-                {{ __('common.download') }}
-            </x-slot:trigger>
-            <ul class="article-sidebar-downloads">
-                @foreach ($primaryGalleys as $galley)
-                    <li>
-                        <x-eidostheme::galley-link
-                            :galley="$galley"
-                            :publication="$publication"
-                            :submission="$article"
-                            :hasAccess="$hasAccess"
-                        />
-                    </li>
-                @endforeach
-                @if ($jatsDownloadUrl)
-                    <li>
-                        <a class="galley-link" href="{{ $jatsDownloadUrl }}">
-                            @include('components/icons/galley-other')
-                            {{ __('publication.jats.download') }}
-                        </a>
-                    </li>
-                @endif
-                @foreach ($supplementaryGalleys as $galley)
-                    <li>
-                        <x-eidostheme::galley-link
-                            :galley="$galley"
-                            :publication="$publication"
-                            :submission="$article"
-                            :hasAccess="$hasAccess"
-                        />
-                    </li>
-                @endforeach
-            </ul>
-        </x-dropdown>
+        @include('components/article-download')
         @if($citeConfig)
             <x-dropdown
                 class="article-sidebar-cite"

@@ -1,0 +1,61 @@
+{{--
+
+Article downloads button
+
+A dropdown button to download galleys and JATS files.
+If there is only one download, the button will download
+without
+--}}
+@if (count($primaryGalleys) === 1 && !$jatsDownloadUrl && !count($supplementaryGalleys))
+    @includeIf('components.galley-link', [
+        'class' => 'article-sidebar-download-button',
+        'galley' => $primaryGalleys[0],
+        'label' => __('common.download'),
+        'publication' => $publication,
+        'submission' => $article,
+        'hasAccess' => $hasAccess,
+    ])
+
+@else
+    <x-dropdown
+        class="article-sidebar-download"
+        triggerClass="article-sidebar-download-button"
+    >
+        <x-slot:trigger>
+            @include('components/icons/download')
+            {{ __('common.download') }}
+        </x-slot:trigger>
+        <ul class="article-sidebar-downloads">
+            @foreach ($primaryGalleys as $galley)
+                <li>
+                    @includeIf('components.galley-link', [
+                        'galley' => $galley,
+                        'label' => $galley->getGalleyLabel(),
+                        'publication' => $publication,
+                        'submission' => $article,
+                        'hasAccess' => $hasAccess,
+                    ])
+                </li>
+            @endforeach
+            @if ($jatsDownloadUrl)
+                <li>
+                    <a class="galley-link" href="{{ $jatsDownloadUrl }}">
+                        @include('components/icons/galley-other')
+                        {{ __('publication.jats.download') }}
+                    </a>
+                </li>
+            @endif
+            @foreach ($supplementaryGalleys as $galley)
+                <li>
+                    @includeIf('components.galley-link', [
+                        'galley' => $galley,
+                        'label' => $galley->getGalleyLabel(),
+                        'publication' => $publication,
+                        'submission' => $article,
+                        'hasAccess' => $hasAccess,
+                    ])
+                </li>
+            @endforeach
+        </ul>
+    </x-dropdown>
+@endif
