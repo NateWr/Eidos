@@ -246,3 +246,60 @@ msgstr "Change the text on the button to view the submissions page."
 
 msgid "plugins.themes.eidos.option.howToSubmitAction.default"
 msgstr "How to Submit"
+
+msgid "plugins.themes.eidos.option.colorMode.label"
+msgstr "Color Options Mode"
+
+msgid "plugins.themes.eidos.option.colorMode.description"
+msgstr "Most journals should use the simple mode. The advanced mode provides designers with more control, but misuse may cause some text on your site to be inaccessible."
+
+msgid "plugins.themes.eidos.option.colorMode.default"
+msgstr "Simple Mode: Choose one or two colors for your site."
+
+msgid "plugins.themes.eidos.option.colorMode.advanced"
+msgstr "Advanced Mode: Set different colors for headers, footers, buttons, text, links and more. "
+
+msgid "plugins.themes.eidos.option.primaryColor.label"
+msgstr "Primary Color"
+
+msgid "plugins.themes.eidos.option.primaryColor.description"
+msgstr "The dominant color of your website used for the header background."
+
+msgid "plugins.themes.eidos.option.accentColor.label"
+msgstr "Accent Color"
+
+msgid "plugins.themes.eidos.option.accentColor.description"
+msgstr "The color used for links and buttons. Choose a dark color that is easy to read against a white background."
+
+msgid "plugins.themes.eidos.option.pageBackgroundColor.label"
+msgstr "Page Background Color"
+
+msgid "plugins.themes.eidos.option.pageTextColor.label"
+msgstr "Page Text Color"
+
+msgid "plugins.themes.eidos.option.pageLinkColor.label"
+msgstr "Page Link Color"
+
+msgid "plugins.themes.eidos.option.headerBackgroundColor.label"
+msgstr "Header Background Color"
+
+msgid "plugins.themes.eidos.option.headerTextColor.label"
+msgstr "Header Text Color"
+
+msgid "plugins.themes.eidos.option.buttonBackgroundColor.label"
+msgstr "Button Background Color"
+
+msgid "plugins.themes.eidos.option.buttonTextColor.label"
+msgstr "Button Text Color"
+
+msgid "plugins.themes.eidos.option.blockBackgroundColor.label"
+msgstr "Block Background Color"
+
+msgid "plugins.themes.eidos.option.blockTextColor.label"
+msgstr "Block Text Color"
+
+msgid "plugins.themes.eidos.option.footerBackgroundColor.label"
+msgstr "Footer Background Color"
+
+msgid "plugins.themes.eidos.option.footerTextColor.label"
+msgstr "Footer Text Color"
