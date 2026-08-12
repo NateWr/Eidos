@@ -8,6 +8,15 @@
   font-weight: 600;
 }
 
+.author-detail-orcid {
+  display: inline-block;
+  position: relative;
+  top: 0.25em;
+  margin-inline-start: 0.25em;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .author-detail-credit {
   font-size: 0.875rem;
 }

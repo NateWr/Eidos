@@ -2,6 +2,15 @@
     <div class="author-detail-top">
         <h4 class="author-detail-name">
             {{ $author->getFullName() }}
+            @if ($author->getData('orcid'))
+                <a class="author-detail-orcid" href="{{ $author->getData('orcid') }}" target="_blank" aria-label="ORCID iD">
+                    @if ($author->hasVerifiedOrcid())
+                        {!! $orcidUnauthenticatedIcon!!}
+                    @else
+                        {!! $orcidIcon !!}
+                    @endif
+                </a>
+            @endif
         </h4>
         @if(count($author->getAffiliations()))
             <div class="author-detail-affiliations">
@@ -46,21 +55,6 @@
                     {{ __('common.commaListSeparator') }}
                 @endif
             @endforeach
-        </div>
-    @endif
-
-    @if ($author->getData('orcid'))
-        <div class="author-detail-orcid">
-            <a class="author-detail-orcid-link" href="{{ $author->getData('orcid') }}" target="_blank">
-                @if ($author->hasVerifiedOrcid())
-                    {!! $orcidUnauthenticatedIcon!!}
-                @else
-                    {!! $orcidIcon !!}
-                @endif
-                <span class="author-detail-orcid-url">
-                    {{ $author->getData('orcid') }}
-                </span>
-            </a>
         </div>
     @endif
 
