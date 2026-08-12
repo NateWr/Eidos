@@ -22,6 +22,10 @@
   max-width: 28rem;
 }
 
+.page-search-header-desc {
+  @apply html-text;
+}
+
 .page-search-header-results {
   margin-bottom: 1.5rem;
 }

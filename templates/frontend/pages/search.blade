@@ -19,6 +19,9 @@
             $urlPattern = str_replace($queryParam, '', $_SERVER['REQUEST_URI']) . '&searchPage=__page__';
         }
     }
+    $description = $currentContext
+        ? __('plugins.themes.eidos.search.description', ['url' =>  ViewHelper::url(['page' => 'issue', 'op' => 'archive'])])
+        : __('plugins.themes.eidos.search.description.site', ['url' =>  ViewHelper::url(['page' => 'index'])]);
 @endphp
 
 <x-eidostheme::layout
@@ -32,17 +35,7 @@
             </h1>
             @if(!$query)
                 <div class="page-search-header-desc">
-                    {!!
-                        __(
-                            'plugins.themes.eidos.search.description',
-                            [
-                                'url' => ViewHelper::url([
-                                    'page' => 'issue',
-                                    'op' => 'archive'
-                                ]),
-                            ]
-                        )
-                    !!}
+                    {!! $description !!}
                 </div>
             @elseif($results->total())
                 <div class="page-search-header-results">
@@ -76,6 +69,7 @@
                         <li>
                             <x-eidostheme::article-summary
                                 heading="h3"
+                                :context="$result['context']"
                                 :submission="$result['submission']"
                                 :showAbstract="false"
                             />
