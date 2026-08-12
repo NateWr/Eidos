@@ -28,6 +28,20 @@ html {
 }
 
 /**
+ * Override Tailwind's placeholder to make the placeholder
+ * text a little more visible.
+ */
+@layer base {
+  @supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px) {
+    @supports (color: color-mix(in lab, red, red)) {
+      ::placeholder {
+        color: color-mix(in oklab, currentcolor 65%, transparent);
+      }
+    }
+  }
+}
+
+/**
  * Apply Tailwind's sr-only styles to the .pkp_screen_reader
  * class, which appears in several default OJS templates
  */
