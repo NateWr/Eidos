@@ -2,22 +2,32 @@
   --header-height: 5rem;
 
   & .header-desktop-row {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    display: flex;
+    align-items: center;
     gap: 2rem;
+    height: var(--header-height);
   }
 
   & .header-desktop-context {
-    max-width: none;
+    max-width: 33%;
+    flex-shrink: 0;
+  }
+
+  .header-desktop-name {
+    position: relative;
+    line-height: 1.25;
+  }
+
+  .header-desktop-name-xs {
+    top: -0.25rem;
+  }
+
+  .header-desktop-name-sm {
+    top: -0.125rem;
   }
 
   & .header-desktop-logo {
     max-height: calc(var(--header-height) - 2rem);
-  }
-
-  & .header-desktop-nav-main {
-    margin-inline-start: auto;
-    margin-inline-end: auto;
   }
 
   & .header-utility-menu {
@@ -66,12 +76,13 @@
    * viewport and float above the page content.
    */
   .header-desktop-line {
+    --header-width: 1536px;
     display: block;
     min-height: calc(var(--header-height) + 2rem);
 
     & .header-desktop-inner {
       position: fixed;
-      width: 1536px;
+      width: var(--header-width);
       top: 1rem;
       left: 50%;
       transform: translateX(-50%);
@@ -83,6 +94,14 @@
 @media (min-width: 1920px) {
 
   .header-desktop-line {
-    --header-height: 6rem;
+    --header-width: 1792px;
+
+    & .header-desktop-name-xs {
+      top: -0.125rem;
+    }
+
+    & .header-desktop-name-sm {
+      top: 0;
+    }
   }
 }
