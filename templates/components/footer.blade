@@ -1,7 +1,12 @@
+@php
+    $siteName = $currentContext ? $currentContext->getLocalizedName() : $site->getLocalizedTitle();
+    $siteDescription = $currentContext ? $currentContext->getLocalizedDescription() : $site->getLocalizedData('about')
+@endphp
+
 <footer class="footer">
     <div class="footer-inner" id="skip-to-footer">
         <h2 class="footer-block footer-name">
-            {{ $currentContext->getLocalizedName() }}
+            {{ $siteName }}
         </h2>
         <div class="footer-blocks">
             <div class="footer-block footer-block-masthead">
@@ -9,10 +14,10 @@
                     @if($pageFooter)
                         {!! $pageFooter !!}
                     @else
-                        {!! ViewHelper::sanitizeHtml($currentContext->getLocalizedDescription()) !!}
+                        {!! ViewHelper::sanitizeHtml($siteDescription) !!}
                     @endif
                 </div>
-                @if($currentContext->getData('onlineIssn') || $currentContext->getData('printIssn'))
+                @if($currentContext?->getData('onlineIssn') || $currentContext?->getData('printIssn'))
                     <div class="footer-metadata">
                         @if($currentContext->getData('printIssn'))
                             <div class="footer-metadata-item">

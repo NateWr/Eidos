@@ -172,6 +172,10 @@ class Options
      */
     protected function addHomepageImageOption(): void
     {
+        if (!$this->context) {
+            return;
+        }
+
         $this->theme->addOption('homepageImagePosition', 'FieldOptions', [
             'type' => 'radio',
             'label' => __('plugins.themes.eidos.option.homepageImagePosition.label'),
@@ -312,6 +316,10 @@ class Options
      */
     protected function addIssueArchivesOption(): void
     {
+        if (!$this->context) {
+            return;
+        }
+
         $this->theme->addOption('issueArchives', 'FieldOptions', [
             'type' => 'radio',
             'label' => __('plugins.themes.eidos.option.issueArchives.label'),
@@ -362,6 +370,10 @@ class Options
      */
     protected function addHowToSubmitBlock(): void
     {
+        if (!$this->context) {
+            return;
+        }
+
         $this->theme->addOption('howToSubmitTitle', 'FieldText', [
             'label' => __('plugins.themes.eidos.option.howToSubmitTitle.label'),
             'description' => __('plugins.themes.eidos.option.howToSubmitTitle.description'),
@@ -396,6 +408,10 @@ class Options
      */
     protected function addArticleHighlightMetadataOption(): void
     {
+        if (!$this->context) {
+            return;
+        }
+
         $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
         $blocks = $templateMgr->metadataBlocks->get();
 
@@ -420,6 +436,10 @@ class Options
      */
     protected function addArticleSidebarMetadataOption(): void
     {
+        if (!$this->context) {
+            return;
+        }
+
         $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
         $blocks = $templateMgr->metadataBlocks->get();
 

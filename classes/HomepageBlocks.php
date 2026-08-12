@@ -2,8 +2,10 @@
 
 namespace APP\plugins\themes\eidos\classes;
 
+use APP\core\Application;
 use APP\plugins\themes\eidos\EidosTheme;
 use APP\view\HomepageBlocksRegistry;
+use PKP\context\Context;
 use PKP\view\HomepageBlock;
 
 /**
@@ -11,13 +13,15 @@ use PKP\view\HomepageBlock;
  */
 class HomepageBlocks
 {
+    public ?Context $context;
+
     public function __construct(
         /**
          * Instance of the theme
          */
         protected EidosTheme $theme,
     ) {
-        //
+        $this->context = Application::get()->getRequest()->getContext();
     }
 
     /**
@@ -29,12 +33,22 @@ class HomepageBlocks
             new HomepageBlock(
                 component: 'homepage.how-to-submit',
                 title: __('plugins.themes.eidos.option.homepageBlocks.how-to-submit'),
+                forSite: false,
             )
         );
         $blocks->register(
             new HomepageBlock(
                 component: 'homepage.about',
-                title: __('plugins.themes.eidos.option.homepageBlocks.about'),
+                title: $this->context
+                    ? __('plugins.themes.eidos.option.homepageBlocks.aboutContext')
+                    : __('plugins.themes.eidos.option.homepageBlocks.aboutSite'),
+            )
+        );
+        $blocks->register(
+            new HomepageBlock(
+                component: 'homepage.contexts',
+                title: __('plugins.themes.eidos.option.homepageBlocks.contexts'),
+                forContext: false,
             )
         );
     }

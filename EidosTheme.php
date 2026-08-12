@@ -7,12 +7,14 @@ use APP\plugins\themes\eidos\classes\MetadataBlocks;
 use APP\plugins\themes\eidos\classes\Options;
 use APP\plugins\themes\eidos\classes\ViteLoader;
 use APP\template\TemplateManager;
+use Illuminate\Support\Collection;
 use PKP\db\DAORegistry;
 use PKP\plugins\Hook;
 use PKP\plugins\interfaces\HasHomepageBlocks;
 use PKP\plugins\interfaces\HasMetadataBlocks;
 use PKP\plugins\PluginSettingsDAO;
 use PKP\plugins\ThemePlugin;
+use PKP\view\Block;
 use PKP\view\HomepageBlocksRegistry;
 use PKP\view\MetadataBlocksRegistry;
 
@@ -132,6 +134,7 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
         view()->share('getStringSize', [$this, 'getStringSize']);
         view()->share('eidosUrl', $this->getPluginUrl());
         view()->share('usesCustomFonts', $this->optionsHelper->usesCustomFonts());
+        view()->share('getBlocks', [$this, 'getBlocks']);
 
         $templateMgr = $args[0];
         $template = $args[1];
@@ -152,5 +155,24 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
     {
         $length = strlen($str);
         return $length <= 40 ? 'xs' : ($length <= 80 ? 'sm' : ($length <= 100 ? 'md' : 'lg'));
+    }
+
+    /**
+     * Get the blocks that match a particular theme option
+     *
+     * @param Collection<Block> $blocks
+     * @return Collection<Block> $blocks
+     */
+    public function getBlocks(Collection $blocks, string $option): Collection
+    {
+        $blockIds = $this->getOption($option);
+        $matchingBlocks = collect([]);
+        foreach ($blockIds as $blockId) {
+            $block = $blocks->first(fn($block) => $block->id === $blockId);
+            if ($block) {
+                $matchingBlocks->push($block);
+            }
+        }
+        return $matchingBlocks;
     }
 }

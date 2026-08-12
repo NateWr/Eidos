@@ -149,10 +149,10 @@ msgid "plugins.themes.eidos.option.siteWidth.description"
 msgstr "Choose how your site should appear when viewed on on very large screens. If you use the Homepage Image in your header, you may want to choose Fixed Width to prevent the image from becoming too large."
 
 msgid "plugins.themes.eidos.option.siteWidth.full"
-msgstr "Full Width - The header and footer will extend the full width of the screen."
+msgstr "Full Width - The header and footer will as wide as the full width of the screen."
 
 msgid "plugins.themes.eidos.option.siteWidth.fixed"
-msgstr "Fixed Width - On very large screens, the header and footer will not be wider than then page content."
+msgstr "Fixed Width - On very large screens, the header and footer will centered on the screen."
 
 msgid "plugins.themes.eidos.option.font.label"
 msgstr "Base Font"
@@ -208,8 +208,17 @@ msgstr "Select which blocks to show on your homepage."
 msgid "plugins.themes.eidos.option.homepageBlocks.how-to-submit"
 msgstr "How to Submit"
 
-msgid "plugins.themes.eidos.option.homepageBlocks.about"
+msgid "plugins.themes.eidos.option.homepageBlocks.aboutContext"
 msgstr "About the Journal with Homepage Menu"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.aboutSite"
+msgstr "About the Site with Homepage Menu"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.contexts"
+msgstr "List of Journals"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.contexts.desc"
+msgstr "View the latest research from our academic journals or <a href='{{ $searchUrl }}'>search all journals</a>."
 
 msgid "plugins.themes.eidos.option.howToSubmitTitle.label"
 msgstr "How to Submit - Title"

@@ -39,18 +39,20 @@
             </x-dropdown>
         @endif
     </div>
-    @php $sidebarBlockIds = $activeTheme->getOption('sidebarArticleMetadata') @endphp
-    @foreach ($metadataBlocks as $block)
-        @if (!in_array($block->id, $sidebarBlockIds))
-            @continue
-        @endif
-        <x-dynamic-component
-            :component="$block->component"
-            headingTag="h3"
-            :id="$block->id"
-            :title="$block->title"
-            :$publication
-            :submission="$article"
-        />
-    @endforeach
+
+    @php
+        $blocks = $getBlocks($metadataBlocks, 'sidebarArticleMetadata');
+    @endphp
+    @if (count($blocks))
+        @foreach ($blocks as $block)
+            <x-dynamic-component
+                :component="$block->component"
+                headingTag="h3"
+                :id="$block->id"
+                :title="$block->title"
+                :$publication
+                :submission="$article"
+            />
+        @endforeach
+    @endif
 </div>

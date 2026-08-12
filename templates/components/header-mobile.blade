@@ -1,5 +1,5 @@
 @php
-    $siteName = $currentContext ? $currentContext->getLocalizedName() : $site->getLocalizedName();
+    $siteName = $currentContext ? $currentContext->getLocalizedName() : $site->getLocalizedTitle();
     $dropdownId = 'header-mobile-dropdown';
 @endphp
 
@@ -22,7 +22,7 @@
                         $size = $length <= 20 ? 'xs' : ($length <= 40 ? 'sm' : ($length <= 80 ? 'md' : 'lg'));
                     @endphp
                     <div class="header-mobile-name header-mobile-name-{{ $size }}">
-                        {{ $currentContext->getLocalizedName() }}
+                        {{ $siteName }}
                     </div>
                 @endif
             </a>

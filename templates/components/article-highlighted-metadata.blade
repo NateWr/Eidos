@@ -1,18 +1,20 @@
-<div class="article-highlighted-metadata">
-    <div class="metadata-blocks-table">
-        @php $highlightedBlockIds = $activeTheme->getOption('highlightArticleMetadata') @endphp
-        @foreach ($metadataBlocks as $block)
-            @if (!in_array($block->id, $highlightedBlockIds))
-                @continue
-            @endif
-            <x-dynamic-component
-                :component="$block->component"
-                headingTag="h2"
-                :id="$block->id"
-                :title="$block->title"
-                :$publication
-                :submission="$article"
-            />
-        @endforeach
+@php
+    $blocks = $getBlocks($metadataBlocks, 'highlightArticleMetadata');
+@endphp
+
+@if ($blocks)
+    <div class="article-highlighted-metadata">
+        <div class="metadata-blocks-table">
+            @foreach ($blocks as $block)
+                <x-dynamic-component
+                    :component="$block->component"
+                    headingTag="h2"
+                    :id="$block->id"
+                    :title="$block->title"
+                    :$publication
+                    :submission="$article"
+                />
+            @endforeach
+        </div>
     </div>
-</div>
+@endif
