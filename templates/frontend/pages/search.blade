@@ -1,5 +1,9 @@
 @php
     $pageTitle = __('common.search');
+    $description = $currentContext
+        ? __('plugins.themes.eidos.search.description', ['url' =>  ViewHelper::url(['page' => 'issue', 'op' => 'archive'])])
+        : __('plugins.themes.eidos.search.description.site', ['url' =>  ViewHelper::url(['page' => 'index'])]);
+
     if ($query) {
         $pageTitle = __('plugins.themes.eidos.search.pageTitle', ['phrase' => $query]);
         $start = (($results->currentPage() - 1) * $results->perPage()) + 1;
@@ -19,9 +23,6 @@
             $urlPattern = str_replace($queryParam, '', $_SERVER['REQUEST_URI']) . '&searchPage=__page__';
         }
     }
-    $description = $currentContext
-        ? __('plugins.themes.eidos.search.description', ['url' =>  ViewHelper::url(['page' => 'issue', 'op' => 'archive'])])
-        : __('plugins.themes.eidos.search.description.site', ['url' =>  ViewHelper::url(['page' => 'index'])]);
 @endphp
 
 <x-eidostheme::layout

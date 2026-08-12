@@ -6,6 +6,15 @@ A dropdown button to download galleys and JATS files.
 If there is only one download, the button will download
 without
 --}}
+
+@php
+    /**
+     * If the $hasAccess variable has not been set, we
+     * assume the user has access.
+     */
+    $hasAccess = $hasAccess ?? true;
+@endphp
+
 @if (count($primaryGalleys) === 1 && !$jatsDownloadUrl && !count($supplementaryGalleys))
     @includeIf('components.galley-link', [
         'class' => 'article-download-button',
