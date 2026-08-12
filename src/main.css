@@ -13,6 +13,7 @@
 @import './css/utilities/tab-focus.css';
 @import './css/components/announcement-summary.css';
 @import './css/components/article-comments.css';
+@import './css/components/article-download.css';
 @import './css/components/article-header.css';
 @import './css/components/article-metadata.css';
 @import './css/components/article-peer-review.css';

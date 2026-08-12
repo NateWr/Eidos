@@ -1,7 +1,3 @@
-.article-summary {
-  position: relative;
-}
-
 .article-summary-cover {
   display: none;
 }
@@ -18,15 +14,6 @@
   gap: 0.5rem;
   align-self: flex-start;
   width: 100%;
-}
-
-.article-summary-link:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 .article-summary-title {
@@ -46,15 +33,14 @@
   margin-inline-start: 0.75rem;
 }
 
-.article-summary-galleys {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.article-summary-galley-root {
 
-  & .galley-link {
+  & .article-download-button {
     @apply button;
+    width: 100%;
+  }
+
+  & .dropdown-content {
     max-width: 100%;
   }
 }
@@ -66,10 +52,6 @@
     grid-template-columns: var(--cover-image-width) minmax(0, 1fr);
     gap: 1.5rem;
     gap: var(--gap);
-
-    & .article-summary-galley {
-      max-width: 100%;
-    }
   }
 
   .article-summary-cover {
@@ -90,11 +72,17 @@
     gap: 1.5rem;
   }
 
-  .article-summary-galleys {
-    flex-direction: column;
-    flex-wrap: none;
-    align-items: stretch;
-    max-width: 16rem;
+  .article-summary-galley-root {
+
+    & .article-download-button {
+      width: auto;
+      max-width: 15rem;
+    }
+
+    & .dropdown-content {
+      width: auto;
+      max-width: 20rem;
+    }
   }
 
   .article-summary-abstract {
@@ -104,7 +92,11 @@
 
 @media (min-width: 1536px) {
 
-  .article-summary-galleys {
-    max-width: 20rem;
+  .article-summary-galley-root {
+
+    & .dropdown-content {
+      width: auto;
+      max-width: 25rem;
+    }
   }
 }

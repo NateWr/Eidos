@@ -44,18 +44,14 @@
         </div>
 
         @if (count($galleys))
-            <div class="article-summary-galleys">
-                @foreach ($galleys as $galley)
-                    <x-eidostheme::galley-link
-                        class="article-summary-galley"
-                        :galley="$galley"
-                        :label="$galley->getLabel()"
-                        :publication="$publication"
-                        :submission="$submission"
-                        :context="$context"
-                        :hasAccess="true"
-                    />
-                @endforeach
+            <div class="article-summary-galley-root">
+                @include('components/article-download', [
+                    'primaryGalleys' => $galleys,
+                    'jatsDownloadUrl' => '',
+                    'supplementaryGalleys' => [],
+                    'publication' => $publication,
+                    'submission' => $submission,
+                ])
             </div>
         @endif
     </div>

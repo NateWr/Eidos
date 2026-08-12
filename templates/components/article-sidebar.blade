@@ -18,7 +18,13 @@
 
 <div class="article-sidebar">
     <div class="article-sidebar-top">
-        @include('components/article-download')
+        @include('components/article-download', [
+            'primaryGalleys' => $primaryGalleys,
+            'jatsDownloadUrl' => $jatsDownloadUrl,
+            'supplementaryGalleys' => $supplementaryGalleys,
+            'publication' => $publication,
+            'submission' => $article,
+        ])
         @if($citeConfig)
             <x-dropdown
                 class="article-sidebar-cite"

@@ -8,31 +8,34 @@ without
 --}}
 @if (count($primaryGalleys) === 1 && !$jatsDownloadUrl && !count($supplementaryGalleys))
     @includeIf('components.galley-link', [
-        'class' => 'article-sidebar-download-button',
+        'class' => 'article-download-button',
         'galley' => $primaryGalleys[0],
         'label' => __('common.download'),
         'publication' => $publication,
-        'submission' => $article,
+        'submission' => $submission,
         'hasAccess' => $hasAccess,
     ])
 
-@else
+@elseif (count($primaryGalleys) || $jatsDownloadUrl || count($supplementaryGalleys))
     <x-dropdown
-        class="article-sidebar-download"
-        triggerClass="article-sidebar-download-button"
+        class="article-download"
+        triggerClass="article-download-button"
     >
         <x-slot:trigger>
             @include('components/icons/download')
-            {{ __('common.download') }}
+            <span class="article-download-button-text">
+                {{ __('common.download') }}
+            </span>
+
         </x-slot:trigger>
-        <ul class="article-sidebar-downloads">
+        <ul class="article-download-downloads">
             @foreach ($primaryGalleys as $galley)
                 <li>
                     @includeIf('components.galley-link', [
                         'galley' => $galley,
                         'label' => $galley->getGalleyLabel(),
                         'publication' => $publication,
-                        'submission' => $article,
+                        'submission' => $submission,
                         'hasAccess' => $hasAccess,
                     ])
                 </li>
@@ -51,7 +54,7 @@ without
                         'galley' => $galley,
                         'label' => $galley->getGalleyLabel(),
                         'publication' => $publication,
-                        'submission' => $article,
+                        'submission' => $submission,
                         'hasAccess' => $hasAccess,
                     ])
                 </li>

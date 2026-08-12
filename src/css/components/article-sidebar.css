@@ -10,34 +10,20 @@
   gap: 0.5rem;
 }
 
-.article-sidebar-download-button {
-  @apply button;
-  @apply button-highlight;
-  width: 100%;
-  font-size: 1.125rem;
-}
+.article-sidebar {
 
-.article-sidebar-download {
-
-  & .dropdown-content {
-    width: var(--reka-popover-trigger-width);
-    max-height: var(--reka-popover-content-available-height);
-    padding: 0.75rem;
+  & .article-download-button {
+    @apply button-highlight;
+    width: 100%;
   }
-}
 
-.article-sidebar-downloads {
+  & .article-download-button-text {
+    font-size: 1.125rem;
+  }
 
   & .galley-link {
-    padding: 0.5rem;
-    border-radius: var(--radius);
-
-    &:hover,
-    &:focus-visible {
-      background: var(--color-overlay-text);
-      color: var(--color-overlay-background);
-      outline: none;
-    }
+    font-weight: 500;
+    font-size: 1.125rem;
   }
 }
 
