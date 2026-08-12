@@ -11,6 +11,8 @@
   cursor: pointer;
 
   &:hover {
-    color: var(--color-page-links);
+    text-decoration: none;
+    outline: 0.15em solid;
+    outline-offset: 0.15em;
   }
 }
