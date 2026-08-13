@@ -189,9 +189,14 @@
     border-top-width: 0.25rem;
     border-color: transparent;
     border-bottom-width: 0.25rem;
+    color: var(--color-page-text);
 
     &[aria-selected="true"] {
       border-bottom-color: var(--color-page-text);
+
+      &:focus-visible {
+        outline: none;
+      }
     }
 
     &:focus-visible {
@@ -199,6 +204,11 @@
       color: var(--color-page-background);
       outline: 0.125rem solid var(--color-page-text);
       outline-offset: -1px;
+      border-radius: 0;
+    }
+
+    &:hover {
+      border-bottom-color: var(--color-page-text);
     }
   }
 
