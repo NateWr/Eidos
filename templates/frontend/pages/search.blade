@@ -61,7 +61,9 @@
                 <div class="page-search-results-header">
                     <div class="page-search-showing">
                         @include('components/icons/list')
-                        {!! $showing !!}
+                        <span class="page-search-showing-text">
+                            {!! $showing !!}
+                        </span>
                     </div>
                 </div>
                 @callHook(['name' => 'Templates::Search::SearchResults::PreResults'])
