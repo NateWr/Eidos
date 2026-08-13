@@ -14,6 +14,7 @@
 }
 
 .reveal-link {
+  @apply tab-focus;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -25,6 +26,11 @@
   font-family: var(--font-actions);
   font-weight: 700;
   color: var(--color-button-text);
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.15em;
+  }
 }
 
 .reveal[data-open="true"] .reveal-link {
