@@ -74,18 +74,11 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-width: 2rem;
-  height: 2rem;
-  padding-inline: 0.5rem;
-  background: var(--color-page-text);
-  color: var(--color-page-background);
-  font-size: 1rem;
-  border-radius: 1.25rem;
-}
-
-.article-tabs-menu-trigger-count{
-  background: var(--color-overlay-text);
-  color: var(--color-overlay-background);
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  outline: 1px solid currentColor;
+  border-radius: var(--radius);
 }
 
 .article-tabs-divider {
@@ -179,6 +172,10 @@
     border-bottom: 1px solid var(--color-page-text);
   }
 
+  .article-tabs-trigger-count {
+    line-height: 1.5;
+  }
+
   .article-tabs-trigger {
     width: auto;
     padding: 0.25rem 1rem;
@@ -205,11 +202,6 @@
       outline: 0.125rem solid var(--color-page-text);
       outline-offset: -1px;
       border-radius: 0;
-
-      & .article-tabs-trigger-count {
-        background: var(--color-page-background);
-        color: var(--color-page-text);
-      }
     }
 
     &:hover {
