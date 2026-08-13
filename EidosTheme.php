@@ -144,6 +144,19 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
                 view()->share('metricsChartConfig', $this->getUsageStatsChartData($article->getId()));
             }
         }
+
+        if ($template === 'frontend/pages/indexJournal.tpl' || $template === 'frontend/pages/indexSite.tpl') {
+            $templateMgr->assign([
+                'latestPublicationsTitle' => $this->getLocalizedOption('latestArticlesTitle'),
+                'latestPublicationsDescription' => str_replace(
+                    '{$url}',
+                    Application::get()->getRequest()->getContext()
+                        ? Application::get()->getRequest()->url(null, 'issue', 'archive')
+                        : Application::get()->getRequest()->url(null, 'search'),
+                    $this->getLocalizedOption('latestArticlesDescription')
+                ),
+            ]);
+        }
     }
 
     /**

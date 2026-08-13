@@ -2,11 +2,14 @@
 namespace APP\plugins\themes\eidos\classes\components;
 
 use APP\publication\Publication;
+use APP\section\Section;
 use APP\submission\Submission;
 use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View as ViewFacade;
+use Illuminate\Support\LazyCollection;
 use PKP\context\Context;
 use PKP\galley\Galley;
 use PKP\template\ViewHelper;
@@ -20,6 +23,9 @@ class ArticleSummary extends Component
     public string $coverImageUrl = '';
     public string $coverImageAltText = '';
 
+    /**
+     * @param Collection<Section> $sections
+     */
     public function __construct(
         public string $heading,
         public Submission $submission,
@@ -27,6 +33,7 @@ class ArticleSummary extends Component
         public ?bool $showGalleys = true,
         public ?bool $showCover = false,
         public ?bool $showAbstract = false,
+        public null|Collection|LazyCollection $sections = null,
     ) {
         $this->publication = $submission->getCurrentPublication();
         $this->url = $this->getUrl();

@@ -25,6 +25,20 @@
     @endif
     <div class="article-summary-inner">
         <div class="article-summary-content">
+            @php
+                $section = $sections
+                    ? $sections->first(fn($section) => $section->getId() === $publication->getData('sectionId'))
+                    : null;
+                $sectionName = $section?->getLocalizedIdentifyType();
+                if (!$sectionName) {
+                    $sectionName = $section?->getLocalizedTitle();
+                }
+            @endphp
+            @if ($sectionName)
+                <div class="article-summary-section">
+                    {{ $sectionName }}
+                </div>
+            @endif
             <a
                 class="article-summary-link tab-focus"
                 href="{{ $url }}"

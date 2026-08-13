@@ -102,6 +102,7 @@ class Options
         $this->addIssueArchivesOption();
         $this->addHomepageBlockOption();
         $this->addHowToSubmitBlock();
+        $this->addLatestArticlesBlock();
         $this->addArticleHighlightMetadataOption();
         $this->addArticleSidebarMetadataOption();
         $this->addColorOptions();
@@ -450,6 +451,32 @@ class Options
             'size' => 'small',
             'default' => [
                 $this->primaryLocale => __('plugins.themes.eidos.option.howToSubmitAction.default'),
+            ],
+        ]);
+    }
+
+    /**
+     * Add text fields for the latest articles homepage block
+     */
+    protected function addLatestArticlesBlock(): void
+    {
+        $this->theme->addOption('latestArticlesTitle', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.homepageBlocks.latestArticlesTitle.label'),
+            'description' => __('plugins.themes.eidos.option.homepageBlocks.latestArticlesTitle.desc'),
+            'isMultilingual' => true,
+            'default' => [
+                $this->primaryLocale => __('plugins.themes.eidos.option.homepageBlocks.latestArticles'),
+            ],
+        ]);
+        $this->theme->addOption('latestArticlesDescription', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.homepageBlocks.latestArticlesDescription.label'),
+            'description' => __('plugins.themes.eidos.option.homepageBlocks.latestArticlesDescription.desc'),
+            'isMultilingual' => true,
+            'size' => 'large',
+            'default' => [
+                $this->primaryLocale => $this->context
+                    ? __('submissions.published.latest.description')
+                    : __('submissions.published.latest.description.site'),
             ],
         ]);
     }
