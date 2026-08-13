@@ -14,10 +14,14 @@
 @php $el = $href ? 'a' : 'div'; @endphp
 
 <{{ $el }}
-    class="arrow-link @if ($truncate) arrow-link-truncate @endif"
     @if($href)
         href="{{ $href }}"
     @endif
+    {{
+        $attributes->merge([
+            'class' => 'arrow-link' . ($truncate ? ' arrow-link-truncate' : ''),
+        ])
+    }}
 >
     <span class="arrow-link-text">
         {{ $slot }}

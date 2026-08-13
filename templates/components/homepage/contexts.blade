@@ -35,7 +35,11 @@
                             </div>
                         @endif
                         <div class="homepage-block-contexts-item-actions">
-                            <x-arrow-link truncate="{{ true }}">
+                            <x-arrow-link
+                                href="{{ ViewHelper::url(['context' => $context->getPath()]) }}"
+                                truncate="{{ true }}"
+                                tabindex="-1"
+                            >
                                 {{ __('common.view') }}
                             </x-arrow-link>
                         </div>
