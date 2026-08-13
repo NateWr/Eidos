@@ -84,20 +84,20 @@
 }
 
 .PkpOpenReviewAuthorResponse {
-  background: var(--color-page-text);
-  color: var(--color-page-background);
+  background: var(--color-block-text);
+  color: var(--color-block-background);
   border-radius: var(--radius);
 }
 
 .PkpOpenReviewAuthorResponse .PkpAccordionHeader__trigger {
 
   &[aria-expanded="false"]:hover {
-    outline-color: var(--color-page-background);
+    outline-color: var(--color-block-background);
     outline-offset: -4px;
   }
 
   &:focus-visible {
-    outline-color: var(--color-page-text);
+    outline-color: var(--color-block-text);
   }
 }
 
