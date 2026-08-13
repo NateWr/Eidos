@@ -247,9 +247,6 @@ msgstr "Change the text on the button to view the submissions page."
 msgid "plugins.themes.eidos.option.howToSubmitAction.default"
 msgstr "How to Submit"
 
-msgid "plugins.themes.eidos.option.homepageBlocks.latestArticles"
-msgstr "Latest Publications"
-
 msgid "plugins.themes.eidos.option.homepageBlocks.latestArticlesTitle.label"
 msgstr "Latest Publications - Title"
 
