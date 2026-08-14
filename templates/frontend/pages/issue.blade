@@ -11,8 +11,13 @@
         title="{{ $issue->getIssueIdentification() }}"
         description="{{ $issue->getLocalizedDescription() }}"
     >
-        <main class="page-container page-container-md page-issue" id="skip-to-main">
-            @include('components/issue-toc', ['headingStart' => 1])
+        <main class="page-container page-container-lg page-issue" id="skip-to-main">
+            @include('components/issue-toc', [
+                'issue' => $issue,
+                'headingStart' => 1,
+                'showArticleGalleys' => $activeTheme->getOption('issueToc') === 'galleys',
+                'showArticleCovers' => $activeTheme->getOption('issueToc') === 'covers',
+            ])
         </main>
     </x-eidostheme::layout>
 @endif

@@ -187,6 +187,21 @@ msgstr "Article Sidebar Metadata"
 msgid "plugins.themes.eidos.option.sidebarArticleMetadata.description"
 msgstr "Select the article metadata that you want to show in the sidebar on the article landing page."
 
+msgid "plugins.themes.eidos.option.issueToc.label"
+msgstr "Issue Table of Contents"
+
+msgid "plugins.themes.eidos.option.issueToc.description"
+msgstr "Select how to display articles in the issue table of contents."
+
+msgid "plugins.themes.eidos.option.issueToc.default"
+msgstr "Don't show a link to download galleys or article cover images."
+
+msgid "plugins.themes.eidos.option.issueToc.galleys"
+msgstr "Show a link to download galleys."
+
+msgid "plugins.themes.eidos.option.issueToc.covers"
+msgstr "Show the article cover image."
+
 msgid "plugins.themes.eidos.option.issueArchives.label"
 msgstr "Issue Archives"
 

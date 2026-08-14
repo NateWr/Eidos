@@ -154,6 +154,8 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
                 'latestPublicationsDescription' => str_replace('{$url}', $urlAllContent, $this->getLocalizedOption('latestArticlesDescription')),
                 'browseByCategoryTitle' => $this->getLocalizedOption('browseByCategoryTitle'),
                 'browseByCategoryDescription' => str_replace('{$url}', $urlAllContent, $this->getLocalizedOption('browseByCategoryDescription')),
+                'showArticleGalleysInToc' => $this->getOption('issueToc') === 'galleys',
+                'showArticleCoversInToc' => $this->getOption('issueToc') === 'covers',
             ]);
         }
     }

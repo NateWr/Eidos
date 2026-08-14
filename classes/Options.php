@@ -33,6 +33,10 @@ class Options
     public const ISSUE_ARCHIVE_COVERS = 'covers';
     public const ISSUE_ARCHIVE_LIST = 'list';
 
+    public const ISSUE_TOC_DEFAULT = 'none';
+    public const ISSUE_TOC_COVERS = 'covers';
+    public const ISSUE_TOC_GALLEYS = 'galleys';
+
     public const HOMEPAGE_BLOCKS_DEFAULT = [
         'homepage.announcement',
     ];
@@ -98,7 +102,7 @@ class Options
         $this->addHomepageImageOption();
         $this->addTaglineOption();
         $this->addSiteWidthOption();
-        $this->addFontOptions();
+        $this->addIssueTocOption();
         $this->addIssueArchivesOption();
         $this->addHomepageBlockOption();
         $this->addHowToSubmitBlock();
@@ -106,6 +110,7 @@ class Options
         $this->addBrowseByCategoryBlock();
         $this->addArticleHighlightMetadataOption();
         $this->addArticleSidebarMetadataOption();
+        $this->addFontOptions();
         $this->addColorOptions();
     }
 
@@ -362,6 +367,38 @@ class Options
                 || $this->theme->getOption('titlesFont')
                 || $this->theme->getOption('actionsFont')
             );
+    }
+
+    /**
+     * Add option to change how articles are displayed in
+     * the issue table of contents
+     */
+    protected function addIssueTocOption(): void
+    {
+        if (!$this->context) {
+            return;
+        }
+
+        $this->theme->addOption('issueToc', 'FieldOptions', [
+            'type' => 'radio',
+            'label' => __('plugins.themes.eidos.option.issueToc.label'),
+            'description' => __('plugins.themes.eidos.option.issueToc.description'),
+            'options' => [
+                [
+                    'value' => self::ISSUE_TOC_GALLEYS,
+                    'label' => __('plugins.themes.eidos.option.issueToc.galleys'),
+                ],
+                [
+                    'value' => self::ISSUE_TOC_COVERS,
+                    'label' => __('plugins.themes.eidos.option.issueToc.covers'),
+                ],
+                [
+                    'value' => self::ISSUE_TOC_DEFAULT,
+                    'label' => __('plugins.themes.eidos.option.issueToc.default'),
+                ],
+            ],
+            'default' => self::ISSUE_TOC_DEFAULT,
+        ]);
     }
 
     /**

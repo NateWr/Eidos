@@ -7,66 +7,55 @@
  * @see APP\plugins\themes\eidos\classes\components\ArticleSummary
  --}}
 
-<div
-    {{
-        $attributes->merge([
-            'class' => join(' ', ['article-summary', $showCover && $coverImageUrl ? 'article-summary-with-cover' : '']),
-        ])
-    }}
->
+<div {{ $attributes->merge(['class' => 'article-summary']) }}>
     @if ($coverImageUrl)
         <img
             class="article-summary-cover"
             src="{{ $coverImageUrl }}"
             alt="{{ $coverImageAltText }}"
         >
-    @else
-        <div>{{-- Empty on purpose --}}</div>
     @endif
-    <div class="article-summary-inner">
-        <div class="article-summary-content">
-            @php
-                $section = $sections
-                    ? $sections->first(fn($section) => $section->getId() === $publication->getData('sectionId'))
-                    : null;
-                $sectionName = $section?->getLocalizedIdentifyType();
-                if (!$sectionName) {
-                    $sectionName = $section?->getLocalizedTitle();
-                }
-            @endphp
-            @if ($sectionName)
-                <div class="article-summary-section">
-                    {{ $sectionName }}
-                </div>
-            @endif
-            <a
-                class="article-summary-link tab-focus"
-                href="{{ $url }}"
-            >
-                <{{ $heading }} class="article-summary-title">
-                    {!! ViewHelper::sanitizeHtml($publication->getLocalizedFullTitle(null, 'html')) !!}
-                </{{ $heading }}>
-                <div class="article-summary-authors">
-                    {{ $publication->getAuthorString(true) }}
-                </div>
-            </a>
-            @if ($showAbstract && $publication->getLocalizedData('abstract'))
-                <div class="article-summary-abstract html-text">
-                    {!! ViewHelper::sanitizeHtml($publication->getLocalizedData('abstract')) !!}
-                </div>
-            @endif
-        </div>
-
-        @if (count($galleys))
-            <div class="article-summary-galley-root">
-                @include('components/article-download', [
-                    'primaryGalleys' => $galleys,
-                    'jatsDownloadUrl' => '',
-                    'supplementaryGalleys' => [],
-                    'publication' => $publication,
-                    'submission' => $submission,
-                ])
+    <div class="article-summary-content">
+        @php
+            $section = $sections
+                ? $sections->first(fn($section) => $section->getId() === $publication->getData('sectionId'))
+                : null;
+            $sectionName = $section?->getLocalizedIdentifyType();
+            if (!$sectionName) {
+                $sectionName = $section?->getLocalizedTitle();
+            }
+        @endphp
+        @if ($sectionName)
+            <div class="article-summary-section">
+                {{ $sectionName }}
+            </div>
+        @endif
+        <a
+            class="article-summary-link tab-focus"
+            href="{{ $url }}"
+        >
+            <{{ $heading }} class="article-summary-title">
+                {!! ViewHelper::sanitizeHtml($publication->getLocalizedFullTitle(null, 'html')) !!}
+            </{{ $heading }}>
+            <div class="article-summary-authors">
+                {{ $publication->getAuthorString(true) }}
+            </div>
+        </a>
+        @if ($showAbstract && $publication->getLocalizedData('abstract'))
+            <div class="article-summary-abstract html-text">
+                {!! ViewHelper::sanitizeHtml($publication->getLocalizedData('abstract')) !!}
             </div>
         @endif
     </div>
+    @if (count($galleys))
+        <div class="article-summary-galley-root">
+            @include('components/article-download', [
+                'primaryGalleys' => $galleys,
+                'jatsDownloadUrl' => '',
+                'supplementaryGalleys' => [],
+                'publication' => $publication,
+                'submission' => $submission,
+            ])
+        </div>
+    @endif
 </div>
