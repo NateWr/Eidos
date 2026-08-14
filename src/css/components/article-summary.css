@@ -53,6 +53,11 @@
   }
 }
 
+.article-summary-link:hover .article-summary-title {
+  text-decoration: underline;
+  text-decoration-thickness: 0.15em;
+}
+
 @media (min-width: 768px) {
 
   .article-summary:has(.article-summary-cover) {
