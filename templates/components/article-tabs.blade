@@ -94,8 +94,10 @@
                         <span class="article-tabs-menu-trigger-icon">
                             @includeIf($tab['icon'])
                         </span>
-                        <span class="article-tabs-menu-trigger-name">
-                            {{ $tab['name'] }}
+                        <span class="article-tabs-menu-trigger-label">
+                            <span class="article-tabs-menu-trigger-label-text">
+                                {{ $tab['name'] }}#
+                            </span>
                             @if ($tab['count'])
                                 <span class="article-tabs-menu-trigger-count">
                                     {{ $tab['count'] }}

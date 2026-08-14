@@ -119,6 +119,19 @@
 
 [dir="rtl"] .header-mobile-dropdown {
   transform-origin: top left;
+
+  & .menu {
+    align-items: flex-start;
+  }
+
+  & .menu-button {
+    flex-direction: row;
+  }
+
+  & .user-options-languages,
+  & .user-options-logged-in-as {
+    flex-direction: row;
+  }
 }
 
 .header-mobile-dropdown-close-by-keyboard {

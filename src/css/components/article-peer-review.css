@@ -18,6 +18,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
+  max-width: 100%;
 }
 
 .PkpOpenReviews__tabs-label {
@@ -26,6 +27,7 @@
 
 .PkpOpenReviews__tabs-button {
   @apply button;
+  max-width: 100%;
 
   &[data-active] {
     @apply button-highlight;
@@ -84,15 +86,15 @@
 }
 
 .PkpOpenReviewAuthorResponse {
-  background: var(--color-block-text);
-  color: var(--color-block-background);
+  background: var(--color-block-background);
+  color: var(--color-block-text);
   border-radius: var(--radius);
 }
 
 .PkpOpenReviewAuthorResponse .PkpAccordionHeader__trigger {
 
   &[aria-expanded="false"]:hover {
-    outline-color: var(--color-block-background);
+    outline-color: var(--color-block-text);
     outline-offset: -4px;
   }
 

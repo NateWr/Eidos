@@ -65,6 +65,13 @@
   gap: 0.5rem;
 }
 
+.issue-summary-action {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media (min-width: 640px) {
 
   .issue-summary {
