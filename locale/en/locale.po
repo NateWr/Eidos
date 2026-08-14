@@ -259,6 +259,18 @@ msgstr "Latest Publications - Description"
 msgid "plugins.themes.eidos.option.homepageBlocks.latestArticlesDescription.desc"
 msgstr "Change the short descripion shown for the Latest Publications block."
 
+msgid "plugins.themes.eidos.option.homepageBlocks.browseByCategoryTitle.label"
+msgstr "Browse By Category - Title"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.browseByCategoryTitle.desc"
+msgstr "Change the title shown for the Browse By Category block."
+
+msgid "plugins.themes.eidos.option.homepageBlocks.browseByCategoryDescription.label"
+msgstr "Browse By Category - Description"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.browseByCategoryDescription.desc"
+msgstr "Change the short descripion shown for the Browse By Category block."
+
 msgid "plugins.themes.eidos.option.colorMode.label"
 msgstr "Color Options Mode"
 

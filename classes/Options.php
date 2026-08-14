@@ -103,6 +103,7 @@ class Options
         $this->addHomepageBlockOption();
         $this->addHowToSubmitBlock();
         $this->addLatestArticlesBlock();
+        $this->addBrowseByCategoryBlock();
         $this->addArticleHighlightMetadataOption();
         $this->addArticleSidebarMetadataOption();
         $this->addColorOptions();
@@ -465,7 +466,7 @@ class Options
             'description' => __('plugins.themes.eidos.option.homepageBlocks.latestArticlesTitle.desc'),
             'isMultilingual' => true,
             'default' => [
-                $this->primaryLocale => __('plugins.themes.eidos.option.homepageBlocks.latestArticles'),
+                $this->primaryLocale => __('submissions.published.latest'),
             ],
         ]);
         $this->theme->addOption('latestArticlesDescription', 'FieldText', [
@@ -477,6 +478,30 @@ class Options
                 $this->primaryLocale => $this->context
                     ? __('submissions.published.latest.description')
                     : __('submissions.published.latest.description.site'),
+            ],
+        ]);
+    }
+
+    /**
+     * Add text fields for the browse by category homepage block
+     */
+    protected function addBrowseByCategoryBlock(): void
+    {
+        $this->theme->addOption('browseByCategoryTitle', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.homepageBlocks.browseByCategoryTitle.label'),
+            'description' => __('plugins.themes.eidos.option.homepageBlocks.browseByCategoryTitle.desc'),
+            'isMultilingual' => true,
+            'default' => [
+                $this->primaryLocale => __('submissions.browseByCategory'),
+            ],
+        ]);
+        $this->theme->addOption('browseByCategoryDescription', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.homepageBlocks.browseByCategoryDescription.label'),
+            'description' => __('plugins.themes.eidos.option.homepageBlocks.browseByCategoryDescription.desc'),
+            'isMultilingual' => true,
+            'size' => 'large',
+            'default' => [
+                $this->primaryLocale => __('submissions.browseByCategory.description'),
             ],
         ]);
     }

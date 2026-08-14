@@ -146,15 +146,14 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
         }
 
         if ($template === 'frontend/pages/indexJournal.tpl' || $template === 'frontend/pages/indexSite.tpl') {
+            $urlAllContent = Application::get()->getRequest()->getContext()
+                ? Application::get()->getRequest()->url(null, 'issue', 'archive')
+                : Application::get()->getRequest()->url(null, 'search');
             $templateMgr->assign([
                 'latestPublicationsTitle' => $this->getLocalizedOption('latestArticlesTitle'),
-                'latestPublicationsDescription' => str_replace(
-                    '{$url}',
-                    Application::get()->getRequest()->getContext()
-                        ? Application::get()->getRequest()->url(null, 'issue', 'archive')
-                        : Application::get()->getRequest()->url(null, 'search'),
-                    $this->getLocalizedOption('latestArticlesDescription')
-                ),
+                'latestPublicationsDescription' => str_replace('{$url}', $urlAllContent, $this->getLocalizedOption('latestArticlesDescription')),
+                'browseByCategoryTitle' => $this->getLocalizedOption('browseByCategoryTitle'),
+                'browseByCategoryDescription' => str_replace('{$url}', $urlAllContent, $this->getLocalizedOption('browseByCategoryDescription')),
             ]);
         }
     }
