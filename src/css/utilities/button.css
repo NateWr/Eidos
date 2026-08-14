@@ -114,11 +114,9 @@
  * used at the app/pkp level, it will not be included
  * in the final bundle.
  */
-.___apply-button-styles {
-  @apply button;
-  @apply button-text;
-  @apply button-highlight;
-  @apply button-truncate-text;
-  @apply button-in-block;
-  @apply button-highlight-in-block;
-}
+.button { @apply button; }
+.button-text { @apply button-text; }
+.button-highlight { @apply button-highlight; }
+.button-truncate-text { @apply button-truncate-text; }
+.button-in-block { @apply button-in-block; }
+.button-highlight-in-block { @apply button-highlight-in-block; }
