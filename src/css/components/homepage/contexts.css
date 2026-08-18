@@ -47,6 +47,7 @@
   & .arrow-link {
     padding: 0.25rem 0.5rem;
     margin-inline-start: -0.5rem;
+    font-size: 1.125rem;
 
     &:hover {
       outline: 0.25em solid var(--color-page-links);
