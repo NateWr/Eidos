@@ -2,10 +2,6 @@
  * Default styles for all article
  * metadata blocks
  */
-.metadata-block {
-  position: relative;
-}
-
 .metadata-block-title {
   font-size: 1.125rem;
   font-weight: 600;
