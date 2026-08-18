@@ -1,39 +1,39 @@
 <div class="article-sections">
 
-    @if($publication->getLocalizedData('summaryOfChanges'))
+    @if(ViewHelper::localize($publicationProps['summaryOfChanges']))
         <section class="article-section article-section-summary-of-changes">
             <h3 class="article-section-title" id="summary-of-changes">
                 {{ __('submission.files.amendmentNotice') }}
             </h3>
             <div class="article-section-content">
-                {!! ViewHelper::sanitizeHtml($publication->getLocalizedData('summaryOfChanges')) !!}
+                {!! ViewHelper::sanitizeHtml(ViewHelper::localize($publicationProps['summaryOfChanges'])) !!}
             </div>
         </section>
     @endif
 
-    @if($publication->getLocalizedData('abstract'))
+    @if(ViewHelper::localize($publicationProps['abstract']))
         <section class="article-section article-section-abstract">
             <h3 class="article-section-title" id="abstract">
                 {{ __('article.abstract') }}
             </h3>
             <div class="article-section-content">
-                {!! ViewHelper::sanitizeHtml($publication->getLocalizedData('abstract')) !!}
+                {!! ViewHelper::sanitizeHtml(ViewHelper::localize($publicationProps['abstract'])) !!}
             </div>
         </section>
     @endif
 
-    @if($publication->getLocalizedData('plainLanguageSummary'))
+    @if(ViewHelper::localize($publicationProps['plainLanguageSummary']))
         <section class="article-section article-section-plain-language-summary" id="summary">
             <h3 class="article-section-title">
                 {{ __('submission.plainLanguageSummary') }}
             </h3>
             <div class="article-section-content">
-                {!! ViewHelper::sanitizeHtml($publication->getLocalizedData('plainLanguageSummary')) !!}
+                {!! ViewHelper::sanitizeHtml(ViewHelper::localize($publicationProps['plainLanguageSummary'])) !!}
             </div>
         </section>
     @endif
 
-    @if(count($parsedCitations) || (string) $publication->getData('citationsRaw'))
+    @if(count($publicationProps['citations']) || (string) $publicationProps['citationsRaw'])
         <section class="article-section article-section-references">
             <h3 class="article-section-title" id="references">
                 {{ __('submission.citations') }}
@@ -46,15 +46,15 @@
                 <x-slot:trigger>
                     {{ __('plugins.themes.eidos.viewAllReferences') }}
                 </x-slot>
-                @if(count($parsedCitations))
-                    @foreach($parsedCitations as $parsedCitation)
+                @if(count($publicationProps['citations']))
+                    @foreach($publicationProps['citations'] as $citationProps)
                         <p>
-                            {!! ViewHelper::sanitizeHtml($parsedCitation->getRawCitationWithLinks()) !!}
-                            @callHook(['name' => 'Templates::Article::Details::Reference', 'citation' => $parsedCitation])
+                            {!! ViewHelper::sanitizeHtml($citationProps['rawCitationWithLinks']) !!}
+                            @callHook(['name' => 'Templates::Article::Details::Reference', 'citation' => $citationProps])
                         </p>
                     @endforeach
                 @else
-                    {{ nl2br($publication->getData('citationsRaw')) }}
+                    {{ nl2br($publicationProps['citationsRaw']) }}
                 @endif
             </x-reveal>
         </section>

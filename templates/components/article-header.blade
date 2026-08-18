@@ -1,32 +1,32 @@
 <header class="article-header">
     <h1 class="article-title">
         {!! ViewHelper::sanitizeHtml(
-            $publication->getLocalizedFullTitle()
+            ViewHelper::localize($publicationProps['fullTitle'])
         ) !!}
     </h1>
-    @if ($publication->getData('authors'))
+    @if (count($publicationProps['authors']))
         <h2 class="sr-only">
             {{ __('article.authors') }}
         </h2>
         <ul class="article-authors">
-            @foreach ($publication->getData('authors') as $author)
+            @foreach ($publicationProps['authors'] as $author)
                 <li class="article-author">
                     {{-- preserve this formatting so that there isn't an extra space before the comma --}}
                     {{
-                        $author->getFullName()
-                    }}@if ($author->getData('orcid'))
-                        <a class="article-author-orcid" href="{{ $author->getData('orcid') }}" target="_blank">
-                            @if ($author->hasVerifiedOrcid())
+                        $author['fullName']
+                    }}@if ($author['orcid'])
+                        <a class="article-author-orcid" href="{{ $author['orcid'] }}" target="_blank">
+                            @if (!empty($author['orcidIsVerified']))
                                 {!! $orcidUnauthenticatedIcon!!}
                             @else
                                 {!! $orcidIcon !!}
                             @endif
                             <span class="sr-only">
-                                {{ $author->getData('orcid') }}
+                                {{ $author['orcid'] }}
                             </span>
                         </a>
                     @endif{{
-                    ""}}@if ($loop->iteration < $publication->getData('authors')->count()){{
+                    ""}}@if (!$loop->last){{
                         __('common.commaListSeparator')
                     }}@endif
                 </li>
