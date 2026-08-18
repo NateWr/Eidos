@@ -10,11 +10,10 @@
                     {{ __('common.search') }}
                 </navigation-menu-link>
             </navigation-menu-item>
-            <navigation-menu-item class="menu-dropdowns-item">
+            <navigation-menu-item class="menu-dropdowns-item" id="skip-to-user-nav-desktop">
                 <navigation-menu-trigger
                     aria-label={{ __('plugins.themes.eidos.account') }}
                     class="header-utility-menu-icon menu-dropdowns-button tab-focus"
-                    id="skip-to-user-nav-desktop"
                 >
                     @include('components/icons/circle-user')
                     <div class="menu-dropdowns-arrow" aria-hidden="true">
@@ -22,10 +21,7 @@
                     </div>
                 </navigation-menu-trigger>
                 <navigation-menu-content class="menu-dropdowns-content dropdown-content">
-                    <x-eidostheme::user-options
-                        skipToLanguageId="skip-to-language-desktop"
-                        skipToUserNavId="skip-to-user-nav-desktop"
-                    />
+                    <x-eidostheme::user-options />
                 </navigation-menu-content>
             </navigation-menu-item>
         </navigation-menu-list>

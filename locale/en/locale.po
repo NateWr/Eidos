@@ -106,6 +106,9 @@ msgstr "Manage Notifications"
 msgid "plugins.themes.eidos.backToTitle"
 msgstr "Back to {$title}"
 
+msgid "plugins.themes.eidos.skip.userNav"
+msgstr "Skip to login and user account menu"
+
 msgid "plugins.themes.eidos.option.header.label"
 msgstr "Header"
 

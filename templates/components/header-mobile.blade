@@ -56,13 +56,10 @@
                     placeholder="{{ __('common.search') }}"
                 >
             </form>
-            <nav class="header-mobile-primary-menu" id="skip-to-nav-mobile">
+            <nav class="header-mobile-primary-menu">
                 @loadMenu(['name' => 'primary', 'id' => 'nav-mobile-primary', 'path' => 'components/menu'])
             </nav>
-            <x-eidostheme::user-options
-                skipToLanguageId="skip-to-language-mobile"
-                skipToUserNavId="skip-to-user-nav-mobile"
-            />
+            <x-eidostheme::user-options />
             <button
                 class="header-mobile-dropdown-close-by-keyboard"
                 data-mobile-menu-close
