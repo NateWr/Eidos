@@ -12,7 +12,10 @@
         <ol class="page-announcements-list" start="1">
             @foreach ($announcements as $announcement)
                 <li>
-                    <x-announcement-summary :announcement="$announcement" />
+                    <x-announcement-summary
+                        :announcement="$announcement"
+                        heading="h2"
+                    />
                 </li>
             @endforeach
         </ol>

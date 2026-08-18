@@ -3,9 +3,9 @@
         href="{{ ViewHelper::url(['page' => 'announcement', 'op' => 'view', 'path' => $announcement->id]) }}"
         class="announcement-summary-link"
     >
-        <div class="announcement-summary-title">
+        <{{ $heading }} class="announcement-summary-title">
             {{ $announcement->getLocalizedData('title') }}
-        </div>
+        </{{ $heading }}>
         <div class="announcement-summary-date">
             {{ $announcement->datePosted->format($dateFormatLong) }}
         </div>
