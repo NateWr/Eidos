@@ -33,7 +33,7 @@
                         @endif
                     </div>
                 @endif
-                <div class="footer-links">
+                <nav class="footer-links">
                     @php
                         $policyMenu = \Illuminate\Support\Facades\Blade::render(
                             "@loadMenu(['name' => 'policy', 'id' => 'nav-footer-policy', 'path' => 'components/menu'])"
@@ -59,14 +59,14 @@
                             @endif
                         </ul>
                     @endif
+                </nav>
                 </div>
-                </div>
-                <div class="footer-block footer-block-menu">
+                <nav class="footer-block footer-block-menu">
                     @loadMenu(['name' => 'primary', 'id' => 'nav-footer-primary', 'path' => 'components/menu'])
-                </div>
-                <div class="footer-block footer-block-menu">
+                </nav>
+                <nav class="footer-block footer-block-menu">
                     @loadMenu(['name' => 'user', 'id' => 'nav-footer-user', 'path' => 'components/menu'])
-                </div>
+                </nav>
             </div>
             @php
                 $sidebar = \Illuminate\Support\Facades\Blade::render(
