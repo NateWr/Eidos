@@ -7,4 +7,15 @@
   & .header-desktop-tagline {
     font-size: 1.125rem;
   }
+
+  & .header-desktop-nav-main .menu-dropdowns-button {
+
+    &:hover {
+      color: var(--color-header-text);
+
+      &:before {
+        background: var(--color-header-background);
+      }
+    }
+  }
 }

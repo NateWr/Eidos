@@ -15,6 +15,11 @@
   margin-inline-start: calc(-1 * var(--inline-padding));
   font-family: var(--font-actions);
   font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.15em;
+  }
 }
 
 .menu-submenu {
