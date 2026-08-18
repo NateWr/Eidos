@@ -8,7 +8,7 @@
     title="{{ $publication->getLocalizedFullTitle() }}"
     description="{{ ViewHelper::html2text($pageDescription) }}"
 >
-    <article class="page-container page-article">
+    <article class="page-container page-article" id="skip-to-main">
 
         @include('components/article-notice-preview')
         @include('components/article-notice-outdated')
