@@ -170,8 +170,8 @@ class Options
             $variables['--color-button-text'] = 'var(--color-secondary)';
             $variables['--color-block-background'] = 'var(--color-primary)';
             $variables['--color-block-text'] = 'var(--color-text-on-primary)';
-            $variables['--color-overlay-background'] = 'var(--color-primary)';
-            $variables['--color-overlay-text'] = 'var(--color-text-on-primary)';
+            $variables['--color-overlay-background'] = 'var(--color-background)';
+            $variables['--color-overlay-text'] = 'var(--color-text)';
             $variables['--color-footer-background'] = 'var(--color-primary)';
             $variables['--color-footer-text'] = 'var(--color-text-on-primary)';
         } else {

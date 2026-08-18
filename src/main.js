@@ -4,6 +4,7 @@
 import highlights from './js/highlights'
 import mobileMenu from './js/mobile-menu'
 import reveal from './js/reveal'
+import tabTrigger from './js/tab-trigger'
 
 /**
  * Custom CSS for the theme
@@ -19,4 +20,5 @@ document.addEventListener('DOMContentLoaded',function() {
   highlights.init()
   mobileMenu.init()
   reveal.init()
+  tabTrigger.init()
 })

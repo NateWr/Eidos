@@ -1,4 +1,8 @@
-.article-tabs-menubar {
+.article-tabs {
+  --button-size: 3rem;
+}
+
+.article-tabs-list {
   position: fixed;
   bottom: 1rem;
   left: 50%;
@@ -10,21 +14,21 @@
   border-radius: var(--radius);
   background: var(--color-overlay-background);
   color: var(--color-overlay-text);
+  border: 1px solid currentColor;
   box-shadow: var(--overlay-shadow);
   z-index: 9999;
 }
 
-.article-tabs-list {
+.article-tabs-list-triggers {
   display: flex;
   align-items: center;
 }
 
-.article-tabs-trigger,
-.article-tabs-menu-trigger {
+.article-tabs-trigger {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 0.125em;
+  padding: 0.125rem;
   border-radius: var(--radius);
   color: var(--color-overlay-text);
 
@@ -41,19 +45,9 @@
   outline-offset: -0.375em;
 }
 
-.article-tabs-trigger {
-  padding: 0.125em;
-}
-
-.article-tabs-menu-trigger {
-  padding: 0 0.25em;
-  overflow: hidden;
-}
-
-.article-tabs-trigger-icon,
-.article-tabs-menu-trigger-icon {
-  height: 3rem;
-  width: 3rem;
+.article-tabs-trigger-icon {
+  height: var(--button-size);
+  width: 100%;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
@@ -66,63 +60,12 @@
   color: var(--color-overlay-background);
 }
 
-.article-tabs-menu-trigger-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  overflow: hidden;
-  padding: 0.125rem;
-}
-
-.article-tabs-menu-trigger-label-text {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.article-tabs-menu-trigger-count,
-.article-tabs-trigger-count,
-.article-tabs-title-count {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.125rem 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  outline: 1px solid currentColor;
-  border-radius: var(--radius);
-  flex-shrink: 0;
-}
-
-.article-tabs-divider {
-  width: 1px;
-  height: 1.5rem;
-  flex-shrink: 0;
-  background: var(--color-overlay-text);
-  opacity: 0.15;
+.article-tabs-list-triggers {
+  padding-right: 1.5rem;
 }
 
 .article-tabs-trigger-name {
   @apply sr-only;
-}
-
-.article-tabs-menu {
-  display: none;
-  flex-direction: column;
-
-  &[data-open="true"] {
-    display: flex;
-  }
-}
-
-.article-tabs-menu-divider {
-  height: 1px;
-  background: var(--color-overlay-text);
-  opacity: 0.15;
-}
-
-.article-tabs-menu-trigger-label {
-  font-weight: 500;
 }
 
 .article-tabs-title {
@@ -138,53 +81,171 @@
   max-width: 100%;
 }
 
+.article-tabs-popover-trigger {
+  position: absolute;
+  bottom: 0.125rem;
+  right: 0;
+  transform: translateX(calc(0.5 * var(--button-size)));
+  width: var(--button-size);
+  height: var(--button-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus-visible {
+    outline: none;
+
+    & .article-tabs-popover-trigger-icon {
+      outline: 1px solid var(--color-overlay-text);
+      border: 2px solid var(--color-overlay-background);
+      background: var(--color-overlay-text);
+      color: var(--color-overlay-background);
+    }
+  }
+}
+
+.article-tabs-popover-trigger-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-overlay-background);
+  color: var(--color-overlay-text);
+  outline: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-tabs [data-reka-popper-content-wrapper] {
+  position: relative !important;
+  transform: none !important;
+  min-width: unset !important;
+}
+
+.article-tabs-popover-content {
+  display: none;
+
+  &[data-state="open"] {
+    display: block;
+  }
+}
+
+.article-tabs-popover-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-tabs-popover-item {
+  display: flex;
+  align-items: center;
+  border-radius: calc(2 * var(--radius));
+
+  &:focus-visible {
+    outline: 2px solid;
+    outline-offset: -0.375em;
+  }
+}
+
+.article-tabs-popover-item-icon {
+  width: var(--button-size);
+  height: var(--button-size);
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-tabs-popover-item-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  padding: 0.125rem;
+  padding-inline-end: 1em;
+  font-weight: 600;
+}
+
+.article-tabs-popover-item-label-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.article-tabs-popover-close {
+  @apply sr-only;
+
+  &:focus-visible {
+    @apply not-sr-only;
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    border-radius: var(--radius);
+    background: var(--color-overlay-background);
+    outline: 2px solid;
+  }
+}
+
+.article-tabs-popover-item-count,
+.article-tabs-trigger-count,
+.article-tabs-title-count {
+  position: relative;
+  top: -0.125rem;
+  left: 0.25rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  outline: 1px solid currentColor;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.article-tabs-popover-item-count {
+  top: 0;
+  left: 0;
+}
+
 @media (min-width: 380px) {
 
-  .article-tabs-menubar {
+  .article-tabs {
+    --button-size: 3.5rem;
+  }
+
+  .article-tabs-list {
     bottom: 1.5rem;
-  }
-
-  .article-tabs-trigger-icon {
-    width: 3.5rem;
-    height: 3.5rem;
-  }
-
-  .article-tabs-menu {
-    padding: 0 0.25rem;
   }
 }
 
 @media (min-width: 480px) {
 
-  .article-tabs-trigger-icon {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  .article-tabs-menu {
-    padding: 0 0.5rem;
+  .article-tabs {
+    --button-size: 4rem;
   }
 }
 
 @media (min-width: 1200px) {
 
-  .article-tabs-menubar {
+  .article-tabs-list {
     position: relative;
     bottom: auto;
     left: auto;
     transform: none;
     max-width: 100%;
+    border: none;
+    border-radius: 0;
     box-shadow: none;
     background: transparent;
     z-index: 0;
   }
 
-  .article-tabs-menu,
-  .article-tabs-menu[data-open="true"] {
+  .article-tabs-popover-trigger,
+  .article-tabs [data-reka-popper-content-wrapper] {
     display: none;
   }
 
-  .article-tabs-list {
+  .article-tabs-list-triggers {
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -229,7 +290,6 @@
   }
 
   .article-tabs-trigger-icon,
-  .article-tabs-divider,
   .article-tabs-expand {
     display: none;
   }
@@ -248,7 +308,7 @@
 }
 
 @media (min-width: 1536px) {
-  .article-tabs-list {
+  .article-tabs-list-triggers {
     gap: 1rem;
   }
 
