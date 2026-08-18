@@ -147,16 +147,6 @@
   gap: 1.5rem;
 }
 
-.PkpOpenReview__metadata {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.PkpOpenReview__metadata-separator {
-  display: none;
-}
-
 .PkpOpenReview__date,
 .PkpOpenReviewAuthorResponse__date {
   font-weight: 500;
@@ -164,10 +154,10 @@
 
 .PkpOpenReview__doi {
   font-size: 0.875rem;
-  text-decoration: underline;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+
+  & a {
+    @apply link;
+  }
 }
 
 .PkpOpenReview__reviewer-name,
@@ -248,20 +238,6 @@
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     font-weight: 500;
-  }
-
-  .PkpOpenReview__metadata {
-    flex-direction: row;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .PkpOpenReview__metadata-separator {
-    display: block;
-    width: 0.25rem;
-    height: 0.25rem;
-    background: var(--color-page-text);
-    border-radius: var(--radius);
   }
 }
 
