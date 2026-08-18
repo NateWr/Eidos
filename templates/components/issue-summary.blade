@@ -11,7 +11,7 @@
         @endif
     </div>
     <div class="issue-summary-inner">
-        <h3 class="issue-summary-header">
+        <{{ $heading }} class="issue-summary-header">
             <div class="issue-summary-vol">
                 {{ $issue->getIssueIdentification(['showTitle' => false, 'showYear' => false]) }}
             </div>
@@ -25,7 +25,7 @@
                     {{ $issue->getLocalizedTitle() }}
                 </div>
             @endif
-        </h3>
+        </{{ $heading }}>
         @if ($issue->getLocalizedDescription())
             <div class="issue-summary-description html-text">
                 {!! ViewHelper::html2text($issue->getLocalizedDescription()) !!}
