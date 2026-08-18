@@ -15,7 +15,6 @@
 @import './css/components/article-comments.css';
 @import './css/components/article-download.css';
 @import './css/components/article-header.css';
-@import './css/components/article-metadata.css';
 @import './css/components/article-peer-review.css';
 @import './css/components/article-sidebar.css';
 @import './css/components/article-sections.css';
@@ -45,6 +44,9 @@
 @import './css/components/issue-summary.css';
 @import './css/components/issue-toc.css';
 @import './css/components/masthead-user.css';
+@import './css/components/metadata/_default.css';
+@import './css/components/metadata/license.css';
+@import './css/components/metadata/peer-review.css';
 @import './css/components/menu.css';
 @import './css/components/menu-dropdowns.css';
 @import './css/components/notice.css';

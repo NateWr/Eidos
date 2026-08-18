@@ -24,7 +24,10 @@ const dispatch = (group, tab) => {
 const init = () => {
   const $triggers = document.querySelectorAll('[data-tab-group][data-tab]')
   for (const $trigger of $triggers) {
-    $trigger.addEventListener('click', () => dispatch($trigger.dataset.tabGroup, $trigger.dataset.tab))
+    $trigger.addEventListener('click', (e) => {
+      e.preventDefault()
+      dispatch($trigger.dataset.tabGroup, $trigger.dataset.tab)
+    })
   }
 }
 
