@@ -1,12 +1,14 @@
 <x-homepage.default slug="how-to-submit">
     <x-notice
-        title="{{
-            str_replace(
-                '{$journalName}',
-                $currentContext->getLocalizedData('name'),
-                $activeTheme->getLocalizedOption('howToSubmitTitle'),
+        title="<h2>{!!
+            ViewHelper::sanitizeHtml(
+                str_replace(
+                    '{$journalName}',
+                    $currentContext->getLocalizedData('name'),
+                    $activeTheme->getLocalizedOption('howToSubmitTitle'),
+                )
             )
-        }}"
+        !!}</h2>"
     >
         <div class="html-text">
             {!!
