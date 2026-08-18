@@ -13,19 +13,6 @@ without
      * assume the user has access.
      */
     $hasAccess = $hasAccess ?? true;
-
-    /**
-     * Get the label for a galley, adding the galley's language
-     * when it differs from the current locale.
-     */
-    $getGalleyLabel = function (array $galley) use ($currentLocale): string {
-        $label = (string) $galley['label'];
-        if ($galley['locale'] && $galley['locale'] !== $currentLocale) {
-            $localeNames = \PKP\facades\Locale::getSubmissionLocaleDisplayNames([$galley['locale']]);
-            $label .= ' (' . ($localeNames[$galley['locale']] ?? $galley['locale']) . ')';
-        }
-        return $label;
-    };
 @endphp
 
 @if (count($primaryGalleys) === 1 && !$jatsDownloadUrl && !count($supplementaryGalleys))
@@ -53,7 +40,7 @@ without
                 <li>
                     @includeIf('components.galley-link', [
                         'galley' => $galley,
-                        'label' => $getGalleyLabel($galley),
+                        'label' => ContentHelper::galleyLabel($galley),
                         'hasAccess' => $hasAccess,
                     ])
                 </li>
@@ -70,7 +57,7 @@ without
                 <li>
                     @includeIf('components.galley-link', [
                         'galley' => $galley,
-                        'label' => $getGalleyLabel($galley),
+                        'label' => ContentHelper::galleyLabel($galley),
                         'hasAccess' => $hasAccess,
                     ])
                 </li>
