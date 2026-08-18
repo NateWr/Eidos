@@ -190,14 +190,13 @@
 
 .PkpOpenReview__competing-interests {
   padding: 0.75rem;
-  background: var(--color-block-background);
-  color: var(--color-block-text);
+  border: 1px solid;
   border-radius: var(--radius);
 }
 
 .PkpOpenReview__competing-interests-title {
   font-size: 1.125rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .PkpOpenReview__competing-interests-statement {
