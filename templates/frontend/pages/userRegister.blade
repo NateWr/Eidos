@@ -7,14 +7,9 @@
                 {{ __('plugins.themes.eidos.createAccount') }}
             </h1>
             <p class="system-desc">
-                @php
-                    $siteName = $currentContext
-                        ? $currentContext->getLocalizedName()
-                        : $site->getLocalizedTitle();
-                @endphp
                 {!!
                     __('plugins.themes.eidos.registerAt', [
-                        'at' => '<a href="' . ViewHelper::url(['page' => 'index']) . '">' . $siteName . '</a>'
+                        'at' => '<a href="' . ViewHelper::url(['page' => 'index']) . '">' . $contextName . '</a>'
                     ])
                 !!}
             </p>

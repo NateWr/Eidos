@@ -1,5 +1,4 @@
 @php
-    $siteName = $currentContext ? $currentContext->getLocalizedName() : $site->getLocalizedTitle();
     $dropdownId = 'header-mobile-dropdown';
 @endphp
 
@@ -9,7 +8,7 @@
             <a href="{{ ViewHelper::url(['page' => 'index']) }}" class="tab-focus">
                 @if ($displayPageHeaderLogo)
                     <h1 class="sr-only">
-                        {{ $siteName }}
+                        {{ $contextName }}
                     </h1>
                     <img
                         alt="@if(isset($displayPageHeaderLogo['alt'])){{ $displayPageHeaderLogo['alt'] }}@endif"
@@ -18,11 +17,11 @@
                     >
                 @else
                     @php
-                        $length = strlen($siteName);
+                        $length = strlen($contextName);
                         $size = $length <= 20 ? 'xs' : ($length <= 40 ? 'sm' : ($length <= 80 ? 'md' : 'lg'));
                     @endphp
                     <div class="header-mobile-name header-mobile-name-{{ $size }}">
-                        {{ $siteName }}
+                        {{ $contextName }}
                     </div>
                 @endif
             </a>

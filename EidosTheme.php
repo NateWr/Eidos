@@ -14,6 +14,7 @@ use PKP\plugins\interfaces\HasHomepageBlocks;
 use PKP\plugins\interfaces\HasMetadataBlocks;
 use PKP\plugins\PluginSettingsDAO;
 use PKP\plugins\ThemePlugin;
+use PKP\facades\ContentHelper;
 use PKP\view\Block;
 use PKP\view\HomepageBlocksRegistry;
 use PKP\view\MetadataBlocksRegistry;
@@ -43,6 +44,13 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
         $this->addViteAssets(['src/system.js'], ['contexts' => ['system']]);
         $this->addMenuArea(['primary', 'user', 'homepage', 'policy']);
         Hook::add('TemplateManager::display', [$this, 'addTemplateData']);
+
+        // Register the theme's own content helpers. The theme is captured
+        // in a variable because macro closures are bound to the Helpers
+        // instance when called.
+        $theme = $this;
+        ContentHelper::macro('stringSize', fn (string $str) => $theme->getStringSize($str));
+        ContentHelper::macro('blocks', fn (Collection $blocks, string $option) => $theme->getBlocks($blocks, $option));
     }
 
     public function getDisplayName() {
@@ -131,10 +139,8 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
      */
     public function addTemplateData(string $hookName, array $args): void
     {
-        view()->share('getStringSize', [$this, 'getStringSize']);
         view()->share('eidosUrl', $this->getPluginUrl());
         view()->share('usesCustomFonts', $this->optionsHelper->usesCustomFonts());
-        view()->share('getBlocks', [$this, 'getBlocks']);
 
         $templateMgr = $args[0];
         $template = $args[1];

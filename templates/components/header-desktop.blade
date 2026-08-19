@@ -50,7 +50,7 @@
                             <img class="header-desktop-logo"
                                 src="{{ $publicFilesDir }}/{{ $displayPageHeaderLogo['uploadName'] }}">
                         @else
-                            <div class="header-desktop-name header-desktop-name-{{ $getStringSize($contextName) }}">
+                            <div class="header-desktop-name header-desktop-name-{{ ContentHelper::stringSize($contextName) }}">
                                 {{ $contextName }}
                             </div>
                         @endif

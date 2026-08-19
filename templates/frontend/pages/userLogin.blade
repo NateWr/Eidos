@@ -7,14 +7,9 @@
                 {{ __('user.login') }}
             </h1>
             <p class="system-desc">
-                @php
-                    $siteName = $currentContext
-                        ? $currentContext->getLocalizedName()
-                        : $site->getLocalizedTitle();
-                @endphp
                 {!!
                     __('plugins.themes.eidos.loginTo', [
-                        'to' => '<a href="' . ViewHelper::url(['page' => 'index']) . '">' . $siteName . '</a>'
+                        'to' => '<a href="' . ViewHelper::url(['page' => 'index']) . '">' . $contextName . '</a>'
                     ])
                 !!}
             </p>

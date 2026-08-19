@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\LazyCollection;
 use PKP\context\Context;
 use PKP\galley\Galley;
+use PKP\facades\ContentHelper;
 use PKP\template\ViewHelper;
 
 class ArticleSummary extends Component
@@ -80,14 +81,9 @@ class ArticleSummary extends Component
             return [];
         }
 
-        $filterGalleys = view()->shared('filterGalleys');
-        $primaryFileGenreIds = view()->shared('primaryFileGenreIds');
-        $galleys = $filterGalleys(
+        return ContentHelper::primaryGalleys(
             $this->publication->getData('galleys'),
-            $primaryFileGenreIds($this->submission->getData('contextId')),
-            true
+            (int) $this->submission->getData('contextId')
         );
-
-        return $galleys;
     }
 }
