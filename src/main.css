@@ -47,6 +47,7 @@
 @import './css/components/metadata/_default.css';
 @import './css/components/metadata/license.css';
 @import './css/components/metadata/peer-review.css';
+@import './css/components/metadata/version.css';
 @import './css/components/menu.css';
 @import './css/components/menu-dropdowns.css';
 @import './css/components/notice.css';

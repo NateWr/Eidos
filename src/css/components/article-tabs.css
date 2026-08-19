@@ -116,7 +116,7 @@
   justify-content: center;
 }
 
-.article-tabs [data-reka-popper-content-wrapper] {
+.article-tabs-list [data-reka-popper-content-wrapper] {
   position: relative !important;
   transform: none !important;
   min-width: unset !important;
@@ -241,7 +241,7 @@
   }
 
   .article-tabs-popover-trigger,
-  .article-tabs [data-reka-popper-content-wrapper] {
+  .article-tabs-list [data-reka-popper-content-wrapper] {
     display: none;
   }
 
