@@ -40,7 +40,9 @@ This is the layout used for most pages on the site.
         ])
     }}
 >
-    @includeIf('components.skip-links')
+    <x-eidostheme::skip-links>
+        {{ $skiplinks }}
+    </x-eidostheme::skip-links>
 
     <x-eidostheme::header-mobile />
     <x-eidostheme::header-desktop />

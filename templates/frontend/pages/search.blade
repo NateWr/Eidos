@@ -28,6 +28,17 @@
 <x-eidostheme::layout
     title="{{ $pageTitle }}"
 >
+    <x-slot:skiplinks>
+        @if ($query && $results->total())
+            <a class="skip-link" href="#skip-to-search-results">
+                {{ __('plugins.themes.eidos.skip.searchResults') }}
+            </a>
+        @endif
+        <a class="skip-link" href="#skip-to-search-form">
+            {{ __('plugins.themes.eidos.skip.searchForm') }}
+        </a>
+    </x-slot>
+
     <main class="page-container page-container-lg page-search @if($query && $results->total()) page-search-has-results @endif" id="skip-to-main">
 
         <section class="page-search-header">
