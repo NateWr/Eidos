@@ -4,6 +4,7 @@ namespace APP\plugins\themes\eidos\classes;
 
 use APP\core\Application;
 use APP\plugins\themes\eidos\EidosTheme;
+use APP\template\TemplateManager;
 use APP\view\HomepageBlocksRegistry;
 use PKP\context\Context;
 use PKP\view\HomepageBlock;
@@ -42,6 +43,20 @@ class HomepageBlocks
                 title: $this->context
                     ? __('plugins.themes.eidos.option.homepageBlocks.aboutContext')
                     : __('plugins.themes.eidos.option.homepageBlocks.aboutSite'),
+            )
+        );
+        $blocks->register(
+            new HomepageBlock(
+                component: 'homepage.issue-toc',
+                title: __('manager.homepageBlocks.issueToc'),
+                forSite: false,
+                loader: function() {
+                    $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
+                    $templateMgr->assign([
+                        'showArticleGalleysInToc' => false,
+                        'showArticleCoversInToc' => false,
+                    ]);
+                },
             )
         );
         $blocks->register(
