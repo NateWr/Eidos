@@ -14,6 +14,13 @@
             'tCopied' => __('common.copied'),
         ];
     }
+
+    /**
+     * Split the publication's galleys into primary and supplementary
+     * groups for the download button.
+     */
+    $primaryGalleys = ContentHelper::primaryGalleys($publication->getData('galleys'), $currentContext->getId());
+    $supplementaryGalleys = ContentHelper::supplementaryGalleys($publication->getData('galleys'), $currentContext->getId());
 @endphp
 
 <div class="article-sidebar">
@@ -41,7 +48,7 @@
     </div>
 
     @php
-        $blocks = $getBlocks($metadataBlocks, 'sidebarArticleMetadata');
+        $blocks = ContentHelper::blocks($metadataBlocks, 'sidebarArticleMetadata');
     @endphp
     @if (count($blocks))
         @foreach ($blocks as $block)

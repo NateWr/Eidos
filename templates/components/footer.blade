@@ -1,12 +1,11 @@
 @php
-    $siteName = $currentContext ? $currentContext->getLocalizedName() : $site->getLocalizedTitle();
     $siteDescription = $currentContext ? $currentContext->getLocalizedDescription() : $site->getLocalizedData('about')
 @endphp
 
 <footer class="footer">
     <div class="footer-inner" id="skip-to-footer">
         <h2 class="footer-block footer-name">
-            {{ $siteName }}
+            {{ $contextName }}
         </h2>
         <div class="footer-blocks">
             <div class="footer-block footer-block-masthead">

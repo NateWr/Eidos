@@ -439,7 +439,7 @@ class Options
     protected function addHomepageBlockOption(): void
     {
         $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
-        $blocks = $templateMgr->homepageBlocks->get();
+        $blocks = \PKP\facades\Frontend::homepageBlocks()->get();
 
         $this->theme->addOption('homepageBlocks', 'FieldOptions', [
             'type' => 'checkbox',
@@ -554,7 +554,7 @@ class Options
         }
 
         $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
-        $blocks = $templateMgr->metadataBlocks->get();
+        $blocks = \PKP\facades\Frontend::metadataBlocks()->get();
 
         $this->theme->addOption('highlightArticleMetadata', 'FieldOptions', [
             'type' => 'checkbox',
@@ -582,7 +582,7 @@ class Options
         }
 
         $templateMgr = TemplateManager::getManager(Application::get()->getRequest());
-        $blocks = $templateMgr->metadataBlocks->get();
+        $blocks = \PKP\facades\Frontend::metadataBlocks()->get();
 
         $this->theme->addOption('sidebarArticleMetadata', 'FieldOptions', [
             'type' => 'checkbox',
