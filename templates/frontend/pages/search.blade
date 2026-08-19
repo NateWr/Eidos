@@ -54,14 +54,14 @@
         </section>
 
         @if ($query && $results->total())
-            <section class="page-search-results">
+            <section class="page-search-results" id="skip-to-search-results">
                 <h2 class="sr-only">
                     {{ __('search.searchResults') }}
                 </h2>
                 <div class="page-search-results-header">
                     <div class="page-search-showing">
                         @include('components/icons/list')
-                        <span class="page-search-showing-text">
+                        <span class="page-search-showing-text" role="alert">
                             {!! $showing !!}
                         </span>
                     </div>
@@ -93,7 +93,7 @@
             </section>
         @endif
 
-        <div class="page-search-form">
+        <div class="page-search-form" id="skip-to-search-form">
             @if($query)
                 <h2 class="page-search-form-title">
                     {{ __('plugins.themes.eidos.search.changeSearch') }}

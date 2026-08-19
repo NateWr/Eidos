@@ -11,6 +11,16 @@
     <a class="skip-link skip-link-desktop-only" href="#skip-to-user-nav-desktop">
         {{ __('plugins.themes.eidos.skip.userNav') }}
     </a>
+    @if ($requestedPage === 'search')
+        @if ($query)
+            <a class="skip-link" href="#skip-to-search-results">
+                {{ __('plugins.themes.eidos.skip.searchResults') }}
+            </a>
+        @endif
+        <a class="skip-link" href="#skip-to-search-form">
+            {{ __('plugins.themes.eidos.skip.searchForm') }}
+        </a>
+    @endif
     <a class="skip-link" href="#skip-to-footer">
         {{ __('navigation.skip.footer') }}
     </a>

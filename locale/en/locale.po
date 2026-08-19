@@ -109,6 +109,12 @@ msgstr "Back to {$title}"
 msgid "plugins.themes.eidos.skip.userNav"
 msgstr "Skip to login and user account menu"
 
+msgid "plugins.themes.eidos.skip.searchForm"
+msgstr "Skip to search form"
+
+msgid "plugins.themes.eidos.skip.searchResults"
+msgstr "Skip to search results"
+
 msgid "plugins.themes.eidos.option.header.label"
 msgstr "Header"
 
