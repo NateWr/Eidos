@@ -1,11 +1,11 @@
-@if ($currentPublication->getId() !== $publication->getId())
+@if ($currentPublication->getId() !== $publicationProps['id'])
     <x-notice>
         <div>
             {!!
                 __(
                     'submission.outdatedVersion',
                     [
-                        'datePublished' => ViewHelper::dateFormat($publication->getData('datePublished'), $dateFormatLong),
+                        'datePublished' => ViewHelper::dateFormat($publicationProps['datePublished'], $dateFormatLong),
                         'urlRecentVersion' => ViewHelper::url([
                             'page' => 'article',
                             'op' => 'view',

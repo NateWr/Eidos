@@ -1,11 +1,11 @@
 @php
-    $pageDescription = $publication->getLocalizedData('plainLanguageSummary')
-        ? $publication->getLocalizedData('plainLanguageSummary')
-        : $publication->getLocalizedData('abstract');
+    $pageDescription = ViewHelper::localize($publicationProps['plainLanguageSummary'])
+        ? ViewHelper::localize($publicationProps['plainLanguageSummary'])
+        : ViewHelper::localize($publicationProps['abstract']);
 @endphp
 
 <x-eidostheme::layout
-    title="{{ $publication->getLocalizedFullTitle() }}"
+    title="{{ ViewHelper::html2text(ViewHelper::localize($publicationProps['fullTitle'])) }}"
     description="{{ ViewHelper::html2text($pageDescription) }}"
 >
     <article class="page-container page-article" id="skip-to-main">

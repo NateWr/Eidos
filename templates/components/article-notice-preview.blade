@@ -1,4 +1,4 @@
-@if ($publication->getData('status') !== PKP\publication\PKPPublication::STATUS_PUBLISHED)
+@if ($publicationProps['status'] !== PKP\publication\PKPPublication::STATUS_PUBLISHED)
     <x-notice>
         <div>
             {!!

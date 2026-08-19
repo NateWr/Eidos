@@ -14,16 +14,29 @@
             'tCopied' => __('common.copied'),
         ];
     }
+
+    /**
+     * Split the publication's galleys into primary and supplementary
+     * groups. A galley is primary when it points to a remote URL or
+     * its file has a genre that is neither dependent nor supplementary.
+     */
+    $galleyProps = collect($publicationProps['galleys']);
+    $primaryGalleyProps = $galleyProps
+        ->filter(fn ($galley) => $galley['urlRemote']
+            || ($galley['file'] && !$galley['file']['genreIsDependent'] && !$galley['file']['genreIsSupplementary']))
+        ->values();
+    $supplementaryGalleyProps = $galleyProps
+        ->filter(fn ($galley) => !$galley['urlRemote']
+            && $galley['file'] && $galley['file']['genreIsSupplementary'])
+        ->values();
 @endphp
 
 <div class="article-sidebar">
     <div class="article-sidebar-top">
         @include('components/article-download', [
-            'primaryGalleys' => $primaryGalleys,
+            'primaryGalleys' => $primaryGalleyProps,
             'jatsDownloadUrl' => $jatsDownloadUrl,
-            'supplementaryGalleys' => $supplementaryGalleys,
-            'publication' => $publication,
-            'submission' => $article,
+            'supplementaryGalleys' => $supplementaryGalleyProps,
         ])
         @if($citeConfig)
             <x-dropdown

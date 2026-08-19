@@ -4,11 +4,14 @@
      * no specific context is passed.
      */
     $galleyContext = $galleyContext ?? $currentContext;
+    $class = $class ?? '';
+    $labelledBy = $labelledBy ?? null;
 
     /**
      * Determine whether the user has access to this galley
      */
-    $access = $hasAccess || ($restrictOnlyPdf && !$galley->isPdfGalley());
+    $mimetype = $galley['file']['mimetype'] ?? null;
+    $access = $hasAccess || ($restrictOnlyPdf && $mimetype !== 'application/pdf');
 
     /**
      * Get the icon to display with this galley
@@ -16,10 +19,10 @@
     $icon = 'other';
     if (!$access) {
         $icon = 'locked';
-    } else if ($galley->getData('urlRemote')) {
+    } else if ($galley['urlRemote']) {
         $icon = 'remote';
     } else {
-        $type = app()->get('file')->getDocumentType($galley->getFileType());
+        $type = app()->get('file')->getDocumentType($mimetype);
         if ($type === \PKP\file\FileManager::DOCUMENT_TYPE_PDF) {
             $icon = 'pdf';
         } else if ($type === \PKP\file\FileManager::DOCUMENT_TYPE_HTML || $type === 'application/xhtml+xml') {
@@ -28,19 +31,6 @@
             $icon = 'spreadsheet';
         }
     }
-
-    /**
-     * Get the url to this galley
-     */
-    $url = ViewHelper::url([
-        'context' => $galleyContext?->getPath(),
-        'page' => 'article',
-        'op' => 'view',
-        'path' => [
-            $publication->getData('urlPath') ?? $submission->getBestId(),
-            $galley->getBestGalleyId(),
-        ],
-    ]);
 
     /**
      * Get the price if one is set
@@ -56,7 +46,7 @@
 
 <a
     class="{{ join(' ', [$class, 'galley-link']) }}"
-    href="{{ $url }}"
+    href="{{ $galley['urlPublished'] }}"
     @if ($labelledBy)
         aria-labelledBy="{{ $labelledBy }}"
     @endif
