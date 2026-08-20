@@ -25,7 +25,7 @@ This template displays a NavigationMenu in a vertical list.
                 </a>
                 @if ($item->navigationMenuItem->getIsChildVisible())
                     <div class="menu-submenu">
-                        <x-eidostheme::menu :items="$item->children" />
+                        <x-menu :items="$item->children" />
                     </div>
                 @endif
             </li>

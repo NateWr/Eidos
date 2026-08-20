@@ -5,6 +5,31 @@ Default Layout
 This is the layout used for most pages on the site.
 
 --}}
+@php
+    $request = \APP\core\Application::get()->getRequest();
+    $page = $request->getRequestedPage();
+    $op = $request->getRequestedOp();
+
+    /**
+     * Append context/site name to the page title
+     * unless we're on the homepage
+     */
+    if ($page !== 'index') {
+        $title = $title . __('common.titleSeparator') . $contextName;
+    }
+
+    /**
+     * Automatically add classes to the <body> tag
+     * which indicate the page/op of the request
+     */
+    $bodyClasses = $bodyClasses ?? [];
+    if ($page) {
+        $bodyClasses[] = "pkp-page-{$page}";
+    }
+    if ($op) {
+        $bodyClasses[] = "pkp-op-{$op}";
+    }
+@endphp
 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', $currentLocale) }}" xml:lang="{{ str_replace('_', '-', $currentLocale) }}">
@@ -19,7 +44,7 @@ This is the layout used for most pages on the site.
     @loadHeader(['context' => 'frontend'])
     @loadStylesheet(['context' => 'frontend'])
     @if (!$usesCustomFonts)
-        <x-eidostheme::default-fonts />
+        <x-default-fonts />
     @endif
     @if ($head && !$head->isEmpty())
         {{ $head }}
@@ -30,7 +55,7 @@ This is the layout used for most pages on the site.
     {{
         $attributes->merge([
             'class' => join(' ', [
-                $bodyClasses,
+                join(' ', $bodyClasses),
                 'site-width-' . $activeTheme->getOption('siteWidth'),
                 'font-' . ($usesCustomFonts ? $activeTheme->getOption('font') : 'default'),
                 'font-titles-' . ($usesCustomFonts ? $activeTheme->getOption('titlesFont') : 'default'),
@@ -40,16 +65,16 @@ This is the layout used for most pages on the site.
         ])
     }}
 >
-    <x-eidostheme::skip-links>
+    <x-skip-links>
         {{ $skiplinks }}
     </x-eidostheme::skip-links>
 
-    <x-eidostheme::header-mobile />
-    <x-eidostheme::header-desktop />
+    <x-header-mobile />
+    <x-header-desktop />
 
     {{ $slot }}
 
-    <x-eidostheme::footer />
+    <x-footer />
 
     @loadScript(['context' => 'frontend'])
 </body>

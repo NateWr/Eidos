@@ -25,7 +25,7 @@
     }
 @endphp
 
-<x-eidostheme::layout
+<x-layout
     title="{{ $pageTitle }}"
 >
     <x-slot:skiplinks>
@@ -81,9 +81,9 @@
                 <ul class="page-search-results-list">
                     @foreach($results as $result)
                         <li>
-                            <x-eidostheme::article-summary
+                            <x-article-summary
                                 heading="h3"
-                                :context="$result['context']"
+                                :contextPath="$result['context']->getPath()"
                                 :submission="$result['submission']"
                                 :showAbstract="false"
                             />

@@ -9,6 +9,8 @@ use APP\plugins\themes\eidos\classes\ViteLoader;
 use APP\template\TemplateManager;
 use Illuminate\Support\Collection;
 use PKP\db\DAORegistry;
+use PKP\i18n\LocaleMetadata;
+use PKP\facades\Locale;
 use PKP\plugins\Hook;
 use PKP\plugins\interfaces\HasHomepageBlocks;
 use PKP\plugins\interfaces\HasMetadataBlocks;
@@ -131,10 +133,12 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
      */
     public function addTemplateData(string $hookName, array $args): void
     {
-        view()->share('getStringSize', [$this, 'getStringSize']);
+        view()->share('getStringSize', $this->getStringSize(...));
+        view()->share('contextName', $this->contextName());
         view()->share('eidosUrl', $this->getPluginUrl());
         view()->share('usesCustomFonts', $this->optionsHelper->usesCustomFonts());
-        view()->share('getBlocks', [$this, 'getBlocks']);
+        view()->share('getBlocks', $this->getBlocks(...));
+        view()->share('locales', $this->getLocales());
 
         $templateMgr = $args[0];
         $template = $args[1];
@@ -188,5 +192,37 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
             }
         }
         return $matchingBlocks;
+    }
+
+    /**
+     * Get the name of the context or site, depending
+     * on what kind of page we're viewing.
+     */
+    public function contextName() : string
+    {
+        $context = $this->request->getContext();
+        return $context
+            ? $context->getLocalizedName()
+            : $this->request->getSite()->getLocalizedTitle();
+    }
+
+    /**
+     * Get an array of all locales supported by the
+     * current context or site.
+     */
+    public function getLocales(): array
+    {
+        $request = $this->request;
+        $context = $request->getContext();
+
+        $locales = Locale::getFormattedDisplayNames(
+            isset($context)
+                ? $context->getSupportedLocales()
+                : $request->getSite()->getSupportedLocales(),
+            Locale::getLocales(),
+            LocaleMetadata::LANGUAGE_LOCALE_ONLY
+        );
+
+        return $locales;
     }
 }

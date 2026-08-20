@@ -13,6 +13,12 @@ without
      * assume the user has access.
      */
     $hasAccess = $hasAccess ?? true;
+
+    /**
+     * Assume the galleys are in the current context if
+     * no specific context is passed.
+     */
+    $galleyContextPath = $galleyContextPath ?? $currentContext->getPath();
 @endphp
 
 @if (count($primaryGalleys) === 1 && !$jatsDownloadUrl && !count($supplementaryGalleys))
@@ -22,6 +28,7 @@ without
         'label' => __('common.download'),
         'publication' => $publication,
         'submission' => $submission,
+        'galleyContextPath' => $galleyContextPath,
         'hasAccess' => $hasAccess,
     ])
 
@@ -45,6 +52,7 @@ without
                         'label' => $galley->getGalleyLabel(),
                         'publication' => $publication,
                         'submission' => $submission,
+                        'galleyContextPath' => $galleyContextPath,
                         'hasAccess' => $hasAccess,
                     ])
                 </li>
@@ -64,6 +72,7 @@ without
                         'label' => $galley->getGalleyLabel(),
                         'publication' => $publication,
                         'submission' => $submission,
+                        'galleyContextPath' => $galleyContextPath,
                         'hasAccess' => $hasAccess,
                     ])
                 </li>

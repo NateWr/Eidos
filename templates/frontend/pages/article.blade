@@ -4,7 +4,7 @@
         : $publication->getLocalizedData('abstract');
 @endphp
 
-<x-eidostheme::layout
+<x-layout
     title="{{ $publication->getLocalizedFullTitle() }}"
     description="{{ ViewHelper::html2text($pageDescription) }}"
 >
@@ -21,4 +21,4 @@
         </div>
 
     </article>
-</x-eidostheme::layout>
+</x-layout>

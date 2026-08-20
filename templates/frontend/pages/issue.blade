@@ -1,5 +1,5 @@
 @if(!$issue)
-    <x-eidostheme::layout-basic
+    <x-layout-basic
         title="{{  __('current.noCurrentIssue') }}"
     >
         <x-notice>
@@ -7,7 +7,7 @@
         </x-notice>
     </x-eidostheme::layout-basic>
 @else
-    <x-eidostheme::layout
+    <x-layout
         title="{{ $issue->getIssueIdentification() }}"
         description="{{ $issue->getLocalizedDescription() }}"
     >

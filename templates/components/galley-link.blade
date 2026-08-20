@@ -3,7 +3,7 @@
      * Assume the galley is in the current context if
      * no specific context is passed.
      */
-    $galleyContext = $galleyContext ?? $currentContext;
+    $galleyContextPath = $galleyContextPath ?? $currentContext->getPath();
 
     /**
      * Determine whether the user has access to this galley
@@ -33,7 +33,7 @@
      * Get the url to this galley
      */
     $url = ViewHelper::url([
-        'context' => $galleyContext?->getPath(),
+        'context' => $galleyContextPath,
         'page' => 'article',
         'op' => 'view',
         'path' => [

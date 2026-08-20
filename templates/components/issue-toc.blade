@@ -158,7 +158,7 @@
                         <ul class="issue-toc-articles">
                             @foreach ($section['articles'] as $article)
                                 <li class="issue-toc-article">
-                                    <x-eidostheme::article-summary
+                                    <x-article-summary
                                         :heading="$articleHeading"
                                         :submission="$article"
                                         :show-cover="$showArticleCovers"

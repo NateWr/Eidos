@@ -10,7 +10,7 @@
     $urlPattern = ViewHelper::url(array_merge($urlProps, ['categoryPage' => '__page__']))
 @endphp
 
-<x-eidostheme::layout
+<x-layout
     title="{{ $category->getLocalizedTitle() }}"
     description="{{ $category->getLocalizedDescription() }}"
 >
@@ -133,7 +133,7 @@
                 <ul class="page-category-items-list">
                     @foreach ($results as $result)
                         <li>
-                            <x-eidostheme::article-summary
+                            <x-article-summary
                                 heading="h3"
                                 :submission="$result['submission']"
                                 :showAbstract="false"

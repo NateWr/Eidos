@@ -1,8 +1,21 @@
+@php
+    $publicationIds = [];
+    if ($currentContext?->getData('printIssn')) {
+        $publicationIds[] = [__('journal.issn')] = $currentContext->getData('printIssn');
+    }
+    if ($currentContext?->getData('onlineIssn')) {
+        $publicationIds[] = [__('metadata.property.displayName.eissn')] = $currentContext->getData('onlineIssn');
+    }
+    if ($currentContext?->getData(Context::SETTING_DOI_PREFIX)) {
+        $publicationIds[] = [__('manager.dois.title')] = $currentContext->getData(Context::SETTING_DOI_PREFIX);
+    }
+@endphp
+
 <div class="header-desktop-pubids">
-    @foreach ($publicationIds as $publicationId)
+    @foreach ($publicationIds as $name => $value)
         <span class="header-desktop-pubid">
-            <span class="header-desktop-pubid-name">{{ $publicationId['name'] }}</span>
-            <span>{{ $publicationId['value'] }}</span>
+            <span class="header-desktop-pubid-name">{{ $name }}</span>
+            <span>{{ $value }}</span>
         </span>
     @endforeach
 </div>
