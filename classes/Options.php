@@ -107,6 +107,7 @@ class Options
         $this->addHomepageBlockOption();
         $this->addHowToSubmitBlock();
         $this->addLatestArticlesBlock();
+        $this->addSearchBlock();
         $this->addBrowseByCategoryBlock();
         $this->addArticleHighlightMetadataOption();
         $this->addArticleSidebarMetadataOption();
@@ -515,6 +516,30 @@ class Options
                 $this->primaryLocale => $this->context
                     ? __('submissions.published.latest.description')
                     : __('submissions.published.latest.description.site'),
+            ],
+        ]);
+    }
+
+    /**
+     * Add text fields for the search homepage block
+     */
+    protected function addSearchBlock(): void
+    {
+        $this->theme->addOption('searchBlockTitle', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.homepageBlocks.searchBlockTitle.label'),
+            'description' => __('plugins.themes.eidos.option.homepageBlocks.searchBlockTitle.desc'),
+            'isMultilingual' => true,
+            'default' => [
+                $this->primaryLocale => __('submissions.search.findArticle'),
+            ],
+        ]);
+        $this->theme->addOption('searchBlockDescription', 'FieldText', [
+            'label' => __('plugins.themes.eidos.option.homepageBlocks.searchBlockDescription.label'),
+            'description' => __('plugins.themes.eidos.option.homepageBlocks.searchBlockDescription.desc'),
+            'isMultilingual' => true,
+            'size' => 'large',
+            'default' => [
+                $this->primaryLocale => __('submissions.search.searchArchiveCount'),
             ],
         ]);
     }

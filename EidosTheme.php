@@ -155,6 +155,11 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
                 : Application::get()->getRequest()->url(null, 'search');
             $latestPublicationsTitle = $this->getLocalizedOption('latestArticlesTitle');
             $latestPublicationsDescription = str_replace('{$url}', $urlAllContent, $this->getLocalizedOption('latestArticlesDescription'));
+            $searchBlockDescription = str_replace(
+                '{$count}',
+                $templateMgr->getTemplateVars('searchBlockCountAllPublications') ?? '',
+                $this->getLocalizedOption('searchBlockDescription')
+            );
             $templateMgr->assign([
                 'latestPublicationsTitle' => $latestPublicationsTitle,
                 'latestPublicationsDescription' => $latestPublicationsDescription,
@@ -164,6 +169,8 @@ class EidosTheme extends ThemePlugin implements HasMetadataBlocks, HasHomepageBl
                 'browseByCategoryDescription' => str_replace('{$url}', $urlAllContent, $this->getLocalizedOption('browseByCategoryDescription')),
                 'showArticleGalleysInToc' => $this->getOption('issueToc') === 'galleys',
                 'showArticleCoversInToc' => $this->getOption('issueToc') === 'covers',
+                'searchBlockTitle' => $this->getLocalizedOption('searchBlockTitle'),
+                'searchBlockDescription' => $searchBlockDescription,
             ]);
         }
     }

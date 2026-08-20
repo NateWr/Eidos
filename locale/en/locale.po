@@ -55,9 +55,6 @@ msgstr "Showing {$start}-{$end} articles matching the phrase <strong>{$phrase}</
 msgid "plugins.themes.eidos.search.noMatches"
 msgstr "No matches were found for the phrase <strong>{$phrase}</strong>."
 
-msgid "plugins.themes.eidos.search.placeholder"
-msgstr "Search by author, title or keyword"
-
 msgid "plugins.themes.eidos.search.changeSearch"
 msgstr "Change Your Search"
 
@@ -282,6 +279,18 @@ msgstr "Latest Publications - Description"
 
 msgid "plugins.themes.eidos.option.homepageBlocks.latestArticlesDescription.desc"
 msgstr "Change the short descripion shown for the Latest Publications blocks."
+
+msgid "plugins.themes.eidos.option.homepageBlocks.searchBlockTitle.label"
+msgstr "Search Block - Title"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.searchBlockTitle.desc"
+msgstr "Change the title shown for the Search block."
+
+msgid "plugins.themes.eidos.option.homepageBlocks.searchBlockDescription.label"
+msgstr "Search Block - Description"
+
+msgid "plugins.themes.eidos.option.homepageBlocks.searchBlockDescription.desc"
+msgstr "Change the short descripion shown for the Search block."
 
 msgid "plugins.themes.eidos.option.homepageBlocks.browseByCategoryTitle.label"
 msgstr "Browse By Category - Title"
