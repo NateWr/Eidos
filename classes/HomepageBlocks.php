@@ -32,14 +32,14 @@ class HomepageBlocks
     {
         $blocks->register(
             new HomepageBlock(
-                component: 'homepage.how-to-submit',
+                component: 'homepage-blocks.how-to-submit',
                 title: __('plugins.themes.eidos.option.homepageBlocks.how-to-submit'),
                 forSite: false,
             )
         );
         $blocks->register(
             new HomepageBlock(
-                component: 'homepage.about',
+                component: 'homepage-blocks.about',
                 title: $this->context
                     ? __('plugins.themes.eidos.option.homepageBlocks.aboutContext')
                     : __('plugins.themes.eidos.option.homepageBlocks.aboutSite'),
@@ -47,7 +47,7 @@ class HomepageBlocks
         );
         $blocks->register(
             new HomepageBlock(
-                component: 'homepage.issue-toc',
+                component: 'homepage-blocks.issue-toc',
                 title: __('manager.homepageBlocks.issueToc'),
                 forSite: false,
                 loader: function() {
@@ -61,7 +61,7 @@ class HomepageBlocks
         );
         $blocks->register(
             new HomepageBlock(
-                component: 'homepage.contexts',
+                component: 'homepage-blocks.contexts',
                 title: __('plugins.themes.eidos.option.homepageBlocks.contexts'),
                 forContext: false,
             )

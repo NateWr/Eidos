@@ -19,7 +19,7 @@ and registration, error messages, etc.
     @endif
     @loadHeader(['context' => 'system'])
     @loadStylesheet(['context' => 'system'])
-    @includeIf('components/default-fonts')
+    <x-header.default-fonts />
     @if ($head && !$head->isEmpty())
         {{ $head }}
     @endif

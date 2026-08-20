@@ -20,7 +20,7 @@
     $class = $image ? 'homepage-block-about-has-image' : '';
 @endphp
 
-<x-homepage.default
+<x-homepage-blocks.default
     slug="about"
     :class="$class"
 >
@@ -44,4 +44,4 @@
         @endif
         @loadMenu(['name' => 'homepage', 'id' => 'homepage-menu', 'path' => 'components/menu'])
     </div>
-</x-homepage.default>
+</x-homepage-blocks.default>

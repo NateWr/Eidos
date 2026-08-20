@@ -16,7 +16,7 @@
     $htmlUrl = ViewHelper::url($urlParams);
 @endphp
 
-<x-layout-galley
+<x-layout.galley
     title="{{ $galleyTitle }}"
     submissionTitle="{{ $publication->getLocalizedFullTitle() }}"
     bodyClasses="page-galley page-galley-html"
@@ -38,4 +38,4 @@
         allowfullscreen
         webkitallowfullscreen
     ></iframe>
-</x-eidostheme::layout-galley>
+</x-layout.galley>

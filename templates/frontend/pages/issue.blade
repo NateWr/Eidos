@@ -1,11 +1,11 @@
 @if(!$issue)
-    <x-layout-basic
+    <x-layout.basic
         title="{{  __('current.noCurrentIssue') }}"
     >
         <x-notice>
             {{ __('current.noCurrentIssueDesc') }}
         </x-notice>
-    </x-eidostheme::layout-basic>
+    </x-layout.basic>
 @else
     <x-layout
         title="{{ $issue->getIssueIdentification() }}"
@@ -19,5 +19,5 @@
                 'showArticleCovers' => $activeTheme->getOption('issueToc') === 'covers',
             ])
         </main>
-    </x-eidostheme::layout>
+    </x-layout>
 @endif

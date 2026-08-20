@@ -1,5 +1,5 @@
 @if($issue)
-    <x-homepage.default slug="issue-toc">
+    <x-homepage-blocks.default slug="issue-toc">
         <h2 class="sr-only">
             {{ __('journal.currentIssue') }}
         </h2>
@@ -9,5 +9,5 @@
             'showArticleGalleys' => $showArticleGalleysInToc,
             'showArticleCovers' => $showArticleCoversInToc,
         ])
-    </x-homepage.default>
+    </x-homepage-blocks.default>
 @endif

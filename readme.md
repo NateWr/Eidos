@@ -32,25 +32,25 @@ Uses the `Layout` component to pass page title, description, meta tags, etc to p
 
 ```
 <!-- indexJournal.blade -->
-<x-eidostheme::layout
+<x-layout
     title="{{ $currentContext->getLocalizedName() }}"
     description="{{ $currentContext->getLocalizedData('description') }}"
 >
     <h1>Page</h1>
-</x-eidostheme::layout>
+</x-layout>
 ```
 
 [Attributes](https://laravel.com/docs/11.x/blade#component-attributes) passed to the layout will be assigned to the `<body>` tag. Some attributes are defined in `layout.blade`.
 
 ```
 <!-- indexJournal.blade -->
-<x-eidostheme::layout
+<x-layout
     title="{{ $currentContext->getLocalizedName() }}"
     description="{{ $currentContext->getLocalizedData('description') }}"
     class="my-custom-page-class"
 >
     <h1>Page</h1>
-</x-eidostheme::layout>
+</x-layout>
 ```
 
 ```
@@ -61,7 +61,7 @@ Uses the `Layout` component to pass page title, description, meta tags, etc to p
 A `head` [slot](https://laravel.com/docs/11.x/blade#slots) exists to pass custom content for the `<head>`.
 
 ```
-<x-eidostheme::layout
+<x-layout
     title="{{ $currentContext->getLocalizedName() }}"
     description="{{ $currentContext->getLocalizedData('description') }}"
 >
@@ -71,7 +71,7 @@ A `head` [slot](https://laravel.com/docs/11.x/blade#slots) exists to pass custom
     </x-slot:head>
 
     <h1>Page</h1>
-</x-eidostheme::layout>
+</x-layout>
 ```
 
 ### Article Metadata Blocks
@@ -133,12 +133,12 @@ Use the `$headingTag` variable to use the correct `<h*>` tag when displaying thi
 </div>
 ```
 
-Use the `<x-metadata.default>` component to show the title and content in a consistent format.
+Use the `<x-metadata-blocks.default>` component to show the title and content in a consistent format.
 
 ```php
 {{-- templates/components/metadata/keywords.blade --}}
 
-<x-metadata.default
+<x-metadata-blocks.default
     id="keywords"
     title="{{ __('article.subject') }}"
     :$headingTag
@@ -146,7 +146,7 @@ Use the `<x-metadata.default>` component to show the title and content in a cons
     @foreach ($publication->getLocalizedData('keywords') as $keyword)
         {{ $keyword['name'] }}@if(!$loop->last){{ __('common.commaListSeparator') }}@endif
     @endforeach
-</x-metadata.default>
+</x-metadata-blocks.default>
 ```
 
 Themes can register their own article metadata blocks by implementing the `HasMetadataBlocks` plugin interface.
@@ -170,7 +170,7 @@ class ExampleTheme extends ThemePlugin implements HasMetadataBlocks
                  *
                  * @see https://laravel.com/docs/11.x/blade#anonymous-components
                  */
-                component: 'metadata.example',
+                component: 'metadata-blocks.example',
             )
         );
     }

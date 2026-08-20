@@ -137,14 +137,14 @@
     </div>
     @if (count($primaryGalleys) || count($supplementaryGalleys))
         <div class="article-summary-galley-root">
-            @include('components/article-download', [
-                'primaryGalleys' => $primaryGalleys,
-                'jatsDownloadUrl' => '',
-                'supplementaryGalleys' => $supplementaryGalleys,
-                'publication' => $publication,
-                'submission' => $submission,
-                'galleyContextPath' => $contextPath
-            ])
+            <x-article.download
+                :primaryGalleys="$primaryGalleys"
+                jatsDownloadUrl=""
+                :supplementaryGalleys="$supplementaryGalleys"
+                :publication="$publication"
+                :submission="$submission"
+                :galleyContextPath="$contextPath"
+            />
         </div>
     @endif
 </div>

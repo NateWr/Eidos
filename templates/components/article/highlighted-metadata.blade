@@ -2,7 +2,7 @@
     $blocks = $getBlocks($metadataBlocks, 'highlightArticleMetadata');
 @endphp
 
-@if ($blocks)
+@if ($blocks->count())
     <div class="article-highlighted-metadata">
         <div class="metadata-blocks-table">
             @foreach ($blocks as $block)

@@ -1,4 +1,4 @@
-<x-layout-galley
+<x-layout.galley
     title="{{ $galleyTitle }}"
     submissionTitle="{{ $publication->getLocalizedFullTitle() }}"
     bodyClasses="page-galley page-galley-pdf"
@@ -29,4 +29,4 @@
             el.setAttribute('src', '{{ $pluginUrl }}/pdf.js/web/viewer.html?file=' + encodeURIComponent('{{ $pdfUrl }}'));
         }
     </script>
-</x-eidostheme::layout-galley>
+</x-layout.galley>

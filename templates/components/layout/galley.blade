@@ -20,7 +20,7 @@ full-text PDF and HTML files.
     @loadHeader(['context' => 'frontend'])
     @loadStylesheet(['context' => 'frontend'])
     @if (!$usesCustomFonts)
-        <x-default-fonts />
+        <x-header.default-fonts />
     @endif
     @if ($head && !$head->isEmpty())
         {{ $head }}

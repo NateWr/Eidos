@@ -1,5 +1,5 @@
 @if (!$metricsViews || !$metricsDownloads)
-    <x-metadata.default
+    <x-metadata-blocks.default
         slug="metrics"
         title="{{ __('plugins.themes.eidos.metrics') }}"
         :$headingTag
@@ -16,5 +16,5 @@
                 )
             !!}
         </div>
-    </x-metadata.default>
+    </x-metadata-blocks.default>
 @endif

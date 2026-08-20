@@ -2,7 +2,7 @@
     $tabs = [
         [
             'id' => 'article',
-            'template' => 'components/article-tab-article',
+            'template' => 'components/article/tab-article',
             'icon' => 'components/icons/menubar-article',
             'name' => __('article.article'),
             'count' => null,
@@ -12,7 +12,7 @@
     if ($currentContext->getData('defaultReviewPublicVisibility')) {
         $tabs[] = [
             'id' => 'peer-review',
-            'template' => 'components/article-tab-peer-review',
+            'template' => 'components/article/tab-peer-review',
             'icon' => 'components/icons/menubar-peer-review',
             'name' => __('submission.peerReview'),
             'count' => null,
@@ -22,7 +22,7 @@
     if ($enablePublicComments) {
         $tabs[] = [
             'id' => 'comments',
-            'template' => 'components/article-tab-comments',
+            'template' => 'components/article/tab-comments',
             'icon' => 'components/icons/menubar-comments',
             'name' => __('manager.userComment.comments'),
             'count' => isset($userCommentsInitConfig) ? $userCommentsInitConfig['allCommentsCount'] : null,
@@ -31,7 +31,7 @@
 
     $tabs[] = [
         'id' => 'metrics',
-        'template' => 'components/article-tab-metrics',
+        'template' => 'components/article/tab-metrics',
         'icon' => 'components/icons/menubar-metrics',
         'name' => __('plugins.themes.eidos.metrics'),
         'count' => null,
@@ -39,7 +39,7 @@
 
     $tabs[] = [
         'id' => 'metadata',
-        'template' => 'components/article-tab-metadata',
+        'template' => 'components/article/tab-metadata',
         'icon' => 'components/icons/menubar-metadata',
         'name' => __('submission.informationCenter.metadata'),
         'count' => null,

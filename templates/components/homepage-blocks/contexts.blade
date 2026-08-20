@@ -1,5 +1,5 @@
 @if (count($journals))
-    <x-homepage.default slug="contexts">
+    <x-homepage-blocks.default slug="contexts">
         <div class="homepage-block-contexts-header">
             <h2 class="homepage-block-contexts-title">
                 {{ __('search.allJournals') }}
@@ -47,5 +47,5 @@
                 </li>
             @endforeach
         </ul>
-    </x-homepage.default>
+    </x-homepage-blocks.default>
 @endif

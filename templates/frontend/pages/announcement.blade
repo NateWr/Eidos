@@ -1,4 +1,4 @@
-<x-layout-basic
+<x-layout.basic
     title="{{ $announcement->getLocalizedData('title') }}"
     description="{{ ViewHelper::html2text($announcement->getLocalizedData('descriptionShort')) }}"
     pageId="announcement"
@@ -11,4 +11,4 @@
         @endif
     </div>
   </div>
-</x-eidostheme::layout-basic>
+</x-layout.basic>

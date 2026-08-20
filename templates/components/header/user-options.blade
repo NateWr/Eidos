@@ -25,7 +25,7 @@
         <div class="user-options-logged-in-as">
             @include('components/icons/circle-user')
             @if ($isUserLoggedIn)
-                <x-logged-in-as />
+                <x-header.logged-in-as />
             @else
                 <a class="user-options-login" href="{{ ViewHelper::url(['page' => 'login']) }}">
                     {{ __('plugins.themes.eidos.loginOrRegister') }}
