@@ -88,6 +88,12 @@
       grid-column-end: 3;
     }
   }
+
+  .issue-toc-article .article-download .dropdown-content {
+    min-width: var(--reka-popover-trigger-width);
+    width: max-content;
+    max-width: max(var(--reka-popover-trigger-width), 16rem);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -160,5 +166,9 @@
 
   .issue-toc-section-name {
     font-size: 1.25rem;
+  }
+
+  .issue-toc-article .article-download .dropdown-content {
+    max-width: max(var(--reka-popover-trigger-width), 20rem);
   }
 }
