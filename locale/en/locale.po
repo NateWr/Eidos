@@ -40,6 +40,27 @@ msgstr "<strong>{$views}</strong> views and <strong>{$downloads}</strong> downlo
 msgid "plugins.themes.eidos.cite"
 msgstr "Cite"
 
+msgid "plugins.themes.eidos.share"
+msgstr "Share"
+
+msgid "plugins.themes.eidos.share.facebook"
+msgstr "Facebook"
+
+msgid "plugins.themes.eidos.share.whatsapp"
+msgstr "WhatsApp"
+
+msgid "plugins.themes.eidos.share.twitterX"
+msgstr "X / Twitter"
+
+msgid "plugins.themes.eidos.share.reddit"
+msgstr "Reddit"
+
+msgid "plugins.themes.eidos.share.linkedin"
+msgstr "LinkedIn"
+
+msgid "plugins.themes.eidos.share.telegram"
+msgstr "Telegram"
+
 msgid "plugins.themes.eidos.search.description"
 msgstr "Search all articles or browse every article in our <a href='{$url}'>back issues</a>."
 
@@ -192,6 +213,12 @@ msgstr "Article Sidebar Metadata"
 
 msgid "plugins.themes.eidos.option.sidebarArticleMetadata.description"
 msgstr "Select the article metadata that you want to show in the sidebar on the article landing page."
+
+msgid "plugins.themes.eidos.option.shareOptions.label"
+msgstr "Social Share Options"
+
+msgid "plugins.themes.eidos.option.shareOptions.description"
+msgstr "Choose which options readers should have to share an article from the article landing page. Select none of the options to hide the share button."
 
 msgid "plugins.themes.eidos.option.issueToc.label"
 msgstr "Issue Table of Contents"

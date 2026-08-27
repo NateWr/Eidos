@@ -4,7 +4,6 @@
  *
  * Use the reveal component.
  *
- *
  * <x-reveal id="example" height="30">
  *     <x-slot:trigger>
  *         View all

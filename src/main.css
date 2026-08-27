@@ -22,6 +22,7 @@
 @import './css/components/article/tabs.css';
 @import './css/components/arrow-link.css';
 @import './css/components/author-detail.css';
+@import './css/components/copy-to-clipboard.css';
 @import './css/components/dropdown.css';
 @import './css/components/footer/footer.css';
 @import './css/components/footer/sidebar.css';
@@ -59,6 +60,7 @@
 @import './css/components/pagination.css';
 @import './css/components/reveal.css';
 @import './css/components/search-form.css';
+@import './css/components/share-links.css';
 @import './css/pages/announcements.css';
 @import './css/pages/article.css';
 @import './css/pages/basic.css';

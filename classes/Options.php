@@ -52,6 +52,25 @@ class Options
         'metadata.metrics',
     ];
 
+    public const SHARE_OPTIONS_FACEBOOK = 'facebook';
+    public const SHARE_OPTIONS_X = 'x';
+    public const SHARE_OPTIONS_WHATSAPP = 'whatsapp';
+    public const SHARE_OPTIONS_EMAIL = 'email';
+    public const SHARE_OPTIONS_REDDIT = 'reddit';
+    public const SHARE_OPTIONS_TELEGRAM = 'telegram';
+    public const SHARE_OPTIONS_LINKEDIN = 'linkedin';
+    public const SHARE_OPTIONS_COPY = 'copy';
+    public const SHARE_OPTIONS_DEFAULT = [
+        'email',
+        'linkedin',
+        'whatsapp',
+        'facebook',
+        'reddit',
+        'x',
+        'telegram',
+        'copy'
+    ];
+
     public const COLOR_MODE_DEFAULT = 'default';
     public const COLOR_MODE_ADVANCED = 'advanced';
 
@@ -111,6 +130,7 @@ class Options
         $this->addBrowseByCategoryBlock();
         $this->addArticleHighlightMetadataOption();
         $this->addArticleSidebarMetadataOption();
+        $this->addShareOption();
         $this->addFontOptions();
         $this->addColorOptions();
     }
@@ -621,6 +641,54 @@ class Options
                 ])
                 ->values(),
             'default' => self::ARTICLE_SIDEBAR_METADATA_DEFAULT,
+        ]);
+    }
+
+    /**
+     * Add option to choose social share targets in article landing page
+     */
+    protected function addShareOption(): void
+    {
+        $this->theme->addOption('shareOptions', 'FieldOptions', [
+            'type' => 'checkbox',
+            'isOrderable' => true,
+            'label' => __('plugins.themes.eidos.option.shareOptions.label'),
+            'description' => __('plugins.themes.eidos.option.shareOptions.description'),
+            'options' => [
+                [
+                    'value' => self::SHARE_OPTIONS_EMAIL,
+                    'label' => __('email.email'),
+                ],
+                [
+                    'value' => self::SHARE_OPTIONS_LINKEDIN,
+                    'label' => __('plugins.themes.eidos.share.linkedin'),
+                ],
+                [
+                    'value' => self::SHARE_OPTIONS_WHATSAPP,
+                    'label' => __('plugins.themes.eidos.share.whatsapp'),
+                ],
+                [
+                    'value' => self::SHARE_OPTIONS_FACEBOOK,
+                    'label' => __('plugins.themes.eidos.share.facebook'),
+                ],
+                [
+                    'value' => self::SHARE_OPTIONS_REDDIT,
+                    'label' => __('plugins.themes.eidos.share.reddit'),
+                ],
+                [
+                    'value' => self::SHARE_OPTIONS_X,
+                    'label' => __('plugins.themes.eidos.share.twitterX'),
+                ],
+                [
+                    'value' => self::SHARE_OPTIONS_TELEGRAM,
+                    'label' => __('plugins.themes.eidos.share.telegram'),
+                ],
+                [
+                    'value' => self::SHARE_OPTIONS_COPY,
+                    'label' => __('submission.howToCite.copyToClipboard'),
+                ],
+            ],
+            'default' => self::SHARE_OPTIONS_DEFAULT,
         ]);
     }
 

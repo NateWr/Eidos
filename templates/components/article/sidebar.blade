@@ -14,6 +14,8 @@
             'tCopied' => __('common.copied'),
         ];
     }
+
+    $shareOptions = $activeTheme->getOption('shareOptions');
 @endphp
 
 <div class="article-sidebar">
@@ -25,7 +27,7 @@
             :publication="$publication"
             :submission="$article"
         />
-        @if($citeConfig)
+        @if ($citeConfig)
             <x-dropdown
                 class="article-sidebar-cite"
                 :showClose="true"
@@ -36,6 +38,28 @@
                     {{ __('plugins.themes.eidos.cite') }}
                 </x-slot:trigger>
                 <pkp-cite-body v-bind='@json($citeConfig)'></pkp-cite-body>
+            </x-dropdown>
+        @endif
+        @if ($shareOptions)
+            <x-dropdown
+                class="article-sidebar-share"
+                triggerClass="article-sidebar-share-button"
+            >
+                <x-slot:trigger>
+                    @include('components/icons/share')
+                    {{ __('plugins.themes.eidos.share') }}
+                </x-slot:trigger>
+                <x-share-links
+                    :share-options="$shareOptions"
+                    title="{{ $submission->getCurrentPublication()->getLocalizedFullTitle() }}"
+                    url="{{
+                        ViewHelper::url([
+                            'page' => 'article',
+                            'op' => 'view',
+                            'path' => $submission->getBestId(),
+                        ])
+                    }}"
+                />
             </x-dropdown>
         @endif
     </div>
