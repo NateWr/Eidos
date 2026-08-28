@@ -77,11 +77,11 @@ class Options
     public const COLOR_MODE_DEFAULT = 'default';
     public const COLOR_MODE_ADVANCED = 'advanced';
 
-    public const COLOR_PRIMARY = '#1a1a1a';
-    public const COLOR_ACCENT = '#00519F';
-    public const COLOR_PAGE_BACKGROUND = '#f5f5f5';
-    public const COLOR_PAGE_TEXT = '#1a1a1a';
-    public const COLOR_PRIMARY_TEXT = '#f5f5f5';
+    public const COLOR_PRIMARY = '#22252A';
+    public const COLOR_ACCENT = '#22252A';
+    public const COLOR_PAGE_BACKGROUND = '#FDFBF7';
+    public const COLOR_PAGE_TEXT = '#22252A';
+    public const COLOR_PRIMARY_TEXT = '#FFFFFF';
 
     /**
      * Primary locale of current context
