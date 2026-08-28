@@ -52,7 +52,7 @@ class Options
         'metadata-blocks.version',
         'metadata-blocks.date-published',
         'metadata-blocks.date-submitted',
-        'metadata-blocks.metrics',
+        'metadata-blocks.peer-review',
     ];
 
     public const SHARE_OPTIONS_FACEBOOK = 'facebook';
