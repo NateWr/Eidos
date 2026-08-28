@@ -46,7 +46,7 @@ This is the layout used for most pages on the site.
     @if (!$usesCustomFonts)
         <x-header.default-fonts />
     @endif
-    @if ($head && !$head->isEmpty())
+    @if (isset($head) && !$head->isEmpty())
         {{ $head }}
     @endif
 </head>
@@ -66,7 +66,7 @@ This is the layout used for most pages on the site.
     }}
 >
     <x-header.skip-links>
-        {{ $skiplinks }}
+        {{ $skiplinks ?? '' }}
     </x-header.skip-links>
 
     <x-header.mobile />

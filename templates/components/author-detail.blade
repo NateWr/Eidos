@@ -3,13 +3,12 @@
         <h4 class="author-detail-name">
             {{ $author->getFullName() }}
             @if ($author->getData('orcid'))
-                <a class="author-detail-orcid" href="{{ $author->getData('orcid') }}" target="_blank" aria-label="ORCID iD">
-                    @if ($author->hasVerifiedOrcid())
-                        {!! $orcidUnauthenticatedIcon!!}
-                    @else
-                        {!! $orcidIcon !!}
-                    @endif
-                </a>
+                <x-orcid-link
+                    class="author-detail-orcid"
+                    name="{{ $author->getFullName() }}"
+                    orcid="{{ $author->getData('orcid') }}"
+                    :is-verified="$author->hasVerifiedOrcid()"
+                />
             @endif
         </h4>
         @if(count($author->getAffiliations()))

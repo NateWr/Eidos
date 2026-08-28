@@ -18,11 +18,8 @@
                     <li class="page-masthead-user">
                         <x-masthead-user
                             name="{{ $mastheadUser['user']->getFullName() }}"
-                            orcid="{{
-                                $mastheadUser['user']->getData('orcid') && $mastheadUser['user']->hasVerifiedOrcid()
-                                    ? $mastheadUser['user']->getData('orcid')
-                                    : ''
-                            }}"
+                            orcid="{{ $mastheadUser['user']->getData('orcid') }}"
+                            hasVerifiedOrcid="$mastheadUser['user']->hasVerifiedOrcid()"
                             affiliation="{{ $mastheadUser['user']->getLocalizedData('affiliation') }}"
                             dateStart="{{ $mastheadUser['dateStart'] }}"
                             dateEnd="{{ $mastheadUser['dateEnd'] }}"

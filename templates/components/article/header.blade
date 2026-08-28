@@ -15,16 +15,12 @@
                     {{
                         $author->getFullName()
                     }}@if ($author->getData('orcid'))
-                        <a class="article-author-orcid" href="{{ $author->getData('orcid') }}" target="_blank">
-                            @if ($author->hasVerifiedOrcid())
-                                {!! $orcidUnauthenticatedIcon!!}
-                            @else
-                                {!! $orcidIcon !!}
-                            @endif
-                            <span class="sr-only">
-                                {{ $author->getData('orcid') }}
-                            </span>
-                        </a>
+                        <x-orcid-link
+                            class="article-author-orcid"
+                            name="{{ $author->getFullName() }}"
+                            orcid="{{ $author->getData('orcid') }}"
+                            :is-verified="$author->hasVerifiedOrcid()"
+                        />
                     @endif{{
                     ""}}@if ($loop->iteration < $publication->getData('authors')->count()){{
                         __('common.commaListSeparator')

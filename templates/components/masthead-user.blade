@@ -1,24 +1,24 @@
 @props([
     'name',
     'orcid' => '',
+    'hasVerifiedOrcid' => false,
     'affiliation' => '',
     'dateStart' => '',
     'dateEnd' => '',
 ])
+
+@php $orcid = 'https://orcid.org/123454646'; @endphp
 
 <div class="masthead-user">
     <span class="masthead-user-name">
         {{ $name }}
         @if ($orcid)
             <span class="masthead-user-orcid">
-                <a
-                    href="{{ $orcid }}"
-                    target="_blank"
-                    aria-label="{{ __('common.editorialHistory.page.orcidLink') }}"
+                <x-orcid-link
                     name="{{ $name }}"
-                >
-                    {!! $orcidIcon !!}
-                </a>
+                    orcid="{{ $orcid }}"
+                    :is-verified="$hasVerifiedOrcid"
+                />
             </span>
         @endif
         @if(!empty($dateStart))
