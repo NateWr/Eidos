@@ -38,18 +38,21 @@ class Options
     public const ISSUE_TOC_GALLEYS = 'galleys';
 
     public const HOMEPAGE_BLOCKS_DEFAULT = [
-        'homepage.announcement',
+        'homepage-blocks.announcement',
+        'homepage-blocks.about',
+        'homepage-blocks.how-to-submit',
+        'homepage-blocks.issue-toc',
     ];
 
     public const ARTICLE_HIGHLIGHT_METADATA_DEFAULT = [
-        'metadata.doi',
+        'metadata-blocks.doi',
     ];
 
     public const ARTICLE_SIDEBAR_METADATA_DEFAULT = [
-        'metadata.version',
-        'metadata.date-published',
-        'metadata.date-submitted',
-        'metadata.metrics',
+        'metadata-blocks.version',
+        'metadata-blocks.date-published',
+        'metadata-blocks.date-submitted',
+        'metadata-blocks.metrics',
     ];
 
     public const SHARE_OPTIONS_FACEBOOK = 'facebook';
