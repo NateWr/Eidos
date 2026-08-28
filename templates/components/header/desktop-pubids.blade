@@ -6,8 +6,8 @@
     if ($currentContext?->getData('onlineIssn')) {
         $publicationIds[__('metadata.property.displayName.eissn')] = $currentContext->getData('onlineIssn');
     }
-    if ($currentContext?->getData(Context::SETTING_DOI_PREFIX)) {
-        $publicationIds[__('manager.dois.title')] = $currentContext->getData(Context::SETTING_DOI_PREFIX);
+    if ($currentContext?->getData(\PKP\context\Context::SETTING_DOI_PREFIX)) {
+        $publicationIds[__('manager.dois.title')] = $currentContext->getData(\PKP\context\Context::SETTING_DOI_PREFIX);
     }
 @endphp
 
